@@ -540,7 +540,7 @@ const ar: Translation = {
   averageRating: 'متوسط التقييم',
   publishedCourses: 'الكورسات المنشورة',
   latestCourses: 'أحدث الكورسات',
-  viewAll: 'عرض الكل',
+v_iewAll: 'عرض الكل',
   rating: 'تقييم',
   edit: 'تعديل',
   delete: 'حذف',
@@ -636,4 +636,5 @@ export const translations: Record<Language, Translation> = {
   ar,
 };
 
+    
     
