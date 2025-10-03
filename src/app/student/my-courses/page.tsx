@@ -53,7 +53,7 @@ export default function MyCoursesPage() {
                     <Badge variant="outline">{course.code}</Badge>
                 </div>
                 <h3 className="font-semibold text-lg">{course.title}</h3>
-                <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-sm text-muted-foreground hover:underline">{course.teacher}</Link>
+                <Link href={`/student/teacher/${course.teacherId}`} className="text-sm text-muted-foreground hover:underline">{course.teacher}</Link>
                 <div className="mt-4">
                     <Progress value={course.progress} />
                     <p className="text-xs text-muted-foreground mt-1 text-right">{course.progress}%</p>
@@ -79,3 +79,6 @@ export default function MyCoursesPage() {
     </div>
   );
 }
+
+
+    

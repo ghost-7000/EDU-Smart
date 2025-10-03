@@ -50,7 +50,7 @@ export function CourseCard({ course }: { course: Course }) {
               <h3 className="font-semibold text-lg truncate pr-2">{course.title}</h3>
               <Badge variant="outline">{course.code}</Badge>
             </div>
-            <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-sm text-muted-foreground hover:underline" onClick={(e) => e.stopPropagation()}>
+            <Link href={`/student/teacher/${course.teacherId}`} className="text-sm text-muted-foreground hover:underline" onClick={(e) => e.stopPropagation()}>
                 {course.teacher}
             </Link>
             <div className="flex items-center mt-2">
@@ -75,3 +75,6 @@ export function CourseCard({ course }: { course: Course }) {
     </Card>
   );
 }
+
+
+    

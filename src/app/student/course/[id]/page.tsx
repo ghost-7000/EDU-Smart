@@ -249,7 +249,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                     )}
                     <div className="flex justify-between items-center">
                         <span className="font-semibold">{t.teacher}</span>
-                        <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-muted-foreground hover:underline">{course.teacher}</Link>
+                        <Link href={`/student/teacher/${course.teacherId}`} className="text-muted-foreground hover:underline">{course.teacher}</Link>
                     </div>
                      <div className="flex justify-between items-center">
                         <span className="font-semibold">{t.rating}</span>
@@ -320,5 +320,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
     </div>
   );
 }
+
+    
 
     

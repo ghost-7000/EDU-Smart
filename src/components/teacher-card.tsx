@@ -17,7 +17,7 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
 
   return (
     <Card className="flex flex-col overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-        <Link href={`/teacher/profile?id=${teacher.id}`} className='flex-1 flex flex-col'>
+        <Link href={`/student/teacher/${teacher.id}`} className='flex-1 flex flex-col'>
             <CardHeader className="items-center text-center p-4">
                 <Avatar className="w-20 h-20 mb-3 border-2 border-primary">
                     <AvatarFallback className="bg-primary/20 text-primary">
