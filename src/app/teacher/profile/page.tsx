@@ -48,9 +48,9 @@ export default function TeacherProfilePage() {
     const isEditMode = !teacherIdParam;
     const teacherId = teacherIdParam ? parseInt(teacherIdParam, 10) : ownProfileId;
 
-    const teacherToDisplay = getTeacherById(teacherId);
+    const initialProfile = getTeacherById(teacherId);
     
-    const [profile, setProfile] = useState(teacherToDisplay);
+    const [profile, setProfile] = useState(initialProfile);
     
     if (!profile) {
         return <div className="text-center py-10">{t.teacherNotFound}</div>
@@ -192,7 +192,7 @@ export default function TeacherProfilePage() {
                         <div className="flex items-center justify-center gap-2">
                             <BookCopy className="h-6 w-6 text-green-500" />
                             <div>
-                                <p className="text-xl font-bold">{profile.totalCourses}</p>
+                                <p className="text-xl font-bold">{profile.courses.length}</p>
                                 <h3 className="text-xs text-muted-foreground uppercase tracking-wider">{t.publishedCourses}</h3>
                             </div>
                         </div>

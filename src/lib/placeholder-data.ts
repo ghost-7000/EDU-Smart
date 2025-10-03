@@ -247,7 +247,7 @@ export const courses: Course[] = [
   },
   {
     id: 6,
-    teacherId: 1,
+    teacherId: 5,
     title: 'تحليل النصوص الأدبية',
     code: 'LIT400',
     description: 'تعمق في فهم النصوص الأدبية وتعلم كيفية تحليلها ونقدها بأسلوب منهجي.',

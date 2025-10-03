@@ -41,7 +41,7 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
                     </div>
                      <div>
                         <BookCopy className="mx-auto h-5 w-5 text-muted-foreground" />
-                        <p className="font-bold">{teacher.totalCourses}</p>
+                        <p className="font-bold">{teacher.courses.length}</p>
                         <p className="text-xs">{t.courses}</p>
                     </div>
                 </div>
@@ -53,3 +53,5 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
     </Card>
   );
 }
+
+    

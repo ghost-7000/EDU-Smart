@@ -60,3 +60,5 @@ export type Student = {
   points: number;
   enrolledCourses: EnrolledCourse[];
 };
+
+    
