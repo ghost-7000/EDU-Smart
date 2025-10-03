@@ -9,6 +9,7 @@ export type Translation = {
   logout: string;
   signup: string;
   createNewAccount: string;
+  omr: string;
 
   // Header
   home: string;
@@ -181,6 +182,7 @@ const en: Translation = {
   logout: 'Logout',
   signup: 'Sign Up',
   createNewAccount: 'Create new account',
+  omr: 'OMR',
 
   // Header
   home: 'Home',
@@ -286,7 +288,6 @@ const en: Translation = {
   publishedCourses: 'Published Courses',
   latestCourses: 'Latest Courses',
   viewAll: 'View All',
-  student: 'Student',
   rating: 'Rating',
   edit: 'Edit',
   delete: 'Delete',
@@ -353,6 +354,7 @@ const ar: Translation = {
   logout: 'تسجيل خروج',
   signup: 'إنشاء حساب',
   createNewAccount: 'إنشاء حساب جديد',
+  omr: 'ر.ع.',
 
   // Header
   home: 'الرئيسية',
@@ -458,7 +460,6 @@ const ar: Translation = {
   publishedCourses: 'الكورسات المنشورة',
   latestCourses: 'أحدث الكورسات',
   viewAll: 'عرض الكل',
-  student: 'طالب',
   rating: 'تقييم',
   edit: 'تعديل',
   delete: 'حذف',
@@ -488,7 +489,7 @@ const ar: Translation = {
   courseCode: 'كود الكورس',
   shortDescription: 'وصف مختصر',
   fullDetails: 'تفاصيل شاملة',
-  priceUSD: 'السعر (ريال)',
+  priceUSD: 'السعر (ريال عماني)',
   enableFreeTrial: 'تفعيل التجربة المجانية (7 أيام)',
   coverMedia: 'صورة أو فيديو تعريفي',
   publishCourse: 'نشر الكورس',

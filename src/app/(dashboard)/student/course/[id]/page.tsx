@@ -3,13 +3,13 @@
 
 import { courses } from '@/lib/placeholder-data';
 import { notFound } from 'next/navigation';
-import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
+import Link from 'next/link';
 
 export default function CourseDetailPage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
@@ -31,17 +31,11 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
     <div className="container mx-auto py-8">
       <div className="grid lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
-            {course.image && (
-                <Image
-                src={course.image.imageUrl}
-                alt={course.title}
-                data-ai-hint={course.image.imageHint}
-                width={800}
-                height={450}
-                className="rounded-lg object-cover w-full mb-6 shadow-lg"
-                />
-            )}
-            <h1 className="font-headline text-4xl font-bold mb-4">{course.title}</h1>
+            <div className="aspect-video bg-muted flex items-center justify-center rounded-lg mb-6 shadow-lg">
+                <span className="text-8xl">{course.emoji}</span>
+            </div>
+            <h1 className="font-headline text-4xl font-bold mb-2">{course.title}</h1>
+            <Badge variant="secondary" className="mb-4">{course.code}</Badge>
             <p className="text-lg text-muted-foreground mb-6">A detailed and lengthy description of the course, its objectives, content, and target audience will be here. This text is just an example.</p>
         </div>
         <div>
@@ -56,7 +50,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                         {course.isFreeTrial ? (
                             <Badge variant="outline" className="border-green-500 text-green-600">{t.freeTrial}</Badge>
                         ) : course.price !== null ? (
-                            <p className="font-bold text-lg text-primary">${course.price}</p>
+                            <p className="font-bold text-lg text-primary">{course.price} {t.omr}</p>
                         ) : (
                             <Badge variant="secondary">{t.free}</Badge>
                         )}
@@ -64,7 +58,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                     </div>
                     <div className="flex justify-between items-center">
                         <span className="font-semibold">{t.teacher}</span>
-                        <span className="text-muted-foreground">{course.teacher}</span>
+                        <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-muted-foreground hover:underline">{course.teacher}</Link>
                     </div>
                      <div className="flex justify-between items-center">
                         <span className="font-semibold">{t.rating}</span>
