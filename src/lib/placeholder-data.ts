@@ -52,6 +52,8 @@ export const courses = [
     specialization: 'تكنولوجيا المعلومات',
     popularity: 'most_popular',
     newness: 'new',
+    enrolledStudents: 152,
+    reviews: [ {rating: 4, comment: "شرح ممتاز!"}, {rating: 5, comment: "كورس رائع ومفيد جدا."} ],
     content: {
       chapters: [
         {
@@ -120,6 +122,8 @@ export const courses = [
     specialization: 'تكنولوجيا المعلومات',
     popularity: 'most_popular',
     newness: 'old',
+    enrolledStudents: 98,
+    reviews: [ {rating: 5, comment: "محتوى قيم وأستاذ متمكن."} ],
     content: {
       chapters: [
         {
@@ -148,6 +152,8 @@ export const courses = [
     specialization: 'إدارة الأعمال',
     popularity: 'standard',
     newness: 'old',
+    enrolledStudents: 110,
+    reviews: [],
     content: {
       chapters: [
         {
@@ -179,6 +185,8 @@ export const courses = [
     specialization: 'الفنون والتصميم',
     popularity: 'standard',
     newness: 'new',
+    enrolledStudents: 250,
+    reviews: [],
     content: {
       chapters: [
         {
@@ -214,6 +222,8 @@ export const courses = [
     specialization: 'الهندسة',
     popularity: 'standard',
     newness: 'old',
+    enrolledStudents: 80,
+    reviews: [],
      content: {
         chapters: [
             {
@@ -249,6 +259,8 @@ export const courses = [
     specialization: 'الآداب والعلوم الإنسانية',
     popularity: 'standard',
     newness: 'new',
+    enrolledStudents: 75,
+    reviews: [ {rating: 4, comment: "أتمنى لو كان هناك المزيد من الأمثلة."} ],
      content: {
         chapters: [
             {
@@ -288,6 +300,12 @@ export const studentData = {
   ],
 };
 
+const teacher1Courses = courses.filter(c => c.teacherId === 1);
+const teacher1TotalStudents = teacher1Courses.reduce((sum, course) => sum + course.enrolledStudents, 0);
+const teacher1TotalRatingsCount = teacher1Courses.flatMap(c => c.reviews).length;
+const teacher1TotalRatingsSum = teacher1Courses.flatMap(c => c.reviews).reduce((sum, review) => sum + review.rating, 0);
+
+
 export const teacherData = {
   id: 1,
   name: 'د. أحمد المحروقي',
@@ -295,12 +313,10 @@ export const teacherData = {
   branch: 'مسقط',
   specialization: 'تكنولوجيا المعلومات',
   bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
-  totalCourses: 3,
-  courses: [
-    { ...courses[0], enrolledStudents: 152, reviews: [ {rating: 4, comment: "شرح ممتاز!"}, {rating: 5, comment: "كورس رائع ومفيد جدا."} ] },
-    { ...courses[1], enrolledStudents: 98, reviews: [ {rating: 5, comment: "محتوى قيم وأستاذ متمكن."} ] },
-    { ...courses[5], enrolledStudents: 75, reviews: [ {rating: 4, comment: "أتمنى لو كان هناك المزيد من الأمثلة."} ] },
-  ],
+  totalCourses: teacher1Courses.length,
+  totalStudents: teacher1TotalStudents,
+  averageRating: teacher1TotalRatingsCount > 0 ? (teacher1TotalRatingsSum / teacher1TotalRatingsCount) : 0,
+  courses: teacher1Courses,
 };
 
     

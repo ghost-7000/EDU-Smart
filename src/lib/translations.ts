@@ -125,6 +125,10 @@ export type Translation = {
   rating: string;
   edit: string;
   delete: string;
+  coursesBy: string;
+  contactTeacher: string;
+  contact: string;
+  contactTeacherDesc: string;
   
   // Course Pages
   discoverCourses: string;
@@ -335,7 +339,11 @@ const en: Translation = {
   rating: 'Rating',
   edit: 'Edit',
   delete: 'Delete',
-  
+  coursesBy: 'Courses by',
+  contactTeacher: 'Contact Teacher',
+  contact: 'Contact',
+  contactTeacherDesc: 'To contact the teacher, please enroll in one of their courses and use the messaging feature on the course page.',
+
   // Course Pages
   discoverCourses: 'Discover Courses',
   searchByNameOrCode: 'Search by name or code...',
@@ -540,10 +548,14 @@ const ar: Translation = {
   averageRating: 'متوسط التقييم',
   publishedCourses: 'الكورسات المنشورة',
   latestCourses: 'أحدث الكورسات',
-v_iewAll: 'عرض الكل',
+  viewAll: 'عرض الكل',
   rating: 'تقييم',
   edit: 'تعديل',
   delete: 'حذف',
+  coursesBy: 'كورسات من قبل',
+  contactTeacher: 'تواصل مع المعلم',
+  contact: 'تواصل',
+  contactTeacherDesc: 'للتواصل مع المعلم، يرجى التسجيل في أحد كورساته واستخدام ميزة المراسلة في صفحة الكورس.',
   
   // Course Pages
   discoverCourses: 'اكتشف الكورسات',
@@ -636,5 +648,4 @@ export const translations: Record<Language, Translation> = {
   ar,
 };
 
-    
     
