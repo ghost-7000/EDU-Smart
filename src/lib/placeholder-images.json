@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero",
-      "description": "Students studying in a modern university setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1721468184185-214871ec4411?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdHVkZW50cyUyMGxlYXJuaW5nfGVufDB8fHx8MTc1OTQ3MTUyNXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "students learning"
+      "description": "A modern university campus building.",
+      "imageUrl": "https://images.unsplash.com/photo-1562774053-701939374585?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHx1bml2ZXJzaXR5JTIwY2FtcHVzfGVufDB8fHx8MTcyNzEwNzY5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "university campus"
     },
     {
       "id": "course-1",
@@ -21,8 +21,8 @@
     {
       "id": "course-3",
       "description": "Thumbnail for a business management course.",
-      "imageUrl": "https://images.unsplash.com/photo-1686771416282-3888ddaf249b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzU5NDM2MTM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "business meeting"
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG9mZmljZXxlbnwwfHx8fDE3MjcxMDc3ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business office"
     },
     {
       "id": "course-4",

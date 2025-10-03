@@ -7,6 +7,7 @@ import {
   LayoutDashboard,
   LogOut,
   PlusCircle,
+  Presentation,
   UserCircle,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -47,8 +48,9 @@ export default function TeacherDashboardLayout({
         <SidebarContent className="p-2">
           <div className="flex flex-col items-center p-4 border-b mb-4">
               <Avatar className="h-20 w-20 mb-2">
-                  <AvatarImage src="https://picsum.photos/seed/teacher-avatar/100" />
-                  <AvatarFallback>{teacherData.name.charAt(0)}</AvatarFallback>
+                  <AvatarFallback className="bg-primary text-primary-foreground">
+                    <Presentation className="h-10 w-10" />
+                  </AvatarFallback>
               </Avatar>
               <h3 className="font-semibold">{teacherData.name}</h3>
               <p className="text-sm text-muted-foreground">{teacherData.branch}</p>

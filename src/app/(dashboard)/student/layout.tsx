@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   BookCopy,
+  GraduationCap,
   LayoutDashboard,
   LogOut,
   Search,
@@ -48,8 +49,9 @@ export default function StudentDashboardLayout({
         <SidebarContent className="p-2">
           <div className="flex flex-col items-center p-4 border-b mb-4">
               <Avatar className="h-20 w-20 mb-2">
-                  <AvatarImage src="https://picsum.photos/seed/student-avatar/100" />
-                  <AvatarFallback>{studentData.name.charAt(0)}</AvatarFallback>
+                  <AvatarFallback className="bg-primary text-primary-foreground">
+                    <GraduationCap className="h-10 w-10" />
+                  </AvatarFallback>
               </Avatar>
               <h3 className="font-semibold">{studentData.name}</h3>
               <p className="text-sm text-muted-foreground">{studentData.branch}</p>
