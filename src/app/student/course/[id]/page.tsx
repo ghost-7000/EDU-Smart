@@ -320,7 +320,3 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
     </div>
   );
 }
-
-    
-
-    

@@ -171,5 +171,3 @@ export default function ViewTeacherProfilePage({ params }: { params: { id: strin
     </div>
   );
 }
-
-    
