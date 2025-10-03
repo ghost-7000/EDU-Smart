@@ -54,9 +54,9 @@ export function Header({ children, loggedIn = false, user }: HeaderProps) {
         <div className="flex items-center gap-6">
           {children}
           
-           <Link href="/" className="hidden md:flex items-center">
+           <div className="hidden md:flex items-center">
             <Logo />
-          </Link>
+          </div>
            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navLinks.map((link) => (
               <Link
