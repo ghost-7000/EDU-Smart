@@ -50,16 +50,6 @@ export default function StudentDashboardLayout({
           <Logo />
         </SidebarHeader>
         <SidebarContent className="p-4">
-          <div className="flex flex-col items-center p-4 border-b mb-4">
-              <Avatar className="h-24 w-24 mb-3 border-2 border-primary">
-                  <AvatarFallback className="bg-primary/20 text-primary">
-                    <User className="h-12 w-12" />
-                  </AvatarFallback>
-              </Avatar>
-              <h3 className="font-semibold text-lg">{studentData.name}</h3>
-              <p className="text-sm text-muted-foreground">{studentData.branch}</p>
-              <p className="text-sm text-primary font-semibold mt-2">{studentData.points} {t.pointsEarned}</p>
-          </div>
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
