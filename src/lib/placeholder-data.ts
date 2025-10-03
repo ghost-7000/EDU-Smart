@@ -3,7 +3,19 @@ import { PlaceHolderImages } from './placeholder-images';
 
 export const placeholderImages: ImagePlaceholder[] = PlaceHolderImages;
 
-export const branches = ['مسقط', 'نزوى', 'صحار', 'صلالة'];
+export const branches = [
+  'مسقط',
+  'صلالة',
+  'نزوى',
+  'صحار',
+  'عبري',
+  'صور',
+  'شناص',
+  'المصنعة',
+  'إبراء',
+  'الرستاق',
+  'بدية'
+];
 
 export const courses = [
   {

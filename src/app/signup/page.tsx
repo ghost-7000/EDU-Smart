@@ -52,18 +52,7 @@ export default function SignupPage() {
                             <Label htmlFor="name">{t.fullName}</Label>
                             <Input id="name" placeholder="e.g., Ahmed Al Farsi" />
                         </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="email">{t.email}</Label>
-                            <Input id="email" type="email" placeholder="email@example.com" />
-                        </div>
-                         <div className="space-y-2">
-                            <Label htmlFor="password">{t.password}</Label>
-                            <Input id="password" type="password" />
-                        </div>
-                         <div className="space-y-2">
-                            <Label htmlFor="confirm-password">{t.confirmPassword}</Label>
-                            <Input id="confirm-password" type="password" />
-                        </div>
+                        
                          <div className="space-y-2">
                             <Label htmlFor="branch">{t.selectBranch}</Label>
                             <Select>

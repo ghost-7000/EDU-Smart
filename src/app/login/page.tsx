@@ -48,14 +48,6 @@ export default function LoginPage() {
                         </div>
                         
                         <div className="space-y-2">
-                            <Label htmlFor="email">{t.email}</Label>
-                            <Input id="email" type="email" placeholder="email@example.com" />
-                        </div>
-                        <div className="space-y-2">
-                            <Label htmlFor="password">{t.password}</Label>
-                            <Input id="password" type="password" />
-                        </div>
-                         <div className="space-y-2">
                             <Label htmlFor="branch">{t.selectBranch}</Label>
                             <Select>
                                 <SelectTrigger id="branch">
