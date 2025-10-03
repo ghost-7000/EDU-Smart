@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: 'EDU Smart',
   description: 'An innovative educational platform for university students.',
   icons: {
-    icon: '/favicon.ico',
+    icon: 'https://i.ibb.co/h1X4FPxF/5261fa16-9817-4c6a-924e-9f5aaf3c9d57.jpg',
   },
 };
 
