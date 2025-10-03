@@ -9,7 +9,7 @@ import {
   CardTitle,
   CardFooter,
 } from '@/components/ui/card';
-import { allTeachers, branches, specializations } from '@/lib/placeholder-data';
+import { allTeachers, branches, specializations, courses as allCourses } from '@/lib/placeholder-data';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Star, Users, BookCopy, MessageSquare, UserCircle } from 'lucide-react';
@@ -22,11 +22,19 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 import { Teacher, Course } from '@/lib/types';
-import { Separator } from '@/components/ui/separator';
 
 
 const getTeacherById = (id: number): Teacher | undefined => {
-    return allTeachers.find(teacher => teacher.id === id);
+    // This should ideally fetch from a DB, but we'll use placeholder data
+    const teacherData = allTeachers.find(teacher => teacher.id === id);
+    if (!teacherData) return undefined;
+
+    const teacherCourses = allCourses.filter(course => course.teacherId === id);
+    
+    return {
+        ...teacherData,
+        courses: teacherCourses,
+    };
 }
 
 
@@ -37,9 +45,12 @@ export default function TeacherProfilePage() {
     const searchParams = useSearchParams();
     const teacherIdParam = searchParams.get('id');
     const ownProfileId = 1; // Assuming teacher with ID 1 is the logged-in one for demo
+    
+    // Determine if the current view is for the teacher's own profile or a student viewing it.
     const isOwnProfile = !teacherIdParam || parseInt(teacherIdParam, 10) === ownProfileId;
+    const teacherId = teacherIdParam ? parseInt(teacherIdParam, 10) : ownProfileId;
 
-    const teacherToDisplay = getTeacherById(teacherIdParam ? parseInt(teacherIdParam, 10) : ownProfileId);
+    const teacherToDisplay = getTeacherById(teacherId);
     
     const [profile, setProfile] = useState(teacherToDisplay);
     
@@ -78,10 +89,11 @@ export default function TeacherProfilePage() {
                     <ArrowLeft />
                 </Button>
             )}
-            <h1 className="text-3xl font-bold font-headline">{isOwnProfile ? t.myProfile : t.teacherProfile}</h1>
+            <h1 className="text-3xl font-bold font-headline">{isOwnProfile ? t.editProfile : t.teacherProfile}</h1>
         </div>
         
         {isOwnProfile ? (
+            // VIEW FOR THE TEACHER (EDIT MODE)
             <Card className="max-w-4xl mx-auto">
                 <CardHeader>
                     <CardTitle className="text-2xl">{t.editProfile}</CardTitle>
@@ -144,6 +156,7 @@ export default function TeacherProfilePage() {
                 </CardFooter>
             </Card>
         ) : (
+            // VIEW FOR THE STUDENT (READ-ONLY MODE)
              <div className="space-y-8">
                 <Card className="overflow-hidden">
                     <CardContent className="p-6">
@@ -206,6 +219,5 @@ export default function TeacherProfilePage() {
     </div>
   );
 }
-
 
     
