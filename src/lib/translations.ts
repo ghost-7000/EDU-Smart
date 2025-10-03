@@ -88,6 +88,7 @@ export type Translation = {
 
   // Student Dashboard
   welcomeBack: string;
+  welcomeStudent: string;
   academicSummary: string;
   pointsEarned: string;
   activeCourses: string;
@@ -140,6 +141,8 @@ export type Translation = {
   lessons: string;
   quizzes: string;
   activities: string;
+  additionalMaterials: string;
+  watchVideo: string;
   startQuiz: string;
   submitAssignment: string;
   yourProgress: string;
@@ -190,6 +193,7 @@ export type Translation = {
   dashboard: string;
   myCourses_sidebar: string;
   browseCourses_sidebar: string;
+  studyMaterials_sidebar: string;
   editProfile_sidebar: string;
   addCourse_sidebar: string;
   reports_sidebar: string;
@@ -281,6 +285,7 @@ const en: Translation = {
 
   // Student Dashboard
   welcomeBack: 'Welcome back,',
+  welcomeStudent: 'Welcome Student',
   academicSummary: 'This is a summary of your academic activity.',
   pointsEarned: 'Points Earned',
   activeCourses: 'Active Courses',
@@ -333,6 +338,8 @@ const en: Translation = {
   lessons: 'Lessons',
   quizzes: 'Quizzes',
   activities: 'Activities',
+  additionalMaterials: 'Additional Materials',
+  watchVideo: 'Watch Video',
   startQuiz: 'Start Quiz',
   submitAssignment: 'Submit Assignment',
   yourProgress: 'Your Progress',
@@ -383,6 +390,7 @@ const en: Translation = {
   dashboard: 'Dashboard',
   myCourses_sidebar: 'My Courses',
   browseCourses_sidebar: 'Browse Courses',
+  studyMaterials_sidebar: 'Study Materials',
   editProfile_sidebar: 'Edit Profile',
   addCourse_sidebar: 'Add Course',
   reports_sidebar: 'Performance Reports',
@@ -474,6 +482,7 @@ const ar: Translation = {
 
   // Student Dashboard
   welcomeBack: 'مرحبًا بعودتك،',
+  welcomeStudent: 'مرحباً بالطالب',
   academicSummary: 'هذا هو ملخص نشاطك الأكاديمي.',
   pointsEarned: 'النقاط المكتسبة',
   activeCourses: 'الكورسات النشطة',
@@ -526,6 +535,8 @@ const ar: Translation = {
   lessons: 'الدروس',
   quizzes: 'الاختبارات',
   activities: 'الأنشطة',
+  additionalMaterials: 'مواد إضافية',
+  watchVideo: 'شاهد الفيديو',
   startQuiz: 'ابدأ الاختبار',
   submitAssignment: 'تسليم الواجب',
   yourProgress: 'تقدمك',
@@ -575,6 +586,7 @@ const ar: Translation = {
   dashboard: 'لوحة التحكم',
   myCourses_sidebar: 'كورساتي',
   browseCourses_sidebar: 'تصفح الكورسات',
+  studyMaterials_sidebar: 'المواد الدراسية',
   editProfile_sidebar: 'تعديل الملف الشخصي',
   addCourse_sidebar: 'إضافة كورس جديد',
   reports_sidebar: 'تقارير الأداء',

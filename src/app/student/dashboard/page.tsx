@@ -55,7 +55,7 @@ export default function StudentDashboardPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-headline text-3xl font-bold">{t.welcomeBack} {studentData.name}!</h1>
+        <h1 className="font-headline text-3xl font-bold">{t.welcomeStudent} {studentData.name}!</h1>
         <p className="text-muted-foreground">{t.academicSummary}</p>
       </div>
 

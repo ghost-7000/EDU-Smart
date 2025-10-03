@@ -5,7 +5,7 @@ import { courses, studentData } from '@/lib/placeholder-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download } from 'lucide-react';
+import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download, Youtube } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
@@ -39,6 +39,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
         case 'lesson': return <BookOpen className="w-5 h-5 text-primary" />;
         case 'quiz': return <Puzzle className="w-5 h-5 text-primary" />;
         case 'assignment': return <Pencil className="w-5 h-5 text-primary" />;
+        case 'video': return <Youtube className="w-5 h-5 text-primary" />;
         default: return <FileText className="w-5 h-5 text-primary" />;
     }
   }
@@ -115,6 +116,25 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                     ))}
                   </CardContent>
                 </Card>
+
+                {course.content.additionalMaterials && course.content.additionalMaterials.length > 0 && (
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><FileText className="w-6 h-6 text-primary"/>{t.additionalMaterials}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                            {course.content.additionalMaterials.map(material => (
+                                <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        {renderContentIcon(material.type)}
+                                        <span className="font-medium">{material.title}</span>
+                                    </div>
+                                    <Button variant="outline" size="sm">{t.watchVideo}</Button>
+                                </div>
+                            ))}
+                        </CardContent>
+                    </Card>
+                )}
               </>
             )}
         </div>

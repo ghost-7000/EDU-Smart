@@ -10,6 +10,7 @@ import {
   Settings,
   Presentation,
   User,
+  BookOpenCheck,
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -39,7 +40,7 @@ export default function StudentDashboardLayout({
   const navItems = [
     { href: '/student/dashboard', label: t.dashboard, icon: LayoutDashboard },
     { href: '/student/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
-    { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
+    { href: '/student/browse-courses', label: t.studyMaterials_sidebar, icon: BookOpenCheck },
     { href: '/student/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
 

@@ -64,6 +64,9 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'مشروع: بناء صفحة شخصية' },
+      ],
+      additionalMaterials: [
+        { id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video' },
       ]
     }
   },
@@ -93,7 +96,8 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'تحليل مجموعة بيانات حقيقية' },
-      ]
+      ],
+      additionalMaterials: []
     }
   },
   {
@@ -121,7 +125,8 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'دراسة حالة: شركة ناشئة' },
-      ]
+      ],
+      additionalMaterials: []
     }
   },
   {
@@ -149,7 +154,8 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'تصميم هوية بصرية بسيطة' },
-      ]
+      ],
+      additionalMaterials: []
     }
   },
   {
@@ -177,7 +183,8 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'تصميم دائرة بسيطة' },
-      ]
+      ],
+      additionalMaterials: []
     }
   },
   {
@@ -205,7 +212,8 @@ export const courses = [
       ],
       assignments: [
         { id: 1, title: 'تحليل قصيدة مختارة' },
-      ]
+      ],
+      additionalMaterials: []
     }
   },
 ];
