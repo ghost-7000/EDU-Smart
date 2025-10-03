@@ -18,10 +18,17 @@ import { Footer } from '@/components/footer';
 import { useState } from 'react';
 import { branches } from '@/lib/placeholder-data';
 import { GraduationCap, Presentation } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function SignupPage() {
   const { t } = useLanguage();
   const [role, setRole] = useState('student');
+  const router = useRouter();
+
+  const handleSignup = () => {
+    const path = role === 'student' ? '/student/dashboard' : '/teacher/dashboard';
+    router.push(path);
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -67,11 +74,9 @@ export default function SignupPage() {
                             </Select>
                         </div>
                         
-                        <Link href={role === 'student' ? '/student/dashboard' : '/teacher/dashboard'} className='w-full'>
-                            <Button type="submit" className="w-full">
-                                {t.signup}
-                            </Button>
-                        </Link>
+                        <Button onClick={handleSignup} type="submit" className="w-full">
+                            {t.signup}
+                        </Button>
                     </div>
                     <div className="mt-4 text-center text-sm">
                         {t.alreadyHaveAccount}{' '}

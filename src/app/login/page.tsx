@@ -1,6 +1,6 @@
 
 "use client";
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -18,10 +18,17 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { branches } from '@/lib/placeholder-data';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function LoginPage() {
   const { t } = useLanguage();
   const [role, setRole] = useState('student');
+  const router = useRouter();
+
+  const handleLogin = () => {
+    const path = role === 'student' ? '/student/dashboard' : '/teacher/dashboard';
+    router.push(path);
+  };
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -75,11 +82,9 @@ export default function LoginPage() {
                         </div>
                         
                         <div className="pt-2">
-                            <Link href={role === 'student' ? '/student/dashboard' : '/teacher/dashboard'}>
-                                <Button className="w-full">
-                                    {t.login}
-                                </Button>
-                            </Link>
+                            <Button className="w-full" onClick={handleLogin}>
+                                {t.login}
+                            </Button>
                         </div>
                     </div>
                     <div className="mt-4 text-center text-sm">
