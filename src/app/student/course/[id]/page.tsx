@@ -5,7 +5,7 @@ import { courses, studentData } from '@/lib/placeholder-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download, Youtube, MessageSquare } from 'lucide-react';
+import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download, Youtube, MessageSquare, Lock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
@@ -19,7 +19,17 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 export default function CourseDetailPage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
@@ -29,6 +39,7 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
   const enrollment = studentData.enrolledCourses.find(ec => ec.id === course?.id);
   
   const [rating, setRating] = useState(0);
+  const [showEnrollDialog, setShowEnrollDialog] = useState(false);
 
   if (!course) {
     notFound();
@@ -60,6 +71,13 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
     }
   }
 
+  const handleContentClick = (isPaid: boolean) => {
+    if (isPaid && !isEnrolled) {
+      setShowEnrollDialog(true);
+    }
+    // If free or enrolled, do nothing (or navigate to content page in a real app)
+  };
+
 
   const renderContentIcon = (type: string) => {
     switch(type) {
@@ -69,6 +87,23 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
         case 'video': return <Youtube className="w-5 h-5 text-primary" />;
         default: return <FileText className="w-5 h-5 text-primary" />;
     }
+  }
+
+  const renderLockedContent = (content: any, type: string, actionText: string) => {
+    const isActionable = ['video', 'quiz', 'assignment'].includes(type);
+    return (
+        <div 
+            key={content.id} 
+            className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors cursor-pointer"
+            onClick={() => handleContentClick(content.isPaid)}
+        >
+            <div className="flex items-center gap-3">
+                {content.isPaid && !isEnrolled ? <Lock className="w-5 h-5 text-amber-500" /> : renderContentIcon(type)}
+                <span className="font-medium">{content.title}</span>
+            </div>
+            {isActionable && <Button variant="outline" size="sm">{content.isPaid && !isEnrolled ? t.enrollToUnlock : actionText}</Button>}
+        </div>
+    );
   }
 
   return (
@@ -91,111 +126,100 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                 </CardHeader>
             </Card>
             
-            {isEnrolled && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>{t.courseContent}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <Accordion type="single" collapsible className="w-full">
-                    {course.content.chapters.map((chapter) => (
-                      <AccordionItem key={chapter.id} value={`item-${chapter.id}`}>
-                        <AccordionTrigger className="font-semibold text-lg">{chapter.title}</AccordionTrigger>
-                        <AccordionContent className="space-y-4 pt-2">
-                          {chapter.additionalMaterials && chapter.additionalMaterials.length > 0 && (
-                            <div>
-                                <h3 className="font-bold mb-2 text-primary">{t.additionalMaterials}</h3>
-                                <div className="space-y-3">
-                                {chapter.additionalMaterials.map(material => (
-                                    material.type === 'video' && material.url ? (
-                                    <div key={material.id}>
-                                        <h4 className="font-medium mb-2">{material.title}</h4>
-                                        <div className="aspect-video">
-                                            <iframe 
-                                                className="w-full h-full rounded-lg"
-                                                src={material.url} 
-                                                title={material.title} 
-                                                frameBorder="0" 
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                                allowFullScreen>
-                                            </iframe>
-                                        </div>
+            <Card>
+            <CardHeader>
+                <CardTitle>{t.courseContent}</CardTitle>
+            </CardHeader>
+            <CardContent>
+                <Accordion type="single" collapsible className="w-full" defaultValue="item-1">
+                {course.content.chapters.map((chapter) => (
+                    <AccordionItem key={chapter.id} value={`item-${chapter.id}`}>
+                    <AccordionTrigger className="font-semibold text-lg">{chapter.title}</AccordionTrigger>
+                    <AccordionContent className="space-y-4 pt-2">
+                        {chapter.additionalMaterials && chapter.additionalMaterials.length > 0 && (
+                        <div>
+                            <h3 className="font-bold mb-2 text-primary">{t.additionalMaterials}</h3>
+                            <div className="space-y-3">
+                            {chapter.additionalMaterials.map(material => (
+                                material.type === 'video' && material.url ? (
+                                <div key={material.id} onClick={() => handleContentClick(material.isPaid)}>
+                                    <div className="flex items-center gap-2 mb-2">
+                                        {material.isPaid && !isEnrolled ? <Lock className="w-5 h-5 text-amber-500" /> : <Youtube className="w-5 h-5 text-primary" />}
+                                        <h4 className="font-medium">{material.title}</h4>
                                     </div>
-                                    ) : (
-                                    <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                    <div className={`aspect-video relative ${material.isPaid && !isEnrolled ? 'cursor-pointer' : ''}`}>
+                                        {material.isPaid && !isEnrolled && (
+                                            <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center rounded-lg z-10">
+                                                <Lock className="w-12 h-12 text-white/80 mb-4" />
+                                                <Button>{t.enrollToUnlock}</Button>
+                                            </div>
+                                        )}
+                                        <iframe 
+                                            className="w-full h-full rounded-lg"
+                                            src={material.url} 
+                                            title={material.title} 
+                                            frameBorder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowFullScreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                ) : (
+                                  renderLockedContent(material, material.type, t.open)
+                                )
+                            ))}
+                            </div>
+                        </div>
+                        )}
+
+                        {chapter.lessons && chapter.lessons.length > 0 && (
+                        <div>
+                            <h3 className="font-bold mb-2 text-primary">{t.lessons}</h3>
+                            <div className="space-y-3">
+                                {chapter.lessons.map(lesson => (
+                                    <div key={lesson.id} onClick={() => handleContentClick(lesson.isPaid)} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors cursor-pointer">
                                         <div className="flex items-center gap-3">
-                                            {renderContentIcon(material.type)}
-                                            <span className="font-medium">{material.title}</span>
+                                            {lesson.isPaid && !isEnrolled ? <Lock className="w-5 h-5 text-amber-500" /> : <BookOpen className="w-5 h-5 text-green-500" />}
+                                            <span className="font-medium">{lesson.title}</span>
                                         </div>
-                                        <Button variant="outline" size="sm">{t.open}</Button>
+                                        <Button variant="ghost" size="icon"><Download className="w-5 h-5" /></Button>
                                     </div>
-                                    )
                                 ))}
-                                </div>
                             </div>
-                          )}
+                        </div>
+                        )}
 
-                          {chapter.lessons && chapter.lessons.length > 0 && (
-                            <div>
-                                <h3 className="font-bold mb-2 text-primary">{t.lessons}</h3>
-                                <div className="space-y-3">
-                                    {chapter.lessons.map(lesson => (
-                                        <div key={lesson.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                                            <div className="flex items-center gap-3">
-                                                <CheckCircle className="w-5 h-5 text-green-500" />
-                                                <span className="font-medium">{lesson.title}</span>
-                                            </div>
-                                            <Button variant="ghost" size="icon"><Download className="w-5 h-5" /></Button>
-                                        </div>
-                                    ))}
-                                </div>
+                        {chapter.quizzes && chapter.quizzes.length > 0 && (
+                        <div>
+                            <h3 className="font-bold mb-2 text-primary">{t.quizzes}</h3>
+                            <div className="space-y-3">
+                                {chapter.quizzes.map(quiz => (
+                                    renderLockedContent(quiz, 'quiz', t.startQuiz)
+                                ))}
                             </div>
-                          )}
+                        </div>
+                        )}
 
-                          {chapter.quizzes && chapter.quizzes.length > 0 && (
-                            <div>
-                                <h3 className="font-bold mb-2 text-primary">{t.quizzes}</h3>
-                                <div className="space-y-3">
-                                    {chapter.quizzes.map(quiz => (
-                                        <div key={quiz.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                                            <div className="flex items-center gap-3">
-                                                {renderContentIcon('quiz')}
-                                                <span className="font-medium">{quiz.title}</span>
-                                            </div>
-                                            <Button variant="outline" size="sm">{t.startQuiz}</Button>
-                                        </div>
-                                    ))}
-                                </div>
+                        {chapter.assignments && chapter.assignments.length > 0 && (
+                        <div>
+                            <h3 className="font-bold mb-2 text-primary">{t.activities}</h3>
+                            <div className="space-y-3">
+                                {chapter.assignments.map(assignment => (
+                                    renderLockedContent(assignment, 'assignment', t.submitAssignment)
+                                ))}
                             </div>
-                          )}
+                        </div>
+                        )}
 
-                          {chapter.assignments && chapter.assignments.length > 0 && (
-                            <div>
-                                <h3 className="font-bold mb-2 text-primary">{t.activities}</h3>
-                                <div className="space-y-3">
-                                    {chapter.assignments.map(assignment => (
-                                        <div key={assignment.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                                            <div className="flex items-center gap-3">
-                                            {renderContentIcon('assignment')}
-                                            <span className="font-medium">{assignment.title}</span>
-                                            </div>
-                                            <Button variant="outline" size="sm">{t.submitAssignment}</Button>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                          )}
-
-                          {chapter.lessons.length === 0 && chapter.quizzes.length === 0 && chapter.assignments.length === 0 && chapter.additionalMaterials.length === 0 && (
-                            <p className="text-sm text-muted-foreground">{t.noContentYet}</p>
-                          )}
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </CardContent>
-              </Card>
-            )}
+                        {!chapter.lessons?.length && !chapter.quizzes?.length && !chapter.assignments?.length && !chapter.additionalMaterials?.length && (
+                        <p className="text-sm text-muted-foreground">{t.noContentYet}</p>
+                        )}
+                    </AccordionContent>
+                    </AccordionItem>
+                ))}
+                </Accordion>
+            </CardContent>
+            </Card>
         </div>
         <div className="space-y-6">
             <Card>
@@ -281,6 +305,20 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
             )}
         </div>
       </div>
+      <AlertDialog open={showEnrollDialog} onOpenChange={setShowEnrollDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>{t.paidContent}</AlertDialogTitle>
+            <AlertDialogDescription>{t.enrollToAccess}</AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>{t.cancel}</AlertDialogCancel>
+            <AlertDialogAction onClick={handleRegister}>{t.enrollNow}</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }
+
+    

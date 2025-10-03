@@ -12,6 +12,10 @@ export type Translation = {
   omr: string;
   open: string;
   chapter: string;
+  noContentYet: string;
+  paidContent: string;
+  enrollToAccess: string;
+  enrollToUnlock: string;
 
   // Header
   home: string;
@@ -182,7 +186,7 @@ export type Translation = {
   uploadNewPhoto: string;
   academicYear: string;
   specialization: string;
-  bio: string;
+bio: string;
   selectSpecialization: string;
   selectAcademicYear: string;
   selectYourBranch: string;
@@ -218,6 +222,10 @@ const en: Translation = {
   omr: 'OMR',
   open: 'Open',
   chapter: 'Chapter',
+  noContentYet: 'No content available in this chapter yet.',
+  paidContent: 'Paid Content',
+  enrollToAccess: 'Enroll in this course to access all paid content.',
+  enrollToUnlock: 'Enroll to Unlock',
 
   // Header
   home: 'Home',
@@ -400,7 +408,7 @@ const en: Translation = {
   ratingThanks: "Thank you for rating the course",
   coursePublished: "Course Published!",
   courseDeleted: "Deleted Successfully",
-  messageSent: "Message Sent!",
+messageSent: "Message Sent!",
   messageSentDesc: "Your question has been sent to the teacher.",
   
   // Sidebar
@@ -422,7 +430,11 @@ const ar: Translation = {
   createNewAccount: 'إنشاء حساب جديد',
   omr: 'ر.ع.',
   open: 'افتح',
-  chapter: 'الشابتر',
+  chapter: 'شابتر',
+  noContentYet: 'لا يوجد محتوى في هذا الشابتر بعد.',
+  paidContent: 'محتوى مدفوع',
+  enrollToAccess: 'سجل في هذا الكورس للوصول إلى جميع المحتويات المدفوعة.',
+  enrollToUnlock: 'سجل لفتح المحتوى',
 
   // Header
   home: 'الرئيسية',
@@ -623,3 +635,5 @@ export const translations: Record<Language, Translation> = {
   en,
   ar,
 };
+
+    

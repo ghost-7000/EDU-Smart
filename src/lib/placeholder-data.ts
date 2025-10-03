@@ -57,49 +57,49 @@ export const courses = [
         {
           id: 1,
           title: 'الشابتر الأول: مقدمة إلى الويب',
-          lessons: [{ id: 1, title: 'مقدمة إلى HTML' }],
-          quizzes: [{ id: 1, title: 'اختبار أساسيات HTML' }],
-          assignments: [],
-          additionalMaterials: [{ id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video', url: 'https://www.youtube.com/embed/watch?v=Q8g9-dY2b-E' }]
+          lessons: [{ id: 1, title: 'مقدمة إلى HTML', isPaid: false }],
+          quizzes: [{ id: 1, title: 'اختبار أساسيات HTML', isPaid: true }],
+          assignments: [{ id: 1, title: 'نشاط: إعداد بيئة العمل', isPaid: false }],
+          additionalMaterials: [{ id: 1, title: 'فيديو: شرح بيئة العمل', type: 'video', url: 'https://www.youtube.com/embed/watch?v=Q8g9-dY2b-E', isPaid: true }]
         },
         {
           id: 2,
           title: 'الشابتر الثاني: أساسيات CSS',
-          lessons: [{ id: 1, title: 'أساسيات CSS' }, { id: 2, title: 'Flexbox and Grid' }],
-          quizzes: [{ id: 1, title: 'اختبار مفاهيم CSS' }],
+          lessons: [{ id: 1, title: 'درس: أساسيات CSS', isPaid: false }, { id: 2, title: 'درس: Flexbox and Grid', isPaid: true }],
+          quizzes: [{ id: 1, title: 'اختبار مفاهيم CSS', isPaid: true }],
           assignments: [],
-          additionalMaterials: []
+          additionalMaterials: [{ id: 1, title: 'ملخص: أهم خصائص CSS', type: 'summary', isPaid: false }]
         },
         {
           id: 3,
           title: 'الشابتر الثالث: مقدمة في JavaScript',
-          lessons: [{ id: 1, title: 'مقدمة في JavaScript' }, { id: 2, title: 'المتغيرات وأنواع البيانات' }],
+          lessons: [{ id: 1, title: 'درس: مقدمة في JavaScript', isPaid: false }, { id: 2, title: 'شرح: المتغيرات وأنواع البيانات', isPaid: true }],
           quizzes: [],
-          assignments: [{ id: 1, title: 'مشروع: بناء صفحة شخصية' }],
+          assignments: [{ id: 1, title: 'مشروع: بناء صفحة شخصية', isPaid: false }],
           additionalMaterials: []
         },
         {
           id: 4,
           title: 'الشابتر الرابع: التفاعل مع DOM',
-          lessons: [{ id: 1, title: 'الوصول إلى عناصر DOM' }],
-          quizzes: [],
+          lessons: [{ id: 1, title: 'شرح: الوصول إلى عناصر DOM', isPaid: true }],
+          quizzes: [{ id: 1, title: 'أسئلة: التفاعل مع DOM', isPaid: true }],
           assignments: [],
           additionalMaterials: []
         },
         {
           id: 5,
           title: 'الشابتر الخامس: مفاهيم متقدمة',
-          lessons: [{ id: 1, title: 'البرمجة غير المتزامنة (Async)' }],
+          lessons: [{ id: 1, title: 'شرح: البرمجة غير المتزامنة (Async)', isPaid: true }],
           quizzes: [],
           assignments: [],
-          additionalMaterials: []
+          additionalMaterials: [{id: 1, title: 'فيديو: Promises و Async/Await', type: 'video', url: 'https://www.youtube.com/embed/watch?v=something-else', isPaid: true}]
         },
         {
           id: 6,
           title: 'الشابتر السادس: المشروع النهائي',
           lessons: [],
           quizzes: [],
-          assignments: [{ id: 1, title: 'بناء موقع ويب كامل' }],
+          assignments: [{ id: 1, title: 'تسليم: بناء موقع ويب كامل', isPaid: false }],
           additionalMaterials: []
         }
       ]
@@ -125,8 +125,8 @@ export const courses = [
         {
           id: 1,
           title: 'مقدمة',
-          lessons: [{ id: 1, title: 'مقدمة إلى Python' }],
-          quizzes: [{ id: 1, title: 'اختبار أساسيات Python' }],
+          lessons: [{ id: 1, title: 'مقدمة إلى Python', isPaid: false }],
+          quizzes: [{ id: 1, title: 'اختبار أساسيات Python', isPaid: true }],
           assignments: [],
           additionalMaterials: []
         }
@@ -154,11 +154,11 @@ export const courses = [
           id: 1,
           title: 'مقدمة',
           lessons: [
-            { id: 1, title: 'مبادئ الإدارة' },
-            { id: 2, title: 'استراتيجيات التسويق' },
+            { id: 1, title: 'مبادئ الإدارة', isPaid: false },
+            { id: 2, title: 'استراتيجيات التسويق', isPaid: true },
           ],
-          quizzes: [{ id: 1, title: 'اختبار مبادئ الإدارة' }],
-          assignments: [{ id: 1, title: 'دراسة حالة: شركة ناشئة' }],
+          quizzes: [{ id: 1, title: 'اختبار مبادئ الإدارة', isPaid: true }],
+          assignments: [{ id: 1, title: 'دراسة حالة: شركة ناشئة', isPaid: false }],
           additionalMaterials: []
         }
       ]
@@ -185,14 +185,14 @@ export const courses = [
           id: 1,
           title: 'مقدمة',
           lessons: [
-            { id: 1, title: 'مقدمة في نظرية الألوان' },
-            { id: 2, title: 'أساسيات الطباعة' },
+            { id: 1, title: 'مقدمة في نظرية الألوان', isPaid: false },
+            { id: 2, title: 'أساسيات الطباعة', isPaid: true },
           ],
           quizzes: [
-            { id: 1, title: 'اختبار نظرية الألوان' },
+            { id: 1, title: 'اختبار نظرية الألوان', isPaid: true },
           ],
           assignments: [
-            { id: 1, title: 'تصميم هوية بصرية بسيطة' },
+            { id: 1, title: 'تصميم هوية بصرية بسيطة', isPaid: false },
           ],
           additionalMaterials: []
         }
@@ -220,14 +220,14 @@ export const courses = [
                 id: 1,
                 title: 'مقدمة',
                 lessons: [
-                    { id: 1, title: 'قانون أوم' },
-                    { id: 2, title: 'تحليل الدوائر' },
+                    { id: 1, title: 'قانون أوم', isPaid: false },
+                    { id: 2, title: 'تحليل الدوائر', isPaid: true },
                 ],
                 quizzes: [
-                    { id: 1, title: 'اختبار قانون أوم' },
+                    { id: 1, title: 'اختبار قانون أوم', isPaid: true },
                 ],
                 assignments: [
-                    { id: 1, title: 'تصميم دائرة بسيطة' },
+                    { id: 1, title: 'تصميم دائرة بسيطة', isPaid: false },
                 ],
                 additionalMaterials: []
             }
@@ -255,14 +255,14 @@ export const courses = [
                 id: 1,
                 title: 'مقدمة',
                 lessons: [
-                    { id: 1, title: 'مدارس النقد الأدبي' },
-                    { id: 2, title: 'تحليل الشخصيات' },
+                    { id: 1, title: 'مدارس النقد الأدبي', isPaid: false },
+                    { id: 2, title: 'تحليل الشخصيات', isPaid: true },
                 ],
                 quizzes: [
-                    { id: 1, title: 'اختبار مدارس النقد' },
+                    { id: 1, title: 'اختبار مدارس النقد', isPaid: true },
                 ],
                 assignments: [
-                    { id: 1, title: 'تحليل قصيدة مختارة' },
+                    { id: 1, title: 'تحليل قصيدة مختارة', isPaid: false },
                 ],
                 additionalMaterials: []
             }
@@ -302,3 +302,5 @@ export const teacherData = {
     { ...courses[5], enrolledStudents: 75, reviews: [ {rating: 4, comment: "أتمنى لو كان هناك المزيد من الأمثلة."} ] },
   ],
 };
+
+    
