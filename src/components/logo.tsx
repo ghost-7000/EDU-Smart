@@ -1,14 +1,10 @@
-
 import Link from 'next/link';
-import { useLanguage } from '@/hooks/use-language';
+import { GraduationCap } from 'lucide-react';
 
 export function Logo() {
-  const { t } = useLanguage();
   return (
     <Link href="/" className="flex items-center gap-2" prefetch={false}>
-      <span className="font-headline text-2xl font-bold text-primary">
-        {t.appName}
-      </span>
+      <GraduationCap className="h-8 w-8 text-primary" />
     </Link>
   );
 }
