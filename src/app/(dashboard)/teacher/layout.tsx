@@ -9,6 +9,8 @@ import {
   PlusCircle,
   Presentation,
   UserCircle,
+  BarChart,
+  Settings,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -34,9 +36,10 @@ export default function TeacherDashboardLayout({
   const pathname = usePathname();
   const navItems = [
     { href: '/teacher/dashboard', label: 'لوحة التحكم', icon: LayoutDashboard },
+    { href: '/teacher/add-course', label: 'إضافة كورس جديد', icon: PlusCircle },
     { href: '/teacher/my-courses', label: 'كورساتي', icon: BookCopy },
-    { href: '/teacher/add-course', label: 'إضافة كورس', icon: PlusCircle },
-    { href: '/teacher/profile', label: 'ملفي الشخصي', icon: UserCircle },
+    { href: '#', label: 'تقارير الأداء', icon: BarChart },
+    { href: '/teacher/profile', label: 'تعديل الملف الشخصي', icon: Settings },
   ];
   const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
 

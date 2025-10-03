@@ -1,12 +1,10 @@
 
 "use client"
 import Link from "next/link";
-import { useLanguage } from '@/hooks/use-language';
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 import { Logo } from "./logo";
 
 export function Footer() {
-  const { t } = useLanguage();
   return (
     <footer className="border-t bg-card text-card-foreground">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-12 md:px-6">
@@ -17,7 +15,7 @@ export function Footer() {
         <div className="grid gap-2">
             <h4 className="font-semibold">روابط مهمة</h4>
             <Link href="/" className="text-sm text-muted-foreground hover:text-primary">الرئيسية</Link>
-            <Link href="#" className="text-sm text-muted-foreground hover:text-primary">الباقات</Link>
+            <Link href="/#plans" className="text-sm text-muted-foreground hover:text-primary">الباقات</Link>
             <Link href="#" className="text-sm text-muted-foreground hover:text-primary">سياسة الخصوصية</Link>
             <Link href="#" className="text-sm text-muted-foreground hover:text-primary">تواصل معنا</Link>
         </div>
@@ -38,7 +36,7 @@ export function Footer() {
       <div className="border-t">
         <div className="container mx-auto flex h-16 items-center justify-center px-4 md:px-6">
             <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} {t.appName}. جميع الحقوق محفوظة.
+            © {new Date().getFullYear()} EduSmart. جميع الحقوق محفوظة.
             </p>
         </div>
       </div>

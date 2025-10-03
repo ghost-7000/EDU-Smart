@@ -3,12 +3,11 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, UserCircle } from 'lucide-react';
+import { Menu, UserCircle, LogOut } from 'lucide-react';
 import { Logo } from './logo';
 import { ThemeToggle } from './theme-toggle';
 import { LanguageToggle } from './language-toggle';
 import { useLanguage } from '@/hooks/use-language';
-import { cn } from '@/lib/utils';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,18 +21,18 @@ export function Header() {
   const { t, dir } = useLanguage();
 
   const navLinks = [
-    { href: '/', label: t.home },
-    { href: '#', label: 'الباقات' },
-    { href: '#', label: 'كيف تعمل' },
-    { href: '/student/browse-courses', label: t.courses },
+    { href: '/', label: 'الرئيسية' },
+    { href: '/#plans', label: 'الباقات' },
+    { href: '/#how-it-works', label: 'كيف تعمل' },
+    { href: '/student/browse-courses', label: 'كورسات' },
   ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <Logo />
-          <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+           <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -50,7 +49,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <div className="hidden md:flex items-center gap-2">
             <Link href="/login">
-                <Button variant="ghost">{t.login}</Button>
+                <Button variant="ghost">تسجيل / دخول</Button>
             </Link>
             <LanguageToggle />
             <ThemeToggle />
@@ -58,13 +57,14 @@ export function Header() {
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <UserCircle className="h-5 w-5" />
+                   <span className="sr-only">Account</span>
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>حسابي</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem asChild><Link href="/student/profile">ملفي الشخصي</Link></DropdownMenuItem>
-                <DropdownMenuItem>{t.logout}</DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/"><LogOut className="mr-2 h-4 w-4" />تسجيل خروج</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -96,7 +96,7 @@ export function Header() {
                       className="transition-colors hover:text-accent"
                       prefetch={false}
                     >
-                      {t.login}
+                      تسجيل / دخول
                     </Link>
                   </nav>
                   <div className="flex items-center justify-center gap-4">

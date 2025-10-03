@@ -24,7 +24,7 @@ import {
 import { Edit, Star, Trash2, Users } from 'lucide-react';
 import { teacherData } from '@/lib/placeholder-data';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 export default function MyCoursesPage() {
     const { toast } = useToast();
@@ -39,7 +39,12 @@ export default function MyCoursesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold font-headline mb-6">كورساتي</h1>
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold font-headline">كورساتي</h1>
+        <Link href="/teacher/add-course">
+            <Button>إضافة كورس جديد</Button>
+        </Link>
+      </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {teacherData.courses.map((course) => (
           <Card key={course.id}>

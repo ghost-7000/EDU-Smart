@@ -8,10 +8,10 @@ import {
   LayoutDashboard,
   LogOut,
   Search,
+  Settings,
   UserCircle,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
 import {
   SidebarProvider,
   Sidebar,
@@ -36,8 +36,8 @@ export default function StudentDashboardLayout({
   const navItems = [
     { href: '/student/dashboard', label: 'لوحة التحكم', icon: LayoutDashboard },
     { href: '/student/my-courses', label: 'كورساتي', icon: BookCopy },
-    { href: '/student/browse-courses', label: 'اكتشف الكورسات', icon: Search },
-    { href: '/student/profile', label: 'ملفي الشخصي', icon: UserCircle },
+    { href: '/student/browse-courses', label: 'تصفح الكورسات', icon: Search },
+    { href: '/student/profile', label: 'تعديل الملف الشخصي', icon: Settings },
   ];
   const avatarImage = placeholderImages.find(p => p.id === 'student-avatar');
 
