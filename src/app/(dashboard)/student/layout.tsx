@@ -93,7 +93,7 @@ export default function StudentDashboardLayout({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <Header>
+        <Header loggedIn={true}>
             <SidebarTrigger />
         </Header>
         <main className="p-4 md:p-6 bg-background/80 flex-1">{children}</main>

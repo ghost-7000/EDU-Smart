@@ -17,15 +17,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function Header({ children }: { children?: React.ReactNode }) {
+export function Header({ children, loggedIn = false }: { children?: React.ReactNode, loggedIn?: boolean }) {
   const { t, dir } = useLanguage();
 
   const navLinks = [
     { href: '/', label: t.home },
     { href: '/#plans', label: t.plans },
     { href: '/#how-it-works', label: t.howItWorks },
-    { href: '/student/browse-courses', label: t.courses },
   ];
+
+  if (loggedIn) {
+    navLinks.push({ href: '/student/browse-courses', label: t.courses });
+  }
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -51,27 +54,31 @@ export function Header({ children }: { children?: React.ReactNode }) {
 
         <div className="flex items-center gap-2">
           <div className="hidden md:flex items-center gap-2">
-            <Link href="/login">
-                <Button variant="ghost">{t.loginSignup}</Button>
-            </Link>
+            {!loggedIn && (
+                <Link href="/login">
+                    <Button variant="ghost">{t.loginSignup}</Button>
+                </Link>
+            )}
             <LanguageToggle />
             <ThemeToggle />
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon">
-                  <UserCircle className="h-5 w-5" />
-                   <span className="sr-only">Account</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuLabel>{t.myAccount}</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/student/profile">{t.studentProfile}</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/teacher/profile">{t.teacherProfile}</Link></DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/"><LogOut className="mr-2 h-4 w-4" />{t.logout}</Link></DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            {loggedIn && (
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <UserCircle className="h-5 w-5" />
+                       <span className="sr-only">{t.myAccount}</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuLabel>{t.myAccount}</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild><Link href="/student/profile">{t.studentProfile}</Link></DropdownMenuItem>
+                    <DropdownMenuItem asChild><Link href="/teacher/profile">{t.teacherProfile}</Link></DropdownMenuItem>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem asChild><Link href="/"><LogOut className="ml-2 h-4 w-4" />{t.logout}</Link></DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+            )}
           </div>
           
           <div className="md:hidden">
@@ -96,13 +103,15 @@ export function Header({ children }: { children?: React.ReactNode }) {
                         {link.label}
                       </Link>
                     ))}
-                    <Link
-                      href="/login"
-                      className="transition-colors hover:text-accent"
-                      prefetch={false}
-                    >
-                      {t.loginSignup}
-                    </Link>
+                    {!loggedIn && (
+                        <Link
+                        href="/login"
+                        className="transition-colors hover:text-accent"
+                        prefetch={false}
+                        >
+                        {t.loginSignup}
+                        </Link>
+                    )}
                   </nav>
                   <div className="flex items-center justify-center gap-4">
                     <LanguageToggle />
