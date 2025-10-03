@@ -74,11 +74,13 @@ export default function LoginPage() {
                             </Select>
                         </div>
                         
-                        <Link href={role === 'student' ? '/student/dashboard' : '/teacher/dashboard'}>
-                            <Button className="w-full">
-                                {t.login}
-                            </Button>
-                        </Link>
+                        <div className="pt-2">
+                            <Link href={role === 'student' ? '/student/dashboard' : '/teacher/dashboard'}>
+                                <Button className="w-full">
+                                    {t.login}
+                                </Button>
+                            </Link>
+                        </div>
                     </div>
                     <div className="mt-4 text-center text-sm">
                         {t.noAccount}{' '}
