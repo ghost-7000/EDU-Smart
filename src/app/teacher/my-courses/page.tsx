@@ -84,8 +84,10 @@ export default function MyCoursesPage() {
               </div>
             </CardContent>
             <CardFooter className="grid grid-cols-2 gap-2">
-              <Button variant="outline">
-                <Edit className="mr-2 h-4 w-4" /> {t.edit}
+              <Button variant="outline" asChild>
+                <Link href={`/teacher/course/${course.id}`}>
+                    <Edit className="mr-2 h-4 w-4" /> {t.edit}
+                </Link>
               </Button>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
