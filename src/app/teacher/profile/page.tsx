@@ -12,7 +12,7 @@ import {
 import { allTeachers, branches, specializations } from '@/lib/placeholder-data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Presentation, ArrowLeft, Star, Users, BookCopy, MessageSquare } from 'lucide-react';
+import { Presentation, ArrowLeft, Star, Users, BookCopy, MessageSquare, UserCircle } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { CourseCard } from '@/components/course-card';
@@ -89,8 +89,7 @@ export default function TeacherProfilePage() {
                 <CardContent className="space-y-6">
                     <div className="flex items-center gap-6">
                         <Avatar className="w-24 h-24">
-                            {profile.avatar && <AvatarImage src={profile.avatar} alt={profile.name} />}
-                            <AvatarFallback className="text-4xl"><Presentation /></AvatarFallback>
+                            <AvatarFallback className="text-4xl"><UserCircle/></AvatarFallback>
                         </Avatar>
                         <div className='flex-1'>
                             <Label htmlFor="picture">{t.uploadNewPhoto}</Label>
@@ -149,8 +148,7 @@ export default function TeacherProfilePage() {
                     <Card className="text-center">
                         <CardContent className="p-6">
                             <Avatar className="w-24 h-24 mb-4 mx-auto">
-                                {profile.avatar && <AvatarImage src={profile.avatar} alt={profile.name} />}
-                                <AvatarFallback className="text-4xl"><Presentation /></AvatarFallback>
+                                <AvatarFallback className="text-4xl"><UserCircle /></AvatarFallback>
                             </Avatar>
                             <h2 className="text-2xl font-bold font-headline">{profile.name}</h2>
                             <p className="text-muted-foreground">{profile.branch}</p>

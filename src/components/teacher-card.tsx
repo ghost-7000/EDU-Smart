@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Presentation, Users, Star, BookCopy } from 'lucide-react';
+import { Presentation, Users, Star, BookCopy, UserCircle } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { Teacher } from '@/lib/types';
 
@@ -20,9 +20,8 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
         <Link href={`/teacher/profile?id=${teacher.id}`} className='flex-1 flex flex-col'>
             <CardHeader className="items-center text-center p-4">
                 <Avatar className="w-20 h-20 mb-3 border-2 border-primary">
-                    {teacher.avatar && <AvatarImage src={teacher.avatar} alt={teacher.name} />}
                     <AvatarFallback className="bg-primary/20 text-primary">
-                        <Presentation className="h-10 w-10" />
+                        <UserCircle className="h-10 w-10" />
                     </AvatarFallback>
                 </Avatar>
                 <CardTitle className="text-xl font-headline">{teacher.name}</CardTitle>

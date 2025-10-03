@@ -10,6 +10,7 @@ import {
   Presentation,
   Settings,
   Search,
+  UserCircle,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -57,7 +58,7 @@ export default function TeacherDashboardLayout({
               <Avatar className="h-24 w-24 mb-3 border-2 border-primary">
                   {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Teacher Avatar" />}
                   <AvatarFallback className="bg-primary/20 text-primary">
-                    <Presentation className="h-12 w-12" />
+                    <UserCircle className="h-12 w-12" />
                   </AvatarFallback>
               </Avatar>
               <h3 className="font-semibold text-lg">{teacherData.name}</h3>
