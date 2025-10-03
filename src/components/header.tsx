@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, UserCircle, LogOut } from 'lucide-react';
+import { Menu, LogOut } from 'lucide-react';
 import { Logo } from './logo';
 import { ThemeToggle } from './theme-toggle';
 import { LanguageToggle } from './language-toggle';
@@ -15,9 +15,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback } from './ui/avatar';
+import { Student, Teacher } from '@/lib/types';
 
-export function Header({ children, loggedIn = false }: { children?: React.ReactNode, loggedIn?: boolean }) {
+interface HeaderProps {
+  children?: React.ReactNode;
+  loggedIn?: boolean;
+  user?: Student | Teacher;
+}
+
+export function Header({ children, loggedIn = false, user }: HeaderProps) {
   const { t, dir } = useLanguage();
 
   const navLinks = [
@@ -29,6 +37,16 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
   if (loggedIn) {
     navLinks.push({ href: '/student/browse-courses', label: t.courses });
   }
+
+  const getInitials = (name: string) => {
+    const names = name.split(' ');
+    if (names.length > 1) {
+        return `${names[0][0]}${names[names.length - 1][0]}`.toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+  }
+
+  const isStudent = (user: any): user is Student => user && 'enrolledCourses' in user;
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -62,19 +80,30 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
             )}
             <LanguageToggle />
             <ThemeToggle />
-            {loggedIn && (
+            {loggedIn && user && (
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="icon">
-                      <UserCircle className="h-5 w-5" />
-                       <span className="sr-only">{t.myAccount}</span>
+                    <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                       <Avatar className="h-9 w-9">
+                        <AvatarFallback>{getInitials(user.name)}</AvatarFallback>
+                      </Avatar>
                     </Button>
                   </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>{t.myAccount}</DropdownMenuLabel>
+                  <DropdownMenuContent align="end" className="w-56">
+                    <DropdownMenuLabel className="font-normal">
+                      <div className="flex flex-col space-y-1">
+                        <p className="text-sm font-medium leading-none">{user.name}</p>
+                        <p className="text-xs leading-none text-muted-foreground">
+                          {user.email}
+                        </p>
+                      </div>
+                    </DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem asChild><Link href="/student/profile">{t.studentProfile}</Link></DropdownMenuItem>
-                    <DropdownMenuItem asChild><Link href="/teacher/profile">{t.teacherProfile}</Link></DropdownMenuItem>
+                     {isStudent(user) ? (
+                        <DropdownMenuItem asChild><Link href="/student/profile">{t.studentProfile}</Link></DropdownMenuItem>
+                     ) : (
+                        <DropdownMenuItem asChild><Link href="/teacher/profile">{t.teacherProfile}</Link></DropdownMenuItem>
+                     )}
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild><Link href="/"><LogOut className="ml-2 h-4 w-4" />{t.logout}</Link></DropdownMenuItem>
                   </DropdownMenuContent>

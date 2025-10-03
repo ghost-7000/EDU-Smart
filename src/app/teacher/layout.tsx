@@ -24,6 +24,7 @@ import {
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
 import { Logo } from '@/components/logo';
+import { teacherData } from '@/lib/placeholder-data';
 
 export default function TeacherDashboardLayout({
   children,
@@ -77,7 +78,7 @@ export default function TeacherDashboardLayout({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <Header loggedIn={true}>
+        <Header loggedIn={true} user={teacherData}>
             <SidebarTrigger />
         </Header>
         <main className="p-4 md:p-6 bg-background/80 flex-1">{children}</main>
