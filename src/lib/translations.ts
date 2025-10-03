@@ -136,6 +136,15 @@ export type Translation = {
   courseDetails: string;
   price: string;
   enrollNow: string;
+  courseContent: string;
+  lessons: string;
+  quizzes: string;
+  activities: string;
+  startQuiz: string;
+  submitAssignment: string;
+  yourProgress: string;
+  completed: string;
+  backToMyCourses: string;
   
   // Teacher Course Management
   addCourse: string;
@@ -320,6 +329,16 @@ const en: Translation = {
   courseDetails: 'About the Course',
   price: 'Price',
   enrollNow: 'Enroll Now',
+  courseContent: 'Course Content',
+  lessons: 'Lessons',
+  quizzes: 'Quizzes',
+  activities: 'Activities',
+  startQuiz: 'Start Quiz',
+  submitAssignment: 'Submit Assignment',
+  yourProgress: 'Your Progress',
+  completed: 'Completed',
+  backToMyCourses: 'Back to My Courses',
+
   
   // Teacher Course Management
   addCourse: 'Add New Course',
@@ -503,6 +522,15 @@ const ar: Translation = {
   courseDetails: 'عن الكورس',
   price: 'السعر',
   enrollNow: 'سجل الآن',
+  courseContent: 'محتوى الكورس',
+  lessons: 'الدروس',
+  quizzes: 'الاختبارات',
+  activities: 'الأنشطة',
+  startQuiz: 'ابدأ الاختبار',
+  submitAssignment: 'تسليم الواجب',
+  yourProgress: 'تقدمك',
+  completed: 'مكتمل',
+  backToMyCourses: 'العودة إلى كورساتي',
   
   // Teacher Course Management
   addCourse: 'إضافة كورس جديد',

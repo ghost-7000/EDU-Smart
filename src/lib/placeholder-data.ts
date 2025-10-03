@@ -1,3 +1,4 @@
+
 import type { ImagePlaceholder } from './placeholder-images';
 import { PlaceHolderImages } from './placeholder-images';
 
@@ -41,6 +42,7 @@ export const courses = [
     teacherId: 1,
     title: 'مقدمة في تطوير الويب',
     code: 'CS101',
+    description: 'تعلم أساسيات HTML, CSS, و JavaScript لبناء مواقع ويب تفاعلية. هذا الكورس مثالي للمبتدئين الذين يرغبون في دخول عالم تطوير الواجهات الأمامية.',
     teacher: 'د. أحمد المحروقي',
     rating: 4.5,
     price: null,
@@ -49,13 +51,28 @@ export const courses = [
     emoji: '💻',
     specialization: 'تكنولوجيا المعلومات',
     popularity: 'most_popular',
-    newness: 'new'
+    newness: 'new',
+    content: {
+      lessons: [
+        { id: 1, title: 'مقدمة إلى HTML' },
+        { id: 2, title: 'أساسيات CSS' },
+        { id: 3, title: 'مقدمة في JavaScript' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار أساسيات HTML' },
+        { id: 2, title: 'اختبار مفاهيم CSS' },
+      ],
+      assignments: [
+        { id: 1, title: 'مشروع: بناء صفحة شخصية' },
+      ]
+    }
   },
   {
     id: 2,
     teacherId: 1,
     title: 'أساسيات علم البيانات',
     code: 'DS202',
+    description: 'استكشف عالم البيانات وتعلم كيفية تحليلها وتصورها باستخدام Python. ستبدأ رحلتك لتصبح عالم بيانات محترف.',
     teacher: 'د. أحمد المحروقي',
     rating: 4.8,
     price: 20,
@@ -64,13 +81,27 @@ export const courses = [
     emoji: '📊',
     specialization: 'تكنولوجيا المعلومات',
     popularity: 'most_popular',
-    newness: 'old'
+    newness: 'old',
+    content: {
+      lessons: [
+        { id: 1, title: 'مقدمة إلى Python' },
+        { id: 2, title: 'التعامل مع مكتبة Pandas' },
+        { id: 3, title: 'تصور البيانات باسنخدام Matplotlib' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار أساسيات Python' },
+      ],
+      assignments: [
+        { id: 1, title: 'تحليل مجموعة بيانات حقيقية' },
+      ]
+    }
   },
   {
     id: 3,
     teacherId: 2,
     title: 'إدارة الأعمال الحديثة',
     code: 'BUS301',
+    description: 'اكتسب المهارات اللازمة لإدارة الشركات والمشاريع بفعالية في بيئة الأعمال المعاصرة.',
     teacher: 'أ. فاطمة الشيذانية',
     rating: 4.2,
     price: 15,
@@ -79,13 +110,26 @@ export const courses = [
     emoji: '📈',
     specialization: 'إدارة الأعمال',
     popularity: 'standard',
-    newness: 'old'
+    newness: 'old',
+    content: {
+      lessons: [
+        { id: 1, title: 'مبادئ الإدارة' },
+        { id: 2, title: 'استراتيجيات التسويق' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار مبادئ الإدارة' },
+      ],
+      assignments: [
+        { id: 1, title: 'دراسة حالة: شركة ناشئة' },
+      ]
+    }
   },
   {
     id: 4,
     teacherId: 3,
     title: 'فن التصميم الجرافيكي',
     code: 'ART110',
+    description: 'أطلق العنان لإبداعك وتعلم أساسيات التصميم الجرافيكي باستخدام أدوات مثل Adobe Photoshop و Illustrator.',
     teacher: 'د. سالم الوهيبي',
     rating: 4.9,
     price: 18,
@@ -94,13 +138,26 @@ export const courses = [
     emoji: '🎨',
     specialization: 'الفنون والتصميم',
     popularity: 'standard',
-    newness: 'new'
+    newness: 'new',
+    content: {
+      lessons: [
+        { id: 1, title: 'مقدمة في نظرية الألوان' },
+        { id: 2, title: 'أساسيات الطباعة' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار نظرية الألوان' },
+      ],
+      assignments: [
+        { id: 1, title: 'تصميم هوية بصرية بسيطة' },
+      ]
+    }
   },
   {
     id: 5,
     teacherId: 4,
     title: 'مبادئ الهندسة الكهربائية',
     code: 'EE250',
+    description: 'فهم الدوائر الكهربائية والمكونات الإلكترونية الأساسية التي تشكل أساس التكنولوجيا الحديثة.',
     teacher: 'أ. مريم الحوسنية',
     rating: 4.6,
     price: 25,
@@ -109,13 +166,26 @@ export const courses = [
     emoji: '⚡️',
     specialization: 'الهندسة',
     popularity: 'standard',
-    newness: 'old'
+    newness: 'old',
+     content: {
+      lessons: [
+        { id: 1, title: 'قانون أوم' },
+        { id: 2, title: 'تحليل الدوائر' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار قانون أوم' },
+      ],
+      assignments: [
+        { id: 1, title: 'تصميم دائرة بسيطة' },
+      ]
+    }
   },
   {
     id: 6,
     teacherId: 1,
     title: 'تحليل النصوص الأدبية',
     code: 'LIT400',
+    description: 'تعمق في فهم النصوص الأدبية وتعلم كيفية تحليلها ونقدها بأسلوب منهجي.',
     teacher: 'د. يوسف العامري',
     rating: 4.7,
     price: null,
@@ -124,7 +194,19 @@ export const courses = [
     emoji: '📜',
     specialization: 'الآداب والعلوم الإنسانية',
     popularity: 'standard',
-    newness: 'new'
+    newness: 'new',
+     content: {
+      lessons: [
+        { id: 1, title: 'مدارس النقد الأدبي' },
+        { id: 2, title: 'تحليل الشخصيات' },
+      ],
+      quizzes: [
+        { id: 1, title: 'اختبار مدارس النقد' },
+      ],
+      assignments: [
+        { id: 1, title: 'تحليل قصيدة مختارة' },
+      ]
+    }
   },
 ];
 
