@@ -9,10 +9,10 @@ import {
   CardTitle,
   CardFooter,
 } from '@/components/ui/card';
-import { studentData, placeholderImages, branches, specializations, academicYears } from '@/lib/placeholder-data';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { studentData, branches, specializations, academicYears } from '@/lib/placeholder-data';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { GraduationCap, Edit, Package, Calendar, Book, Award } from 'lucide-react';
+import { Package, Calendar, Book, Award, UserCircle } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { useToast } from '@/hooks/use-toast';
 import { Label } from '@/components/ui/label';
@@ -25,7 +25,6 @@ import Link from 'next/link';
 export default function StudentProfilePage() {
     const { t } = useLanguage();
     const { toast } = useToast();
-    const avatarImage = placeholderImages.find(p => p.id === 'student-avatar');
 
     const [profile, setProfile] = useState(studentData);
     
@@ -56,8 +55,7 @@ export default function StudentProfilePage() {
                 <CardContent className="space-y-6">
                     <div className="flex items-center gap-6">
                         <Avatar className="w-24 h-24">
-                            {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Student Avatar" />}
-                            <AvatarFallback className="text-4xl"><GraduationCap /></AvatarFallback>
+                            <AvatarFallback className="text-4xl"><UserCircle /></AvatarFallback>
                         </Avatar>
                         <div className='flex-1'>
                             <Label htmlFor="picture">{t.uploadNewPhoto}</Label>
