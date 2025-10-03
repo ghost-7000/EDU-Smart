@@ -5,13 +5,15 @@ import { courses, studentData } from '@/lib/placeholder-data';
 import { notFound } from 'next/navigation';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download, Youtube } from 'lucide-react';
+import { Star, BookOpen, Puzzle, Pencil, CheckCircle, FileText, Download, Youtube, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
 import Link from 'next/link';
 import { Progress } from '@/components/ui/progress';
 import { Label } from '@/components/ui/label';
+import { useState } from 'react';
+import { Textarea } from '@/components/ui/textarea';
 
 export default function CourseDetailPage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
@@ -19,13 +21,15 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
   
   const course = courses.find((c) => c.id.toString() === params.id);
   const enrollment = studentData.enrolledCourses.find(ec => ec.id === course?.id);
-
+  
+  const [rating, setRating] = useState(0);
 
   if (!course) {
     notFound();
   }
   
   const isEnrolled = !!enrollment;
+  const isCompleted = enrollment?.status === 'completed';
 
   const handleRegister = () => {
     toast({
@@ -33,6 +37,23 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
         description: `${t.registeredCourse} "${course.title}".`,
     });
   }
+
+  const handleSendMessage = () => {
+    toast({
+        title: t.messageSent,
+        description: t.messageSentDesc,
+    });
+  }
+  
+  const handleRateCourse = () => {
+    if(rating > 0){
+        toast({
+            title: t.ratingSuccess,
+            description: `${t.ratingThanks} "${course.title}".`,
+        })
+    }
+  }
+
 
   const renderContentIcon = (type: string) => {
     switch(type) {
@@ -66,6 +87,41 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
             
             {isEnrolled && (
               <>
+                {course.content.additionalMaterials && course.content.additionalMaterials.length > 0 && (
+                    <Card>
+                        <CardHeader>
+                            <CardTitle className="flex items-center gap-2"><FileText className="w-6 h-6 text-primary"/>{t.additionalMaterials}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                            {course.content.additionalMaterials.map(material => (
+                                material.type === 'video' && material.url ? (
+                                <div key={material.id}>
+                                    <h3 className="font-medium mb-2">{material.title}</h3>
+                                    <div className="aspect-video">
+                                        <iframe 
+                                            className="w-full h-full rounded-lg"
+                                            src={material.url} 
+                                            title={material.title} 
+                                            frameBorder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                            allowFullScreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                ) : (
+                                <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                    <div className="flex items-center gap-3">
+                                        {renderContentIcon(material.type)}
+                                        <span className="font-medium">{material.title}</span>
+                                    </div>
+                                    <Button variant="outline" size="sm">{t.open}</Button>
+                                </div>
+                                )
+                            ))}
+                        </CardContent>
+                    </Card>
+                )}
+
                 <Card>
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2"><BookOpen className="w-6 h-6 text-primary"/>{t.lessons}</CardTitle>
@@ -116,25 +172,6 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                     ))}
                   </CardContent>
                 </Card>
-
-                {course.content.additionalMaterials && course.content.additionalMaterials.length > 0 && (
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2"><FileText className="w-6 h-6 text-primary"/>{t.additionalMaterials}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-3">
-                            {course.content.additionalMaterials.map(material => (
-                                <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                                    <div className="flex items-center gap-3">
-                                        {renderContentIcon(material.type)}
-                                        <span className="font-medium">{material.title}</span>
-                                    </div>
-                                    <Button variant="outline" size="sm">{t.watchVideo}</Button>
-                                </div>
-                            ))}
-                        </CardContent>
-                    </Card>
-                )}
               </>
             )}
         </div>
@@ -178,14 +215,48 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                 </CardContent>
                 <CardFooter>
                     {isEnrolled ? (
-                      <Button className="w-full" variant="outline" asChild>
-                        <Link href="/student/my-courses">{t.backToMyCourses}</Link>
-                      </Button>
+                      isCompleted ? (
+                        <div className="w-full">
+                            <h3 className="text-center font-semibold mb-2">{t.rateTheCourse}</h3>
+                             <div className="flex justify-center gap-1 mb-4" dir="ltr">
+                                {[1, 2, 3, 4, 5].map((star) => (
+                                <Star
+                                    key={star}
+                                    className={`w-8 h-8 cursor-pointer transition-colors ${
+                                    rating >= star ? 'text-amber-500 fill-amber-400' : 'text-muted-foreground'
+                                    }`}
+                                    onClick={() => setRating(star)}
+                                />
+                                ))}
+                            </div>
+                            <Button className="w-full" onClick={handleRateCourse}>{t.submitRating}</Button>
+                        </div>
+                      ) : (
+                        <Button className="w-full" variant="outline" asChild>
+                           <Link href="/student/my-courses">{t.backToMyCourses}</Link>
+                        </Button>
+                      )
                     ) : (
                       <Button className="w-full" onClick={handleRegister}>{t.enrollNow}</Button>
                     )}
                 </CardFooter>
             </Card>
+
+            {isEnrolled && !isCompleted && (
+                <Card>
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2">
+                           <MessageSquare className="w-6 h-6 text-primary" /> {t.askTheTeacher}
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="space-y-4">
+                            <Textarea placeholder={t.askTheTeacherPlaceholder} />
+                            <Button className="w-full" onClick={handleSendMessage}>{t.sendMessage}</Button>
+                        </div>
+                    </CardContent>
+                </Card>
+            )}
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ export type Translation = {
   signup: string;
   createNewAccount: string;
   omr: string;
+  open: string;
 
   // Header
   home: string;
@@ -148,6 +149,11 @@ export type Translation = {
   yourProgress: string;
   completed: string;
   backToMyCourses: string;
+  askTheTeacher: string;
+  askTheTeacherPlaceholder: string;
+  sendMessage: string;
+  rateTheCourse: string;
+  submitRating: string;
   
   // Teacher Course Management
   addCourse: string;
@@ -188,6 +194,8 @@ export type Translation = {
   ratingThanks: string;
   coursePublished: string;
   courseDeleted: string;
+  messageSent: string;
+  messageSentDesc: string;
   
   // Sidebar
   dashboard: string;
@@ -207,6 +215,7 @@ const en: Translation = {
   signup: 'Sign Up',
   createNewAccount: 'Create new account',
   omr: 'OMR',
+  open: 'Open',
 
   // Header
   home: 'Home',
@@ -345,7 +354,11 @@ const en: Translation = {
   yourProgress: 'Your Progress',
   completed: 'Completed',
   backToMyCourses: 'Back to My Courses',
-
+  askTheTeacher: 'Ask the Teacher',
+  askTheTeacherPlaceholder: 'Type your question here...',
+  sendMessage: 'Send Message',
+  rateTheCourse: 'Rate this course',
+  submitRating: 'Submit Rating',
   
   // Teacher Course Management
   addCourse: 'Add New Course',
@@ -385,7 +398,9 @@ const en: Translation = {
   ratingThanks: "Thank you for rating the course",
   coursePublished: "Course Published!",
   courseDeleted: "Deleted Successfully",
-
+  messageSent: "Message Sent!",
+  messageSentDesc: "Your question has been sent to the teacher.",
+  
   // Sidebar
   dashboard: 'Dashboard',
   myCourses_sidebar: 'My Courses',
@@ -404,6 +419,7 @@ const ar: Translation = {
   signup: 'إنشاء حساب',
   createNewAccount: 'إنشاء حساب جديد',
   omr: 'ر.ع.',
+  open: 'افتح',
 
   // Header
   home: 'الرئيسية',
@@ -542,6 +558,11 @@ const ar: Translation = {
   yourProgress: 'تقدمك',
   completed: 'مكتمل',
   backToMyCourses: 'العودة إلى كورساتي',
+  askTheTeacher: 'اسأل المعلم',
+  askTheTeacherPlaceholder: 'اكتب سؤالك هنا...',
+  sendMessage: 'إرسال الرسالة',
+  rateTheCourse: 'قيّم هذا الكورس',
+  submitRating: 'إرسال التقييم',
   
   // Teacher Course Management
   addCourse: 'إضافة كورس جديد',
@@ -581,7 +602,9 @@ const ar: Translation = {
   ratingThanks: "شكرًا لتقييمك كورس",
   coursePublished: "تم نشر الكورس!",
   courseDeleted: "تم الحذف بنجاح",
-
+  messageSent: "تم إرسال الرسالة!",
+  messageSentDesc: "لقد تم إرسال سؤالك إلى المعلم.",
+  
   // Sidebar
   dashboard: 'لوحة التحكم',
   myCourses_sidebar: 'كورساتي',

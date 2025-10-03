@@ -66,7 +66,7 @@ export const courses = [
         { id: 1, title: 'مشروع: بناء صفحة شخصية' },
       ],
       additionalMaterials: [
-        { id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video' },
+        { id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video', url: 'https://www.youtube.com/embed/watch?v=Q8g9-dY2b-E' },
       ]
     }
   },
@@ -230,6 +230,8 @@ export const studentData = {
     { ...courses[0], status: 'active', progress: 75 },
     { ...courses[2], status: 'trial', progress: 20 },
     { ...courses[4], status: 'completed', progress: 100 },
+    { ...courses[3], status: 'active', progress: 40 },
+    { ...courses[5], status: 'trial', progress: 10 },
   ],
 };
 
