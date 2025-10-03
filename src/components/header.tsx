@@ -122,9 +122,7 @@ export function Header({ children, loggedIn = false, user }: HeaderProps) {
               <SheetContent side={dir === 'rtl' ? 'right' : 'left'}>
                 <div className="flex flex-col gap-6 p-6">
                   
-                   <Link href="/">
-                    <Logo />
-                  </Link>
+                   <Logo />
                   <nav className="grid gap-4 text-lg font-medium">
                     {navLinks.map((link) => (
                       <Link
