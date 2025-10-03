@@ -20,6 +20,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Progress } from '@/components/ui/progress';
+import Link from 'next/link';
 
 export default function StudentProfilePage() {
     const { t } = useLanguage();
@@ -161,7 +162,9 @@ export default function StudentProfilePage() {
                     </div>
                 </CardContent>
                 <CardFooter>
-                    <Button variant="outline" className="w-full">إدارة الاشتراك</Button>
+                    <Button variant="outline" className="w-full" asChild>
+                        <Link href="/student/subscription">إدارة الاشتراك</Link>
+                    </Button>
                 </CardFooter>
             </Card>
         </div>

@@ -9,6 +9,7 @@ import {
   Settings,
   Users,
   Search,
+  Package
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -39,6 +40,7 @@ export default function StudentDashboardLayout({
     { href: '/student/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
     { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
     { href: '/student/browse-teachers', label: t.browseTeachers_sidebar, icon: Users },
+    { href: '/student/subscription', label: 'الاشتراك', icon: Package },
     { href: '/student/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
 

@@ -223,6 +223,7 @@ bio: string;
   editProfile_sidebar: string;
   addCourse_sidebar: string;
   reports_sidebar: string;
+  subscription_sidebar: string;
 };
 
 const en: Translation = {
@@ -445,6 +446,7 @@ messageSent: "Message Sent!",
   editProfile_sidebar: 'Edit Profile',
   addCourse_sidebar: 'Add Course',
   reports_sidebar: 'Performance Reports',
+  subscription_sidebar: 'Subscription',
 };
 
 const ar: Translation = {
@@ -667,6 +669,7 @@ priceUSD: 'السعر (ريال عماني)',
   editProfile_sidebar: 'تعديل الملف الشخصي',
   addCourse_sidebar: 'إضافة كورس جديد',
   reports_sidebar: 'تقارير الأداء',
+  subscription_sidebar: 'الاشتراك',
 };
 
 
@@ -674,5 +677,3 @@ export const translations: Record<Language, Translation> = {
   en,
   ar,
 };
-
-    
