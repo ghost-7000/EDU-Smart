@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Star, Check } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { placeholderImages, courses } from '@/lib/placeholder-data';
@@ -68,19 +68,22 @@ export default function Home() {
 
   const plans = [
     {
-      name: t.planBasic,
+      name: "باقة شهر واحد",
       price: '3',
-      features: [t.planFeature5Courses, t.planFeatureEmailSupport]
+      features: ["اختر 3 كورسات", "الكورس الإضافي = 1.499 ريال", "دعم عبر البريد الإلكتروني"],
+      isPopular: false,
     },
     {
-      name: t.planPro,
-      price: '7',
-      features: [t.planFeatureUnlimitedCourses, t.planFeaturePrioritySupport, t.planFeatureCertificates]
+      name: "باقة 3 أشهر",
+      price: '5.99',
+      features: ["اختر 5 كورسات", "الكورس الإضافي = 1.199 ريال", "نقاط يمكن استبدالها بكورس إضافي", "تجربة مجانية 7 أيام"],
+      isPopular: true,
     },
     {
-      name: t.planPremium,
+      name: "باقة سنوية",
       price: '12',
-      features: [t.planFeatureAllPro, t.planFeatureAIAssistant, t.planFeatureSessions]
+      features: ["وصول غير محدود للكورسات", "مساعد AI شخصي", "جلسات شهرية مع المعلمين", "دعم ذو أولوية"],
+      isPopular: false,
     }
   ]
   const latestCourses = courses.slice(0, 4);
@@ -198,19 +201,30 @@ export default function Home() {
                         {t.plansTitle}
                     </h2>
                 </div>
-                <div className="grid gap-8 md:grid-cols-3">
+                <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
                     {plans.map((plan) => (
-                        <Card key={plan.name} className="flex flex-col">
-                            <CardHeader className="items-center">
+                        <Card key={plan.name} className={`flex flex-col relative overflow-hidden ${plan.isPopular ? 'border-primary border-2 shadow-lg' : 'border'}`}>
+                            {plan.isPopular && (
+                                <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-xs font-bold py-1 px-3 rounded-bl-lg flex items-center gap-1">
+                                    <Star className="w-3 h-3" /> الأكثر قيمة
+                                </div>
+                            )}
+                            <CardHeader className="items-center text-center">
                                 <CardTitle className="font-headline text-2xl">{plan.name}</CardTitle>
+                                <p className="text-4xl font-bold">{plan.price} <span className="text-lg font-normal text-muted-foreground">{t.planPriceSuffix}</span></p>
                             </CardHeader>
-                            <CardContent className="flex-1 flex flex-col items-center text-center">
-                                <p className="text-4xl font-bold mb-2">{plan.price} <span className="text-lg font-normal text-muted-foreground">{t.planPriceSuffix}</span></p>
-                                <ul className="space-y-2 text-muted-foreground">
-                                    {plan.features.map(feat => <li key={feat} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> {feat}</li>)}
+                            <CardContent className="flex-1 flex flex-col">
+                                <ul className="space-y-3 text-center text-foreground/80">
+                                    {plan.features.map(feat => (
+                                        <li key={feat} className="flex items-center gap-2">
+                                            <Check className="w-5 h-5 text-green-500" />
+                                            <span>{feat}</span>
+                                        </li>
+                                    ))}
                                 </ul>
                             </CardContent>
-                            <CardFooter>
+                            <CardFooter className="flex flex-col gap-2">
+                                {plan.isPopular && <Button className="w-full" variant="outline">{t.freeTrial}</Button>}
                                 <Button className="w-full">{t.subscribeNow}</Button>
                             </CardFooter>
                         </Card>

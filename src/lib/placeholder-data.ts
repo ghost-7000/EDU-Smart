@@ -292,6 +292,12 @@ export const studentData: Student = {
   academicYear: 'السنة الثالثة',
   bio: 'طالب شغوف بتعلم تقنيات الويب الجديدة وتطوير التطبيقات.',
   points: 1250,
+  subscription: {
+    planName: 'باقة 3 أشهر',
+    endDate: '2025-10-11',
+    selectedCourses: 3,
+    totalCourses: 5,
+  },
   enrolledCourses: [
     { ...courses[0], status: 'active', progress: 75 },
     { ...courses[2], status: 'trial', progress: 20 },
@@ -385,5 +391,3 @@ export const allTeachers: Teacher[] = allTeachersData.map(teacher => {
         courses: teacherCourses,
     };
 });
-
-    

@@ -65,9 +65,11 @@ export type Student = {
   academicYear: string;
   bio: string;
   points: number;
+  subscription: {
+    planName: string;
+    endDate: string;
+    selectedCourses: number;
+    totalCourses: number;
+  };
   enrolledCourses: EnrolledCourse[];
 };
-
-    
-
-    
