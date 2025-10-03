@@ -1,6 +1,7 @@
 
 import type { ImagePlaceholder } from './placeholder-images';
 import { PlaceHolderImages } from './placeholder-images';
+import { Course, Teacher, Student } from './types';
 
 export const placeholderImages: ImagePlaceholder[] = PlaceHolderImages;
 
@@ -36,7 +37,7 @@ export const academicYears = [
 ];
 
 
-export const courses = [
+export const courses: Course[] = [
   {
     id: 1,
     teacherId: 1,
@@ -283,7 +284,7 @@ export const courses = [
   },
 ];
 
-export const studentData = {
+export const studentData: Student = {
   name: 'علي بن محمد',
   email: 'ali.mohamed@email.com',
   branch: 'مسقط',
@@ -306,17 +307,81 @@ const teacher1TotalRatingsCount = teacher1Courses.flatMap(c => c.reviews).length
 const teacher1TotalRatingsSum = teacher1Courses.flatMap(c => c.reviews).reduce((sum, review) => sum + review.rating, 0);
 
 
-export const teacherData = {
+export const teacherData: Teacher = {
   id: 1,
   name: 'د. أحمد المحروقي',
   email: 'ahmed.mahrouqi@email.com',
   branch: 'مسقط',
   specialization: 'تكنولوجيا المعلومات',
   bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
+  avatar: placeholderImages.find(p => p.id === 'teacher-avatar')?.imageUrl,
   totalCourses: teacher1Courses.length,
   totalStudents: teacher1TotalStudents,
   averageRating: teacher1TotalRatingsCount > 0 ? (teacher1TotalRatingsSum / teacher1TotalRatingsCount) : 0,
   courses: teacher1Courses,
 };
 
-    
+const allTeachersData = [
+  {
+    id: 1,
+    name: 'د. أحمد المحروقي',
+    email: 'ahmed.mahrouqi@email.com',
+    branch: 'مسقط',
+    specialization: 'تكنولوجيا المعلومات',
+    bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
+    avatar: placeholderImages.find(p => p.id === 'teacher-avatar')?.imageUrl,
+  },
+  {
+    id: 2,
+    name: 'أ. فاطمة الشيذانية',
+    email: 'fatima.shidhani@email.com',
+    branch: 'صحار',
+    specialization: 'إدارة الأعمال',
+    bio: 'خبيرة في ريادة الأعمال واستراتيجيات التسويق الحديثة.',
+    avatar: "https://images.unsplash.com/photo-1652795385761-7ac287d0cd03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXJ0b29uJTIwcHJvZmVzc29yfGVufDB8fHx8MTc1OTQ5MjM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+  },
+  {
+    id: 3,
+    name: 'د. سالم الوهيبي',
+    email: 'salim.wuhaibi@email.com',
+    branch: 'نزوى',
+    specialization: 'الفنون والتصميم',
+    bio: 'مصمم جرافيك عالمي بخبرة تمتد لعقدين في مجال الهوية البصرية.',
+    avatar: "https://images.unsplash.com/photo-1631913290783-490324506193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc1OTQ0NTA1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+  },
+  {
+    id: 4,
+    name: 'أ. مريم الحوسنية',
+    email: 'maryam.housni@email.com',
+    branch: 'صلالة',
+    specialization: 'الهندسة',
+    bio: 'مهندسة كهربائية متخصصة في أنظمة الطاقة المتجددة.',
+    avatar: "https://images.unsplash.com/photo-1544717297-fa95b9ee9643?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3J0cmFpdCUyMG9mJTIwY2FydG9vbiUyMGZlbWFsZSUyMHByb2Zlc3NvcnxlbnwwfHx8fDE3NTk1NjI4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  },
+  {
+    id: 5,
+    name: 'د. يوسف العامري',
+    email: 'yousuf.amri@email.com',
+    branch: 'مسقط',
+    specialization: 'الآداب والعلوم الإنسانية',
+    bio: 'باحث وناقد أدبي، متخصص في الأدب العربي المعاصر.',
+     avatar: "https://images.unsplash.com/photo-1631913290783-490324506193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc1OTQ0NTA1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+  }
+];
+
+export const allTeachers: Teacher[] = allTeachersData.map(teacher => {
+    const teacherCourses = courses.filter(c => c.teacherId === teacher.id);
+    const totalStudents = teacherCourses.reduce((sum, course) => sum + course.enrolledStudents, 0);
+    const allReviews = teacherCourses.flatMap(c => c.reviews);
+    const averageRating = allReviews.length > 0
+        ? allReviews.reduce((sum, review) => sum + review.rating, 0) / allReviews.length
+        : 0;
+
+    return {
+        ...teacher,
+        totalCourses: teacherCourses.length,
+        totalStudents,
+        averageRating,
+        courses: teacherCourses,
+    };
+});

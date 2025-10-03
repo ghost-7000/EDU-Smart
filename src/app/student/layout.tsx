@@ -7,7 +7,7 @@ import {
   LayoutDashboard,
   LogOut,
   Settings,
-  BookOpenCheck,
+  Users,
   Search,
 } from 'lucide-react';
 import {
@@ -37,6 +37,7 @@ export default function StudentDashboardLayout({
     { href: '/student/dashboard', label: t.dashboard, icon: LayoutDashboard },
     { href: '/student/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
     { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
+    { href: '/student/browse-teachers', label: t.browseTeachers_sidebar, icon: Users },
     { href: '/student/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
 

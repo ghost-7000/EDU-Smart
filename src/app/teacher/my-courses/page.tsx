@@ -26,6 +26,7 @@ import { teacherData } from '@/lib/placeholder-data';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
+import { Course } from '@/lib/types';
 
 export default function MyCoursesPage() {
     const { toast } = useToast();
@@ -48,7 +49,7 @@ export default function MyCoursesPage() {
         </Link>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {teacherData.courses.map((course) => (
+        {teacherData.courses.map((course: Course) => (
           <Card key={course.id}>
             <CardHeader>
               <CardTitle className="truncate">{course.title}</CardTitle>

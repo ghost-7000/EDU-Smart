@@ -16,6 +16,8 @@ export type Translation = {
   paidContent: string;
   enrollToAccess: string;
   enrollToUnlock: string;
+  viewProfile: string;
+  teacherNotFound: string;
 
   // Header
   home: string;
@@ -133,6 +135,7 @@ export type Translation = {
   // Course Pages
   discoverCourses: string;
   searchByNameOrCode: string;
+  searchByTeacherName: string;
   filterByPopularity: string;
   all: string;
   mostPopular: string;
@@ -210,7 +213,7 @@ bio: string;
   dashboard: string;
   myCourses_sidebar: string;
   browseCourses_sidebar: string;
-  studyMaterials_sidebar: string;
+  browseTeachers_sidebar: string;
   editProfile_sidebar: string;
   addCourse_sidebar: string;
   reports_sidebar: string;
@@ -230,6 +233,8 @@ const en: Translation = {
   paidContent: 'Paid Content',
   enrollToAccess: 'Enroll in this course to access all paid content.',
   enrollToUnlock: 'Enroll to Unlock',
+  viewProfile: 'View Profile',
+  teacherNotFound: 'Teacher not found.',
 
   // Header
   home: 'Home',
@@ -347,6 +352,7 @@ const en: Translation = {
   // Course Pages
   discoverCourses: 'Discover Courses',
   searchByNameOrCode: 'Search by name or code...',
+  searchByTeacherName: 'Search by teacher name or specialization...',
   filterByPopularity: 'By Popularity',
   all: 'All',
   mostPopular: 'Most Popular',
@@ -423,7 +429,7 @@ messageSent: "Message Sent!",
   dashboard: 'Dashboard',
   myCourses_sidebar: 'My Courses',
   browseCourses_sidebar: 'Browse Courses',
-  studyMaterials_sidebar: 'Study Materials',
+  browseTeachers_sidebar: 'Browse Teachers',
   editProfile_sidebar: 'Edit Profile',
   addCourse_sidebar: 'Add Course',
   reports_sidebar: 'Performance Reports',
@@ -443,6 +449,8 @@ const ar: Translation = {
   paidContent: 'محتوى مدفوع',
   enrollToAccess: 'سجل في هذا الكورس للوصول إلى جميع المحتويات المدفوعة.',
   enrollToUnlock: 'سجل لفتح المحتوى',
+  viewProfile: 'عرض الملف الشخصي',
+  teacherNotFound: 'المعلم غير موجود.',
 
   // Header
   home: 'الرئيسية',
@@ -560,6 +568,7 @@ const ar: Translation = {
   // Course Pages
   discoverCourses: 'اكتشف الكورسات',
   searchByNameOrCode: 'البحث بالاسم أو الكود...',
+  searchByTeacherName: 'البحث باسم المعلم أو التخصص...',
   filterByPopularity: 'حسب الشهرة',
   all: 'الكل',
   mostPopular: 'الأكثر شيوعًا',
@@ -598,7 +607,7 @@ const ar: Translation = {
   courseCode: 'كود الكورس',
   shortDescription: 'وصف مختصر',
   fullDetails: 'تفاصيل شاملة',
-  priceUSD: 'السعر (ريال عماني)',
+priceUSD: 'السعر (ريال عماني)',
   enableFreeTrial: 'تفعيل التجربة المجانية (7 أيام)',
   coverMedia: 'صورة أو فيديو تعريفي',
   publishCourse: 'نشر الكورس',
@@ -636,7 +645,7 @@ const ar: Translation = {
   dashboard: 'لوحة التحكم',
   myCourses_sidebar: 'كورساتي',
   browseCourses_sidebar: 'تصفح الكورسات',
-  studyMaterials_sidebar: 'المواد الدراسية',
+  browseTeachers_sidebar: 'تصفح المعلمين',
   editProfile_sidebar: 'تعديل الملف الشخصي',
   addCourse_sidebar: 'إضافة كورس جديد',
   reports_sidebar: 'تقارير الأداء',
@@ -647,5 +656,3 @@ export const translations: Record<Language, Translation> = {
   en,
   ar,
 };
-
-    
