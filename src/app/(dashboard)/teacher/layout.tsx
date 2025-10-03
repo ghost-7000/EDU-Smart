@@ -46,7 +46,7 @@ export default function TeacherDashboardLayout({
   const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
 
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={false}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
           <Logo />
