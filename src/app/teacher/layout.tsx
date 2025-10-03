@@ -7,12 +7,9 @@ import {
   LayoutDashboard,
   LogOut,
   PlusCircle,
-  Presentation,
   Settings,
   Search,
-  UserCircle,
 } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
   SidebarProvider,
   Sidebar,
@@ -25,7 +22,6 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { teacherData, placeholderImages } from '@/lib/placeholder-data';
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
 import { Logo } from '@/components/logo';
@@ -44,27 +40,14 @@ export default function TeacherDashboardLayout({
     { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
     { href: '/teacher/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
-  const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
 
   return (
     <SidebarProvider defaultOpen={false}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
-          
           <Logo />
         </SidebarHeader>
         <SidebarContent className="p-4">
-          <div className="flex flex-col items-center p-4 border-b mb-4">
-              <Avatar className="h-24 w-24 mb-3 border-2 border-primary">
-                  {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Teacher Avatar" />}
-                  <AvatarFallback className="bg-primary/20 text-primary">
-                    <UserCircle className="h-12 w-12" />
-                  </AvatarFallback>
-              </Avatar>
-              <h3 className="font-semibold text-lg">{teacherData.name}</h3>
-              <p className="text-sm text-muted-foreground">{teacherData.branch}</p>
-              <p className="text-sm text-primary font-semibold mt-2">{teacherData.totalCourses} {t.courses}</p>
-          </div>
           <SidebarMenu>
             {navItems.map((item) => (
               <SidebarMenuItem key={item.href}>
