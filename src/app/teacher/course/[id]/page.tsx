@@ -39,9 +39,11 @@ import {
 } from "@/components/ui/tabs";
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
-import { ArrowLeft, BookOpen, Film, Pencil, PlusCircle, Puzzle, Users, BarChart, Settings, FileText } from 'lucide-react';
+import { ArrowLeft, BookOpen, Film, Pencil, PlusCircle, Puzzle, Users, BarChart as BarChartIcon, Settings, FileText, Lightbulb, TrendingUp, UserCheck, AlertCircle } from 'lucide-react';
 import { Course, Student } from '@/lib/types';
 import { Progress } from '@/components/ui/progress';
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { BarChart, CartesianGrid, XAxis, YAxis, PieChart, Pie, Cell, LineChart, Line } from "recharts"
 
 // Mock function to get students for a course
 const getStudentsForCourse = (courseId: number): Partial<Student>[] => {
@@ -49,10 +51,37 @@ const getStudentsForCourse = (courseId: number): Partial<Student>[] => {
     { name: 'علي بن محمد', email: 'ali.mohamed@email.com', enrolledCourses: [{ progress: 75 }] as any },
     { name: 'سارة بنت أحمد', email: 'sara.ahmed@email.com', enrolledCourses: [{ progress: 100 }] as any },
     { name: 'خالد العامري', email: 'khalid.amri@email.com', enrolledCourses: [{ progress: 45 }] as any },
+    { name: 'مريم الشيدية', email: 'maryam.shaidi@email.com', enrolledCourses: [{ progress: 90 }] as any },
+    { name: 'ناصر البلوشي', email: 'nasser.balushi@email.com', enrolledCourses: [{ progress: 30 }] as any },
   ].map(s => ({ ...s, progress: Math.floor(Math.random() * 101) }));
 };
 
-export default function ManageCoursePage({ params }: { params: { id: string } }) {
+const analyticsData = {
+    completionRate: 68,
+    averageGrade: 75,
+    performanceDistribution: [
+        { level: 'ممتاز', value: 25, fill: 'var(--color-excellent)' },
+        { level: 'جيد', value: 45, fill: 'var(--color-good)' },
+        { level: 'ضعيف', value: 30, fill: 'var(--color-weak)' },
+    ],
+    performanceByUnit: [
+        { unit: 'الوحدة 1', grade: 85 },
+        { unit: 'الوحدة 2', grade: 60 },
+        { unit: 'الوحدة 3', grade: 75 },
+        { unit: 'الوحدة 4', grade: 80 },
+        { unit: 'الوحدة 5', grade: 72 },
+    ]
+};
+
+const chartConfig = {
+    excellent: { label: 'ممتاز', color: 'hsl(var(--chart-2))' },
+    good: { label: 'جيد', color: 'hsl(var(--chart-1))' },
+    weak: { label: 'ضعيف', color: 'hsl(var(--chart-5))' },
+    grade: { label: 'الدرجة', color: 'hsl(var(--primary))' },
+};
+
+
+export default function ManageCoursePage({ params }: { params: { id:string } }) {
   const router = useRouter();
   const { toast } = useToast();
   const { t } = useLanguage();
@@ -104,7 +133,7 @@ export default function ManageCoursePage({ params }: { params: { id: string } })
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="content"><BookOpen className="ml-2"/>{t.courseContent}</TabsTrigger>
           <TabsTrigger value="students"><Users className="ml-2"/>{t.student}</TabsTrigger>
-          <TabsTrigger value="analytics"><BarChart className="ml-2"/>{t.reports_sidebar}</TabsTrigger>
+          <TabsTrigger value="analytics"><BarChartIcon className="ml-2"/>{t.reports_sidebar}</TabsTrigger>
           <TabsTrigger value="settings"><Settings className="ml-2"/>{t.editProfile_sidebar}</TabsTrigger>
         </TabsList>
         
@@ -209,16 +238,89 @@ export default function ManageCoursePage({ params }: { params: { id: string } })
         </TabsContent>
         
         <TabsContent value="analytics" className="mt-6">
-            <Card>
-                <CardHeader>
-                    <CardTitle>تحليلات الأداء</CardTitle>
-                    <CardDescription>قريباً! سيتم عرض تحليلات مفصلة لأداء الطلاب في هذا الكورس.</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center text-muted-foreground py-12">
-                     <BarChart className="mx-auto h-12 w-12 mb-4"/>
-                    <p>ميزة التحليلات قيد التطوير.</p>
-                </CardContent>
-            </Card>
+            <div className="space-y-6">
+                <Card>
+                    <CardHeader>
+                        <CardTitle>رؤى ذكية (AI Insights)</CardTitle>
+                        <CardDescription>تحليلات يقدمها الذكاء الاصطناعي لتحسين جودة الكورس.</CardDescription>
+                    </CardHeader>
+                    <CardContent className="grid gap-4 md:grid-cols-3">
+                         <div className="flex items-start gap-4 p-4 border rounded-lg bg-red-50 dark:bg-red-900/20">
+                            <AlertCircle className="h-6 w-6 text-red-600 dark:text-red-400 mt-1" />
+                            <div>
+                                <h4 className="font-semibold text-red-800 dark:text-red-300">أداء ضعيف في الوحدة 2</h4>
+                                <p className="text-sm text-red-700 dark:text-red-400/80">30% من الطلاب يواجهون صعوبة في هذه الوحدة. متوسط الدرجات أقل من 60%.</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4 p-4 border rounded-lg bg-blue-50 dark:bg-blue-900/20">
+                            <Lightbulb className="h-6 w-6 text-blue-600 dark:text-blue-400 mt-1" />
+                            <div>
+                                <h4 className="font-semibold text-blue-800 dark:text-blue-300">اقتراح تحسين</h4>
+                                <p className="text-sm text-blue-700 dark:text-blue-400/80">ينصح بإضافة فيديو شرح للجزء العملي في الوحدة 2 لتعزيز الفهم.</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4 p-4 border rounded-lg bg-amber-50 dark:bg-amber-900/20">
+                            <UserCheck className="h-6 w-6 text-amber-600 dark:text-amber-400 mt-1" />
+                            <div>
+                                <h4 className="font-semibold text-amber-800 dark:text-amber-300">طالب بحاجة لمتابعة</h4>
+                                <p className="text-sm text-amber-700 dark:text-amber-400/80">الطالب "ناصر البلوشي" لم يكمل أي نشاط في آخر أسبوعين. قد يحتاج لمتابعة.</p>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                    <Card>
+                        <CardHeader className="pb-2">
+                            <CardTitle className="text-base">متوسط نسبة الإكمال</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-4xl font-bold">{analyticsData.completionRate}%</p>
+                        </CardContent>
+                    </Card>
+                    <Card>
+                        <CardHeader className="pb-2">
+                            <CardTitle className="text-base">متوسط الدرجات</CardTitle>
+                        </CardHeader>
+                        <CardContent>
+                            <p className="text-4xl font-bold">{analyticsData.averageGrade}%</p>
+                        </CardContent>
+                    </Card>
+                     <Card className="lg:col-span-2">
+                        <CardHeader>
+                            <CardTitle>توزيع مستويات الطلاب</CardTitle>
+                        </CardHeader>
+                        <CardContent className="h-40">
+                             <ChartContainer config={chartConfig} className="w-full h-full">
+                                <PieChart>
+                                    <ChartTooltip content={<ChartTooltipContent hideLabel />} />
+                                    <Pie data={analyticsData.performanceDistribution} dataKey="value" nameKey="level" innerRadius={30} strokeWidth={5}>
+                                        {analyticsData.performanceDistribution.map((entry, index) => (
+                                            <Cell key={`cell-${index}`} fill={entry.fill} />
+                                        ))}
+                                    </Pie>
+                                </PieChart>
+                            </ChartContainer>
+                        </CardContent>
+                    </Card>
+                </div>
+                <Card>
+                     <CardHeader>
+                        <CardTitle>متوسط الأداء عبر الوحدات</CardTitle>
+                    </CardHeader>
+                    <CardContent className="h-80">
+                        <ChartContainer config={chartConfig} className="w-full h-full">
+                            <LineChart data={analyticsData.performanceByUnit} margin={{ top: 5, right: 20, left: -10, bottom: 0 }}>
+                                <CartesianGrid vertical={false} />
+                                <XAxis dataKey="unit" tickLine={false} axisLine={false} tickMargin={8} />
+                                <YAxis tickLine={false} axisLine={false} tickMargin={8} />
+                                <ChartTooltip cursor={false} content={<ChartTooltipContent indicator="line" />} />
+                                <Line dataKey="grade" type="monotone" stroke="var(--color-grade)" strokeWidth={2} dot={false} />
+                            </LineChart>
+                        </ChartContainer>
+                    </CardContent>
+                </Card>
+            </div>
         </TabsContent>
 
 
@@ -263,5 +365,3 @@ export default function ManageCoursePage({ params }: { params: { id: string } })
     </div>
   );
 }
-
-    
