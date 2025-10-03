@@ -40,7 +40,7 @@ export function CourseCard({ course }: { course: Course }) {
     <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col">
       <Link href={`/student/course/${course.id}`} className="flex-1 flex flex-col">
         <CardHeader className="p-0">
-          <div className="aspect-video bg-muted flex items-center justify-center">
+          <div className="aspect-video bg-muted/30 flex items-center justify-center">
             <span className="text-6xl">{course.emoji}</span>
           </div>
         </CardHeader>
@@ -56,7 +56,7 @@ export function CourseCard({ course }: { course: Course }) {
           </div>
         </CardContent>
       </Link>
-      <CardFooter className="p-4 flex justify-between items-center">
+      <CardFooter className="p-4 flex justify-between items-center bg-muted/30">
         <div>
           {course.isFreeTrial ? (
             <Badge variant="outline" className="border-green-500 text-green-600">{t.freeTrial}</Badge>
@@ -66,8 +66,10 @@ export function CourseCard({ course }: { course: Course }) {
             <Badge variant="secondary">{t.free}</Badge>
           )}
         </div>
-        <Button onClick={handleRegister}>{t.registerNow}</Button>
+        <Button onClick={handleRegister}>{t.enrollNow}</Button>
       </CardFooter>
     </Card>
   );
 }
+
+    
