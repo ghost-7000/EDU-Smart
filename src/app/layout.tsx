@@ -6,7 +6,7 @@ import { LanguageProvider } from '@/contexts/language-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'UTAS Learning Hub',
+  title: 'EDU Smart',
   description: 'An innovative educational platform for UTAS students.',
 };
 
