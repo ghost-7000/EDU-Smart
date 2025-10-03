@@ -6,10 +6,7 @@ import {
   BookCopy,
   LayoutDashboard,
   LogOut,
-  Search,
   Settings,
-  Presentation,
-  User,
   BookOpenCheck,
 } from 'lucide-react';
 import {
@@ -24,11 +21,8 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { studentData } from '@/lib/placeholder-data';
-import { Logo } from '@/components/logo';
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 
 export default function StudentDashboardLayout({
   children,
@@ -48,7 +42,7 @@ export default function StudentDashboardLayout({
     <SidebarProvider defaultOpen={false}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
-          <Logo />
+          
         </SidebarHeader>
         <SidebarContent className="p-4">
           <SidebarMenu>

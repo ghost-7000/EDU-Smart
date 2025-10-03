@@ -8,7 +8,6 @@ import {
   LogOut,
   PlusCircle,
   Presentation,
-  BarChart,
   Settings,
   Search,
 } from 'lucide-react';
@@ -26,7 +25,6 @@ import {
   SidebarTrigger,
 } from '@/components/ui/sidebar';
 import { teacherData, placeholderImages } from '@/lib/placeholder-data';
-import { Logo } from '@/components/logo';
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
 
@@ -50,7 +48,7 @@ export default function TeacherDashboardLayout({
     <SidebarProvider defaultOpen={false}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
-          <Logo />
+          
         </SidebarHeader>
         <SidebarContent className="p-4">
           <div className="flex flex-col items-center p-4 border-b mb-4">

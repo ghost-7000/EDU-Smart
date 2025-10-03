@@ -35,9 +35,7 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-6">
           {children}
-          <div className="hidden md:flex">
-            <Logo />
-          </div>
+          
            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navLinks.map((link) => (
               <Link
@@ -91,7 +89,7 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
               </SheetTrigger>
               <SheetContent side={dir === 'rtl' ? 'right' : 'left'}>
                 <div className="flex flex-col gap-6 p-6">
-                  <Logo />
+                  
                   <nav className="grid gap-4 text-lg font-medium">
                     {navLinks.map((link) => (
                       <Link
@@ -121,9 +119,7 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
               </SheetContent>
             </Sheet>
           </div>
-          <div className="md:hidden">
-            <Logo />
-          </div>
+          
         </div>
       </div>
     </header>

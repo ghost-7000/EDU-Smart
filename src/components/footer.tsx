@@ -2,7 +2,6 @@
 "use client"
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
-import { Logo } from "./logo";
 import { useLanguage } from "@/hooks/use-language";
 
 export function Footer() {
@@ -12,7 +11,7 @@ export function Footer() {
     <footer className="border-t bg-card text-card-foreground">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-12 md:px-6">
         <div className="flex flex-col gap-4">
-          <Logo />
+          
           <p className="text-sm text-muted-foreground">{t.heroSubtitle}</p>
         </div>
         <div className="grid gap-2">
