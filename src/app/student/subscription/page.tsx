@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/card';
 import { studentData } from '@/lib/placeholder-data';
 import { Button } from '@/components/ui/button';
-import { Calendar, Book, Award, Star, Check } from 'lucide-react';
+import { Calendar, Award, Star, Check, Package } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
