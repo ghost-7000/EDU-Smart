@@ -23,6 +23,7 @@ import {
 } from '@/components/ui/sidebar';
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
+import { Logo } from '@/components/logo';
 
 export default function StudentDashboardLayout({
   children,
@@ -43,6 +44,7 @@ export default function StudentDashboardLayout({
       <Sidebar>
         <SidebarHeader className="border-b p-4">
           
+          <Logo />
         </SidebarHeader>
         <SidebarContent className="p-4">
           <SidebarMenu>

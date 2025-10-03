@@ -27,6 +27,7 @@ import {
 import { teacherData, placeholderImages } from '@/lib/placeholder-data';
 import { Header } from '@/components/header';
 import { useLanguage } from '@/hooks/use-language';
+import { Logo } from '@/components/logo';
 
 export default function TeacherDashboardLayout({
   children,
@@ -49,6 +50,7 @@ export default function TeacherDashboardLayout({
       <Sidebar>
         <SidebarHeader className="border-b p-4">
           
+          <Logo />
         </SidebarHeader>
         <SidebarContent className="p-4">
           <div className="flex flex-col items-center p-4 border-b mb-4">

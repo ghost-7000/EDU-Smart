@@ -1,12 +1,10 @@
 import Link from 'next/link';
-import { GraduationCap } from 'lucide-react';
-import { useLanguage } from '@/hooks/use-language';
+import Image from 'next/image';
 
 export function Logo() {
-  const { t } = useLanguage();
   return (
     <Link href="/" className="flex items-center gap-2" prefetch={false}>
-      <span className="font-headline text-2xl font-bold text-primary">{t.appName}</span>
+      <Image src="https://i.ibb.co/PggVv4j/UTAS-logo.png" alt="EDU Smart Logo" width={120} height={40} />
     </Link>
   );
 }

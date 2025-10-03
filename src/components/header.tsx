@@ -36,6 +36,9 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
         <div className="flex items-center gap-6">
           {children}
           
+           <Link href="/" className="hidden md:flex items-center">
+            <Logo />
+          </Link>
            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navLinks.map((link) => (
               <Link
@@ -90,6 +93,9 @@ export function Header({ children, loggedIn = false }: { children?: React.ReactN
               <SheetContent side={dir === 'rtl' ? 'right' : 'left'}>
                 <div className="flex flex-col gap-6 p-6">
                   
+                   <Link href="/">
+                    <Logo />
+                  </Link>
                   <nav className="grid gap-4 text-lg font-medium">
                     {navLinks.map((link) => (
                       <Link
