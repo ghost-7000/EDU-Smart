@@ -1,4 +1,5 @@
 
+
 import {
   Card,
   CardContent,
@@ -20,57 +21,74 @@ export default function StudentDashboardPage() {
   };
 
   const CourseList = ({ title, courses, status }: { title: string; courses: typeof studentData.enrolledCourses; status: 'active' | 'trial' | 'completed' }) => (
-    <Card>
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {courses.length > 0 ? courses.map(course => (
-          <div key={course.id} className="p-3 rounded-lg border">
-            <div className="flex justify-between items-center mb-2">
-                <h4 className="font-semibold">{course.title}</h4>
-                <Badge variant={status === 'completed' ? 'default' : 'secondary'} className={status === 'completed' ? 'bg-green-500' : ''}>{course.status}</Badge>
-            </div>
-            <p className="text-sm text-muted-foreground mb-2">{course.teacher}</p>
-            <Progress value={course.progress} className="w-full" />
-            <p className="text-xs text-muted-foreground mt-1">{course.progress}% مكتمل</p>
-          </div>
-        )) : (
-            <p className="text-muted-foreground text-sm">لا توجد كورسات في هذه الفئة حاليًا.</p>
-        )}
-      </CardContent>
-    </Card>
+    <div>
+      <h2 className="text-xl font-bold mb-4">{title}</h2>
+      {courses.length > 0 ? (
+        <div className="space-y-4">
+          {courses.map(course => (
+            <Card key={course.id}>
+              <CardContent className="p-4 flex items-center justify-between">
+                <div>
+                  <h4 className="font-semibold">{course.title}</h4>
+                  <p className="text-sm text-muted-foreground">{course.teacher}</p>
+                </div>
+                <div className="w-1/3 text-right">
+                   <div className="flex items-center justify-end gap-2">
+                    <span className="text-xs text-muted-foreground">{course.progress}%</span>
+                    <Progress value={course.progress} className="w-full h-2" />
+                   </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      ) : (
+        <p className="text-muted-foreground text-sm">لا توجد كورسات في هذه الفئة حاليًا.</p>
+      )}
+    </div>
   );
 
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline text-2xl">مرحبًا بعودتك، {studentData.name}!</CardTitle>
-          <CardDescription>هذا هو ملخص نشاطك الأكاديمي.</CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4 md:grid-cols-3">
-            <div className="p-4 rounded-lg bg-card border">
-                <h3 className="text-muted-foreground">النقاط المكتسبة</h3>
-                <p className="text-2xl font-bold text-amber-500">{studentData.points}</p>
-            </div>
-            <div className="p-4 rounded-lg bg-card border">
-                <h3 className="text-muted-foreground">الكورسات النشطة</h3>
-                <p className="text-2xl font-bold">{courseCategories.active.length + courseCategories.trial.length}</p>
-            </div>
-            <div className="p-4 rounded-lg bg-card border">
-                <h3 className="text-muted-foreground">الكورسات المكتملة</h3>
-                <p className="text-2xl font-bold">{courseCategories.completed.length}</p>
-            </div>
-        </CardContent>
-      </Card>
-      
-      <div className="grid gap-6 lg:grid-cols-2">
-          <CourseList title="كورسات نشطة" courses={courseCategories.active} status="active" />
-          <CourseList title="تحت التجربة" courses={courseCategories.trial} status="trial" />
+    <div className="space-y-8">
+      <div>
+        <h1 className="font-headline text-3xl font-bold">مرحبًا بعودتك، {studentData.name}!</h1>
+        <p className="text-muted-foreground">هذا هو ملخص نشاطك الأكاديمي.</p>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-3">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">النقاط المكتسبة</CardTitle>
+                <span className="text-amber-500">🏆</span>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">{studentData.points}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">الكورسات النشطة</CardTitle>
+                <span className="text-primary">📚</span>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">{courseCategories.active.length + courseCategories.trial.length}</div>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                <CardTitle className="text-sm font-medium">الكورسات المكتملة</CardTitle>
+                <span className="text-green-500">✅</span>
+            </CardHeader>
+            <CardContent>
+                <div className="text-2xl font-bold">{courseCategories.completed.length}</div>
+            </CardContent>
+          </Card>
       </div>
       
-      <CourseList title="كورسات مكتملة" courses={courseCategories.completed} status="completed" />
+      <div className="grid gap-8 lg:grid-cols-1">
+          <CourseList title="كورسات نشطة وتحت التجربة" courses={[...courseCategories.active, ...courseCategories.trial]} status="active" />
+          <CourseList title="كورسات مكتملة" courses={courseCategories.completed} status="completed" />
+      </div>
 
       <div className="text-center">
         <Link href="/student/browse-courses">
@@ -80,3 +98,5 @@ export default function StudentDashboardPage() {
     </div>
   );
 }
+
+    

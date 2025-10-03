@@ -1,4 +1,5 @@
 
+
 import {
   Card,
   CardContent,
@@ -33,7 +34,7 @@ export default function TeacherDashboardPage() {
             <Card className="flex items-center p-4 gap-4">
                 <Star className="h-8 w-8 text-amber-500" />
                 <div>
-                    <h3 className="text-muted-foreground">متوسط التقييم</h3>_
+                    <h3 className="text-muted-foreground">متوسط التقييم</h3>
                     <p className="text-2xl font-bold">{averageRating.toFixed(1)}</p>
                 </div>
             </Card>
@@ -89,3 +90,5 @@ export default function TeacherDashboardPage() {
     </div>
   );
 }
+
+    
