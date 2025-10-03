@@ -329,7 +329,7 @@ const allTeachersData = [
     branch: 'مسقط',
     specialization: 'تكنولوجيا المعلومات',
     bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
-    avatar: 'https://i.imgur.com/8N3a5s2.png',
+    avatar: 'https://i.ibb.co/CVDp04L/teacher-male.png',
   },
   {
     id: 2,
@@ -338,7 +338,7 @@ const allTeachersData = [
     branch: 'صحار',
     specialization: 'إدارة الأعمال',
     bio: 'خبيرة في ريادة الأعمال واستراتيجيات التسويق الحديثة.',
-    avatar: 'https://i.imgur.com/J3z4p4q.png',
+    avatar: 'https://i.ibb.co/3sS5Xw4/teacher-female.png',
   },
   {
     id: 3,
@@ -347,7 +347,7 @@ const allTeachersData = [
     branch: 'نزوى',
     specialization: 'الفنون والتصميم',
     bio: 'مصمم جرافيك عالمي بخبرة تمتد لعقدين في مجال الهوية البصرية.',
-    avatar: "https://i.imgur.com/8N3a5s2.png",
+    avatar: "https://i.ibb.co/CVDp04L/teacher-male.png",
   },
   {
     id: 4,
@@ -356,7 +356,7 @@ const allTeachersData = [
     branch: 'صلالة',
     specialization: 'الهندسة',
     bio: 'مهندسة كهربائية متخصصة في أنظمة الطاقة المتجددة.',
-    avatar: "https://i.imgur.com/J3z4p4q.png",
+    avatar: "https://i.ibb.co/3sS5Xw4/teacher-female.png",
   },
   {
     id: 5,
@@ -365,7 +365,7 @@ const allTeachersData = [
     branch: 'مسقط',
     specialization: 'الآداب والعلوم الإنسانية',
     bio: 'باحث وناقد أدبي، متخصص في الأدب العربي المعاصر.',
-     avatar: "https://i.imgur.com/8N3a5s2.png",
+     avatar: "https://i.ibb.co/CVDp04L/teacher-male.png",
   }
 ];
 
@@ -385,3 +385,5 @@ export const allTeachers: Teacher[] = allTeachersData.map(teacher => {
         courses: teacherCourses,
     };
 });
+
+    
