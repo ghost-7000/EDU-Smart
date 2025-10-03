@@ -11,6 +11,7 @@ export type Translation = {
   createNewAccount: string;
   omr: string;
   open: string;
+  chapter: string;
 
   // Header
   home: string;
@@ -216,6 +217,7 @@ const en: Translation = {
   createNewAccount: 'Create new account',
   omr: 'OMR',
   open: 'Open',
+  chapter: 'Chapter',
 
   // Header
   home: 'Home',
@@ -420,6 +422,7 @@ const ar: Translation = {
   createNewAccount: 'إنشاء حساب جديد',
   omr: 'ر.ع.',
   open: 'افتح',
+  chapter: 'الشابتر',
 
   // Header
   home: 'الرئيسية',

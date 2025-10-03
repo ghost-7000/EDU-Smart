@@ -14,6 +14,12 @@ import { Progress } from '@/components/ui/progress';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 import { Textarea } from '@/components/ui/textarea';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 export default function CourseDetailPage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
@@ -86,93 +92,109 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
             </Card>
             
             {isEnrolled && (
-              <>
-                {course.content.additionalMaterials && course.content.additionalMaterials.length > 0 && (
-                    <Card>
-                        <CardHeader>
-                            <CardTitle className="flex items-center gap-2"><FileText className="w-6 h-6 text-primary"/>{t.additionalMaterials}</CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                            {course.content.additionalMaterials.map(material => (
-                                material.type === 'video' && material.url ? (
-                                <div key={material.id}>
-                                    <h3 className="font-medium mb-2">{material.title}</h3>
-                                    <div className="aspect-video">
-                                        <iframe 
-                                            className="w-full h-full rounded-lg"
-                                            src={material.url} 
-                                            title={material.title} 
-                                            frameBorder="0" 
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                            allowFullScreen>
-                                        </iframe>
+              <Card>
+                <CardHeader>
+                  <CardTitle>{t.courseContent}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Accordion type="single" collapsible className="w-full">
+                    {course.content.chapters.map((chapter) => (
+                      <AccordionItem key={chapter.id} value={`item-${chapter.id}`}>
+                        <AccordionTrigger className="font-semibold text-lg">{chapter.title}</AccordionTrigger>
+                        <AccordionContent className="space-y-4 pt-2">
+                          {chapter.additionalMaterials && chapter.additionalMaterials.length > 0 && (
+                            <div>
+                                <h3 className="font-bold mb-2 text-primary">{t.additionalMaterials}</h3>
+                                <div className="space-y-3">
+                                {chapter.additionalMaterials.map(material => (
+                                    material.type === 'video' && material.url ? (
+                                    <div key={material.id}>
+                                        <h4 className="font-medium mb-2">{material.title}</h4>
+                                        <div className="aspect-video">
+                                            <iframe 
+                                                className="w-full h-full rounded-lg"
+                                                src={material.url} 
+                                                title={material.title} 
+                                                frameBorder="0" 
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                                allowFullScreen>
+                                            </iframe>
+                                        </div>
                                     </div>
-                                </div>
-                                ) : (
-                                <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                                    <div className="flex items-center gap-3">
-                                        {renderContentIcon(material.type)}
-                                        <span className="font-medium">{material.title}</span>
+                                    ) : (
+                                    <div key={material.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                        <div className="flex items-center gap-3">
+                                            {renderContentIcon(material.type)}
+                                            <span className="font-medium">{material.title}</span>
+                                        </div>
+                                        <Button variant="outline" size="sm">{t.open}</Button>
                                     </div>
-                                    <Button variant="outline" size="sm">{t.open}</Button>
+                                    )
+                                ))}
                                 </div>
-                                )
-                            ))}
-                        </CardContent>
-                    </Card>
-                )}
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><BookOpen className="w-6 h-6 text-primary"/>{t.lessons}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {course.content.lessons.map(lesson => (
-                        <div key={lesson.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-3">
-                            <CheckCircle className="w-5 h-5 text-green-500" />
-                            <span className="font-medium">{lesson.title}</span>
                             </div>
-                            <Button variant="ghost" size="icon"><Download className="w-5 h-5" /></Button>
-                        </div>
-                    ))}
-                  </CardContent>
-                </Card>
+                          )}
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><Puzzle className="w-6 h-6 text-primary"/>{t.quizzes}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    {course.content.quizzes.map(quiz => (
-                        <div key={quiz.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-3">
-                                {renderContentIcon('quiz')}
-                                <span className="font-medium">{quiz.title}</span>
+                          {chapter.lessons && chapter.lessons.length > 0 && (
+                            <div>
+                                <h3 className="font-bold mb-2 text-primary">{t.lessons}</h3>
+                                <div className="space-y-3">
+                                    {chapter.lessons.map(lesson => (
+                                        <div key={lesson.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                <CheckCircle className="w-5 h-5 text-green-500" />
+                                                <span className="font-medium">{lesson.title}</span>
+                                            </div>
+                                            <Button variant="ghost" size="icon"><Download className="w-5 h-5" /></Button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <Button variant="outline" size="sm">{t.startQuiz}</Button>
-                        </div>
-                    ))}
-                  </CardContent>
-                </Card>
+                          )}
 
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2"><Pencil className="w-6 h-6 text-primary"/>{t.activities}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                     {course.content.assignments.map(assignment => (
-                        <div key={assignment.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
-                            <div className="flex items-center gap-3">
-                            {renderContentIcon('assignment')}
-                            <span className="font-medium">{assignment.title}</span>
+                          {chapter.quizzes && chapter.quizzes.length > 0 && (
+                            <div>
+                                <h3 className="font-bold mb-2 text-primary">{t.quizzes}</h3>
+                                <div className="space-y-3">
+                                    {chapter.quizzes.map(quiz => (
+                                        <div key={quiz.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                                {renderContentIcon('quiz')}
+                                                <span className="font-medium">{quiz.title}</span>
+                                            </div>
+                                            <Button variant="outline" size="sm">{t.startQuiz}</Button>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <Button variant="outline" size="sm">{t.submitAssignment}</Button>
-                        </div>
+                          )}
+
+                          {chapter.assignments && chapter.assignments.length > 0 && (
+                            <div>
+                                <h3 className="font-bold mb-2 text-primary">{t.activities}</h3>
+                                <div className="space-y-3">
+                                    {chapter.assignments.map(assignment => (
+                                        <div key={assignment.id} className="flex items-center justify-between p-3 bg-background rounded-md border hover:bg-muted/50 transition-colors">
+                                            <div className="flex items-center gap-3">
+                                            {renderContentIcon('assignment')}
+                                            <span className="font-medium">{assignment.title}</span>
+                                            </div>
+                                            <Button variant="outline" size="sm">{t.submitAssignment}</Button>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                          )}
+
+                          {chapter.lessons.length === 0 && chapter.quizzes.length === 0 && chapter.assignments.length === 0 && chapter.additionalMaterials.length === 0 && (
+                            <p className="text-sm text-muted-foreground">{t.noContentYet}</p>
+                          )}
+                        </AccordionContent>
+                      </AccordionItem>
                     ))}
-                  </CardContent>
-                </Card>
-              </>
+                  </Accordion>
+                </CardContent>
+              </Card>
             )}
         </div>
         <div className="space-y-6">

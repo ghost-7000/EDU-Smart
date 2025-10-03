@@ -53,20 +53,55 @@ export const courses = [
     popularity: 'most_popular',
     newness: 'new',
     content: {
-      lessons: [
-        { id: 1, title: 'مقدمة إلى HTML' },
-        { id: 2, title: 'أساسيات CSS' },
-        { id: 3, title: 'مقدمة في JavaScript' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار أساسيات HTML' },
-        { id: 2, title: 'اختبار مفاهيم CSS' },
-      ],
-      assignments: [
-        { id: 1, title: 'مشروع: بناء صفحة شخصية' },
-      ],
-      additionalMaterials: [
-        { id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video', url: 'https://www.youtube.com/embed/watch?v=Q8g9-dY2b-E' },
+      chapters: [
+        {
+          id: 1,
+          title: 'الشابتر الأول: مقدمة إلى الويب',
+          lessons: [{ id: 1, title: 'مقدمة إلى HTML' }],
+          quizzes: [{ id: 1, title: 'اختبار أساسيات HTML' }],
+          assignments: [],
+          additionalMaterials: [{ id: 1, title: 'فيديو: إعداد بيئة العمل', type: 'video', url: 'https://www.youtube.com/embed/watch?v=Q8g9-dY2b-E' }]
+        },
+        {
+          id: 2,
+          title: 'الشابتر الثاني: أساسيات CSS',
+          lessons: [{ id: 1, title: 'أساسيات CSS' }, { id: 2, title: 'Flexbox and Grid' }],
+          quizzes: [{ id: 1, title: 'اختبار مفاهيم CSS' }],
+          assignments: [],
+          additionalMaterials: []
+        },
+        {
+          id: 3,
+          title: 'الشابتر الثالث: مقدمة في JavaScript',
+          lessons: [{ id: 1, title: 'مقدمة في JavaScript' }, { id: 2, title: 'المتغيرات وأنواع البيانات' }],
+          quizzes: [],
+          assignments: [{ id: 1, title: 'مشروع: بناء صفحة شخصية' }],
+          additionalMaterials: []
+        },
+        {
+          id: 4,
+          title: 'الشابتر الرابع: التفاعل مع DOM',
+          lessons: [{ id: 1, title: 'الوصول إلى عناصر DOM' }],
+          quizzes: [],
+          assignments: [],
+          additionalMaterials: []
+        },
+        {
+          id: 5,
+          title: 'الشابتر الخامس: مفاهيم متقدمة',
+          lessons: [{ id: 1, title: 'البرمجة غير المتزامنة (Async)' }],
+          quizzes: [],
+          assignments: [],
+          additionalMaterials: []
+        },
+        {
+          id: 6,
+          title: 'الشابتر السادس: المشروع النهائي',
+          lessons: [],
+          quizzes: [],
+          assignments: [{ id: 1, title: 'بناء موقع ويب كامل' }],
+          additionalMaterials: []
+        }
       ]
     }
   },
@@ -86,18 +121,16 @@ export const courses = [
     popularity: 'most_popular',
     newness: 'old',
     content: {
-      lessons: [
-        { id: 1, title: 'مقدمة إلى Python' },
-        { id: 2, title: 'التعامل مع مكتبة Pandas' },
-        { id: 3, title: 'تصور البيانات باسنخدام Matplotlib' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار أساسيات Python' },
-      ],
-      assignments: [
-        { id: 1, title: 'تحليل مجموعة بيانات حقيقية' },
-      ],
-      additionalMaterials: []
+      chapters: [
+        {
+          id: 1,
+          title: 'مقدمة',
+          lessons: [{ id: 1, title: 'مقدمة إلى Python' }],
+          quizzes: [{ id: 1, title: 'اختبار أساسيات Python' }],
+          assignments: [],
+          additionalMaterials: []
+        }
+      ]
     }
   },
   {
@@ -116,17 +149,19 @@ export const courses = [
     popularity: 'standard',
     newness: 'old',
     content: {
-      lessons: [
-        { id: 1, title: 'مبادئ الإدارة' },
-        { id: 2, title: 'استراتيجيات التسويق' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار مبادئ الإدارة' },
-      ],
-      assignments: [
-        { id: 1, title: 'دراسة حالة: شركة ناشئة' },
-      ],
-      additionalMaterials: []
+      chapters: [
+        {
+          id: 1,
+          title: 'مقدمة',
+          lessons: [
+            { id: 1, title: 'مبادئ الإدارة' },
+            { id: 2, title: 'استراتيجيات التسويق' },
+          ],
+          quizzes: [{ id: 1, title: 'اختبار مبادئ الإدارة' }],
+          assignments: [{ id: 1, title: 'دراسة حالة: شركة ناشئة' }],
+          additionalMaterials: []
+        }
+      ]
     }
   },
   {
@@ -145,17 +180,23 @@ export const courses = [
     popularity: 'standard',
     newness: 'new',
     content: {
-      lessons: [
-        { id: 1, title: 'مقدمة في نظرية الألوان' },
-        { id: 2, title: 'أساسيات الطباعة' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار نظرية الألوان' },
-      ],
-      assignments: [
-        { id: 1, title: 'تصميم هوية بصرية بسيطة' },
-      ],
-      additionalMaterials: []
+      chapters: [
+        {
+          id: 1,
+          title: 'مقدمة',
+          lessons: [
+            { id: 1, title: 'مقدمة في نظرية الألوان' },
+            { id: 2, title: 'أساسيات الطباعة' },
+          ],
+          quizzes: [
+            { id: 1, title: 'اختبار نظرية الألوان' },
+          ],
+          assignments: [
+            { id: 1, title: 'تصميم هوية بصرية بسيطة' },
+          ],
+          additionalMaterials: []
+        }
+      ]
     }
   },
   {
@@ -174,17 +215,23 @@ export const courses = [
     popularity: 'standard',
     newness: 'old',
      content: {
-      lessons: [
-        { id: 1, title: 'قانون أوم' },
-        { id: 2, title: 'تحليل الدوائر' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار قانون أوم' },
-      ],
-      assignments: [
-        { id: 1, title: 'تصميم دائرة بسيطة' },
-      ],
-      additionalMaterials: []
+        chapters: [
+            {
+                id: 1,
+                title: 'مقدمة',
+                lessons: [
+                    { id: 1, title: 'قانون أوم' },
+                    { id: 2, title: 'تحليل الدوائر' },
+                ],
+                quizzes: [
+                    { id: 1, title: 'اختبار قانون أوم' },
+                ],
+                assignments: [
+                    { id: 1, title: 'تصميم دائرة بسيطة' },
+                ],
+                additionalMaterials: []
+            }
+        ]
     }
   },
   {
@@ -203,17 +250,23 @@ export const courses = [
     popularity: 'standard',
     newness: 'new',
      content: {
-      lessons: [
-        { id: 1, title: 'مدارس النقد الأدبي' },
-        { id: 2, title: 'تحليل الشخصيات' },
-      ],
-      quizzes: [
-        { id: 1, title: 'اختبار مدارس النقد' },
-      ],
-      assignments: [
-        { id: 1, title: 'تحليل قصيدة مختارة' },
-      ],
-      additionalMaterials: []
+        chapters: [
+            {
+                id: 1,
+                title: 'مقدمة',
+                lessons: [
+                    { id: 1, title: 'مدارس النقد الأدبي' },
+                    { id: 2, title: 'تحليل الشخصيات' },
+                ],
+                quizzes: [
+                    { id: 1, title: 'اختبار مدارس النقد' },
+                ],
+                assignments: [
+                    { id: 1, title: 'تحليل قصيدة مختارة' },
+                ],
+                additionalMaterials: []
+            }
+        ]
     }
   },
 ];
