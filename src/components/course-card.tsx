@@ -38,23 +38,27 @@ export function CourseCard({ course }: { course: Course }) {
 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col">
-      <Link href={`/student/course/${course.id}`} className="flex-1 flex flex-col">
-        <CardHeader className="p-0">
-          <div className="aspect-video bg-muted/30 flex items-center justify-center">
-            <span className="text-6xl">{course.emoji}</span>
-          </div>
-        </CardHeader>
-        <CardContent className="p-4 flex-1">
-          <div className="flex justify-between items-start mb-2">
-            <h3 className="font-semibold text-lg truncate pr-2">{course.title}</h3>
-            <Badge variant="outline">{course.code}</Badge>
-          </div>
-          <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-sm text-muted-foreground hover:underline">{course.teacher}</Link>
-          <div className="flex items-center mt-2">
-            <span className="font-bold text-amber-500 mr-1">{course.rating.toFixed(1)}</span>
-            <Star className="w-4 h-4 fill-amber-400 text-amber-500" />
-          </div>
-        </CardContent>
+      <Link href={`/student/course/${course.id}`} className="flex-1 flex flex-col" passHref>
+        <div className="flex-1 flex flex-col">
+          <CardHeader className="p-0">
+            <div className="aspect-video bg-muted/30 flex items-center justify-center">
+              <span className="text-6xl">{course.emoji}</span>
+            </div>
+          </CardHeader>
+          <CardContent className="p-4 flex-1">
+            <div className="flex justify-between items-start mb-2">
+              <h3 className="font-semibold text-lg truncate pr-2">{course.title}</h3>
+              <Badge variant="outline">{course.code}</Badge>
+            </div>
+            <Link href={`/teacher/profile?id=${course.teacherId}`} className="text-sm text-muted-foreground hover:underline" onClick={(e) => e.stopPropagation()}>
+                {course.teacher}
+            </Link>
+            <div className="flex items-center mt-2">
+              <span className="font-bold text-amber-500 mr-1">{course.rating.toFixed(1)}</span>
+              <Star className="w-4 h-4 fill-amber-400 text-amber-500" />
+            </div>
+          </CardContent>
+        </div>
       </Link>
       <CardFooter className="p-4 flex justify-between items-center bg-muted/30">
         <div>
@@ -71,5 +75,3 @@ export function CourseCard({ course }: { course: Course }) {
     </Card>
   );
 }
-
-    
