@@ -2,9 +2,9 @@
 'use client';
 import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Presentation, Users, Star, BookCopy, UserCircle } from 'lucide-react';
+import { Users, Star, BookCopy, UserCircle } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
 import { Teacher } from '@/lib/types';
 
