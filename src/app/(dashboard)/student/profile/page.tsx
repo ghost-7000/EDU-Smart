@@ -1,69 +1,129 @@
 
 'use client';
+import { useState } from 'react';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from '@/components/ui/card';
-import { studentData, placeholderImages } from '@/lib/placeholder-data';
+import { studentData, placeholderImages, branches, specializations, academicYears } from '@/lib/placeholder-data';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { Badge } from '@/components/ui/badge';
-import { GraduationCap, BookCopy, LogOut } from 'lucide-react';
+import { GraduationCap, Edit } from 'lucide-react';
 import { useLanguage } from '@/hooks/use-language';
+import { useToast } from '@/hooks/use-toast';
+import { Label } from '@/components/ui/label';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 export default function StudentProfilePage() {
     const { t } = useLanguage();
+    const { toast } = useToast();
     const avatarImage = placeholderImages.find(p => p.id === 'student-avatar');
 
-    const getStatusText = (status: 'active' | 'trial' | 'completed') => {
-        if (status === 'active') return t.statusActive;
-        if (status === 'trial') return t.statusTrial;
-        if (status === 'completed') return t.statusCompleted;
-        return '';
+    const [profile, setProfile] = useState(studentData);
+    
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setProfile(prev => ({...prev, [name]: value}));
+    }
+
+    const handleSelectChange = (name: string) => (value: string) => {
+         setProfile(prev => ({...prev, [name]: value}));
+    }
+
+    const handleSaveChanges = () => {
+        toast({
+            title: "Profile Updated",
+            description: "Your profile has been saved successfully.",
+        })
     }
 
   return (
     <div>
         <h1 className="text-3xl font-bold font-headline mb-6">{t.myProfile}</h1>
-        <Card className="max-w-2xl mx-auto">
-            <CardHeader className="text-center items-center">
-                <Avatar className="w-24 h-24 mb-4">
-                    {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Student Avatar" />}
-                    <AvatarFallback className="text-4xl"><GraduationCap /></AvatarFallback>
-                </Avatar>
-                <CardTitle className="text-2xl">{studentData.name}</CardTitle>
-                <CardDescription>{studentData.branch}</CardDescription>
-                <p className="text-lg text-amber-500 font-semibold mt-2">{studentData.points} {t.pointsEarned.split(' ')[0]} 🏆</p>
+        <Card className="max-w-4xl mx-auto">
+            <CardHeader>
+                <CardTitle className="text-2xl">{t.editProfile}</CardTitle>
+                <CardDescription>{t.editProfile_sidebar}</CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
-                <div>
-                    <h3 className="text-lg font-semibold mb-2">{t.enrolledCourses}</h3>
-                    <div className="space-y-2">
-                        {studentData.enrolledCourses.map(course => (
-                            <div key={course.id} className="flex justify-between items-center p-3 rounded-md border">
-                                <span>{course.title}</span>
-                                 <Badge variant={course.status === 'completed' ? 'default' : 'secondary'}>
-                                    {getStatusText(course.status as any)}
-                                 </Badge>
-                            </div>
-                        ))}
+                <div className="flex items-center gap-6">
+                    <Avatar className="w-24 h-24">
+                        {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Student Avatar" />}
+                        <AvatarFallback className="text-4xl"><GraduationCap /></AvatarFallback>
+                    </Avatar>
+                     <div className='flex-1'>
+                        <Label htmlFor="picture">{t.uploadNewPhoto}</Label>
+                        <div className="flex gap-2 mt-2">
+                            <Input id="picture" type="file" className="flex-1" />
+                        </div>
                     </div>
                 </div>
-                <div className="flex flex-col sm:flex-row gap-2">
-                    <Button variant="outline" className="w-full">{t.editAccount}</Button>
-                    <Link href="/student/browse-courses" className="w-full">
-                        <Button className="w-full"><BookCopy className="ml-2 h-4 w-4" /> {t.browseCourses}</Button>
-                    </Link>
-                    <Link href="/" className="w-full">
-                        <Button variant="destructive" className="w-full"><LogOut className="ml-2 h-4 w-4" /> {t.logout}</Button>
-                    </Link>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-2">
+                        <Label htmlFor="name">{t.fullName}</Label>
+                        <Input id="name" name="name" value={profile.name} onChange={handleInputChange} />
+                    </div>
+                    <div className="space-y-2">
+                        <Label htmlFor="email">{t.email}</Label>
+                        <Input id="email" name="email" type="email" value={profile.email} onChange={handleInputChange} />
+                    </div>
+                     <div className="space-y-2">
+                        <Label htmlFor="branch">{t.selectBranch}</Label>
+                        <Select value={profile.branch} onValueChange={handleSelectChange('branch')}>
+                            <SelectTrigger id="branch">
+                                <SelectValue placeholder={t.selectYourBranch} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {branches.map(branch => (
+                                    <SelectItem key={branch} value={branch}>{branch}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                     <div className="space-y-2">
+                        <Label htmlFor="specialization">{t.specialization}</Label>
+                         <Select value={profile.specialization} onValueChange={handleSelectChange('specialization')}>
+                            <SelectTrigger id="specialization">
+                                <SelectValue placeholder={t.selectSpecialization} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {specializations.map(spec => (
+                                    <SelectItem key={spec} value={spec}>{spec}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                     <div className="space-y-2">
+                        <Label htmlFor="academicYear">{t.academicYear}</Label>
+                         <Select value={profile.academicYear} onValueChange={handleSelectChange('academicYear')}>
+                            <SelectTrigger id="academicYear">
+                                <SelectValue placeholder={t.selectAcademicYear} />
+                            </SelectTrigger>
+                            <SelectContent>
+                                {academicYears.map(year => (
+                                    <SelectItem key={year} value={year}>{year}</SelectItem>
+                                ))}
+                            </SelectContent>
+                        </Select>
+                    </div>
+                </div>
+                 <div className="space-y-2">
+                    <Label htmlFor="bio">{t.bio}</Label>
+                    <Textarea id="bio" name="bio" placeholder="Tell us a little about yourself" value={profile.bio} onChange={handleInputChange} rows={4} />
                 </div>
             </CardContent>
+            <CardFooter className="border-t pt-6">
+                <Button onClick={handleSaveChanges}>{t.saveChanges}</Button>
+            </CardFooter>
         </Card>
     </div>
   );
 }
+

@@ -17,6 +17,24 @@ export const branches = [
   'بدية'
 ];
 
+export const specializations = [
+    'تكنولوجيا المعلومات',
+    'إدارة الأعمال',
+    'الهندسة',
+    'الفنون والتصميم',
+    'الآداب والعلوم الإنسانية',
+    'العلوم التطبيقية'
+];
+
+export const academicYears = [
+    'السنة الأولى',
+    'السنة الثانية',
+    'السنة الثالثة',
+    'السنة الرابعة',
+    'دراسات عليا'
+];
+
+
 export const courses = [
   {
     id: 1,
@@ -38,7 +56,7 @@ export const courses = [
     teacherId: 1,
     title: 'أساسيات علم البيانات',
     code: 'DS202',
-    teacher: 'أ. فاطمة الشيذانية',
+    teacher: 'د. أحمد المحروقي',
     rating: 4.8,
     price: 20,
     isFreeTrial: false,
@@ -53,7 +71,7 @@ export const courses = [
     teacherId: 2,
     title: 'إدارة الأعمال الحديثة',
     code: 'BUS301',
-    teacher: 'د. سالم الوهيبي',
+    teacher: 'أ. فاطمة الشيذانية',
     rating: 4.2,
     price: 15,
     isFreeTrial: false,
@@ -68,7 +86,7 @@ export const courses = [
     teacherId: 3,
     title: 'فن التصميم الجرافيكي',
     code: 'ART110',
-    teacher: 'أ. مريم الحوسنية',
+    teacher: 'د. سالم الوهيبي',
     rating: 4.9,
     price: 18,
     isFreeTrial: true,
@@ -83,7 +101,7 @@ export const courses = [
     teacherId: 4,
     title: 'مبادئ الهندسة الكهربائية',
     code: 'EE250',
-    teacher: 'د. يوسف العامري',
+    teacher: 'أ. مريم الحوسنية',
     rating: 4.6,
     price: 25,
     isFreeTrial: false,
@@ -98,7 +116,7 @@ export const courses = [
     teacherId: 1,
     title: 'تحليل النصوص الأدبية',
     code: 'LIT400',
-    teacher: 'أ. عائشة البلوشية',
+    teacher: 'د. يوسف العامري',
     rating: 4.7,
     price: null,
     isFreeTrial: true,
@@ -112,7 +130,11 @@ export const courses = [
 
 export const studentData = {
   name: 'علي بن محمد',
+  email: 'ali.mohamed@email.com',
   branch: 'مسقط',
+  specialization: 'تكنولوجيا المعلومات',
+  academicYear: 'السنة الثالثة',
+  bio: 'طالب شغوف بتعلم تقنيات الويب الجديدة وتطوير التطبيقات.',
   points: 1250,
   enrolledCourses: [
     { ...courses[0], status: 'active', progress: 75 },
@@ -124,7 +146,10 @@ export const studentData = {
 export const teacherData = {
   id: 1,
   name: 'د. أحمد المحروقي',
+  email: 'ahmed.mahrouqi@email.com',
   branch: 'مسقط',
+  specialization: 'تكنولوجيا المعلومات',
+  bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
   totalCourses: 3,
   courses: [
     { ...courses[0], enrolledStudents: 152, reviews: [ {rating: 4, comment: "شرح ممتاز!"}, {rating: 5, comment: "كورس رائع ومفيد جدا."} ] },

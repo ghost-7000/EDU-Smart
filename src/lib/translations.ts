@@ -115,7 +115,6 @@ export type Translation = {
   publishedCourses: string;
   latestCourses: string;
   viewAll: string;
-  student: string;
   rating: string;
   edit: string;
   delete: string;
@@ -158,6 +157,18 @@ export type Translation = {
   cancel: string;
   continue: string;
   
+  // Profile Editing
+  editProfile: string;
+  saveChanges: string;
+  uploadNewPhoto: string;
+  academicYear: string;
+  specialization: string;
+  bio: string;
+  selectSpecialization: string;
+  selectAcademicYear: string;
+  selectYourBranch: string;
+
+
   // Toasts
   registeredSuccess: string;
   registeredCourse: string;
@@ -330,6 +341,17 @@ const en: Translation = {
   cancel: 'Cancel',
   continue: 'Continue',
 
+  // Profile Editing
+  editProfile: 'Edit Profile',
+  saveChanges: 'Save Changes',
+  uploadNewPhoto: 'Upload new photo',
+  academicYear: 'Academic Year',
+  specialization: 'Specialization',
+  bio: 'Bio',
+  selectSpecialization: 'Select your specialization',
+  selectAcademicYear: 'Select your academic year',
+  selectYourBranch: 'Select your branch',
+
   // Toasts
   registeredSuccess: "Registered Successfully!",
   registeredCourse: "You have been enrolled in",
@@ -501,6 +523,17 @@ const ar: Translation = {
   confirmDeleteDesc: 'هذا الإجراء لا يمكن التراجع عنه. سيؤدي هذا إلى حذف الكورس وجميع بياناته بشكل دائم.',
   cancel: 'إلغاء',
   continue: 'متابعة',
+
+  // Profile Editing
+  editProfile: 'تعديل الملف الشخصي',
+  saveChanges: 'حفظ التغييرات',
+  uploadNewPhoto: 'تحميل صورة جديدة',
+  academicYear: 'السنة الدراسية',
+  specialization: 'التخصص',
+  bio: 'نبذة تعريفية',
+  selectSpecialization: 'اختر تخصصك',
+  selectAcademicYear: 'اختر سنتك الدراسية',
+  selectYourBranch: 'اختر فرعك',
 
   // Toasts
   registeredSuccess: "تم التسجيل بنجاح!",
