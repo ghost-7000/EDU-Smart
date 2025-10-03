@@ -25,7 +25,6 @@ import { Teacher, Course } from '@/lib/types';
 
 
 const getTeacherById = (id: number): Teacher | undefined => {
-    // This should ideally fetch from a DB, but we'll use placeholder data
     const teacherData = allTeachers.find(teacher => teacher.id === id);
     if (!teacherData) return undefined;
 
@@ -44,9 +43,8 @@ export default function TeacherProfilePage() {
     const { toast } = useToast();
     const searchParams = useSearchParams();
     const teacherIdParam = searchParams.get('id');
-    const ownProfileId = 1; // Assuming teacher with ID 1 is the logged-in one for demo
+    const ownProfileId = 1; 
     
-    // Determine if the current view is for the teacher's own profile (edit mode) or a student viewing it (view mode).
     const isEditMode = !teacherIdParam;
     const teacherId = teacherIdParam ? parseInt(teacherIdParam, 10) : ownProfileId;
 
@@ -93,7 +91,7 @@ export default function TeacherProfilePage() {
         </div>
         
         {isEditMode ? (
-            // VIEW FOR THE TEACHER (EDIT MODE)
+            // EDIT MODE FOR THE TEACHER
             <Card className="max-w-4xl mx-auto">
                 <CardHeader>
                     <CardTitle className="text-2xl">{t.editProfile}</CardTitle>
@@ -156,7 +154,7 @@ export default function TeacherProfilePage() {
                 </CardFooter>
             </Card>
         ) : (
-            // VIEW FOR THE STUDENT (READ-ONLY MODE)
+            // VIEW MODE FOR THE STUDENT
              <div className="space-y-8">
                 <Card className="overflow-hidden">
                     <CardContent className="p-6">
