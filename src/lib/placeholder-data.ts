@@ -329,7 +329,7 @@ const allTeachersData = [
     branch: 'مسقط',
     specialization: 'تكنولوجيا المعلومات',
     bio: 'أستاذ جامعي متخصص في علوم الحاسب وتطوير الويب، أؤمن بأهمية التعليم التفاعلي والمشاريع العملية.',
-    avatar: placeholderImages.find(p => p.id === 'teacher-avatar')?.imageUrl,
+    avatar: 'https://i.imgur.com/8N3a5s2.png',
   },
   {
     id: 2,
@@ -338,7 +338,7 @@ const allTeachersData = [
     branch: 'صحار',
     specialization: 'إدارة الأعمال',
     bio: 'خبيرة في ريادة الأعمال واستراتيجيات التسويق الحديثة.',
-    avatar: "https://images.unsplash.com/photo-1652795385761-7ac287d0cd03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXJ0b29uJTIwcHJvZmVzc29yfGVufDB8fHx8MTc1OTQ5MjM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+    avatar: 'https://i.imgur.com/J3z4p4q.png',
   },
   {
     id: 3,
@@ -347,7 +347,7 @@ const allTeachersData = [
     branch: 'نزوى',
     specialization: 'الفنون والتصميم',
     bio: 'مصمم جرافيك عالمي بخبرة تمتد لعقدين في مجال الهوية البصرية.',
-    avatar: "https://images.unsplash.com/photo-1631913290783-490324506193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc1OTQ0NTA1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+    avatar: "https://i.imgur.com/8N3a5s2.png",
   },
   {
     id: 4,
@@ -356,7 +356,7 @@ const allTeachersData = [
     branch: 'صلالة',
     specialization: 'الهندسة',
     bio: 'مهندسة كهربائية متخصصة في أنظمة الطاقة المتجددة.',
-    avatar: "https://images.unsplash.com/photo-1544717297-fa95b9ee9643?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxwb3J0cmFpdCUyMG9mJTIwY2FydG9vbiUyMGZlbWFsZSUyMHByb2Zlc3NvcnxlbnwwfHx8fDE3NTk1NjI4OTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    avatar: "https://i.imgur.com/J3z4p4q.png",
   },
   {
     id: 5,
@@ -365,7 +365,7 @@ const allTeachersData = [
     branch: 'مسقط',
     specialization: 'الآداب والعلوم الإنسانية',
     bio: 'باحث وناقد أدبي، متخصص في الأدب العربي المعاصر.',
-     avatar: "https://images.unsplash.com/photo-1631913290783-490324506193?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxjYXJ0b29uJTIwYXZhdGFyfGVufDB8fHx8MTc1OTQ0NTA1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+     avatar: "https://i.imgur.com/8N3a5s2.png",
   }
 ];
 

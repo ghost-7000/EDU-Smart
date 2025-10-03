@@ -147,39 +147,37 @@ export default function TeacherProfilePage() {
              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-1 space-y-6">
                     <Card className="text-center">
-                        <CardHeader className="items-center">
-                            <Avatar className="w-24 h-24 mb-4">
+                        <CardContent className="p-6">
+                            <Avatar className="w-24 h-24 mb-4 mx-auto">
                                 {profile.avatar && <AvatarImage src={profile.avatar} alt={profile.name} />}
                                 <AvatarFallback className="text-4xl"><Presentation /></AvatarFallback>
                             </Avatar>
-                            <CardTitle className="text-2xl">{profile.name}</CardTitle>
-                            <CardDescription>{profile.branch}</CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                           <p className="text-sm text-muted-foreground">{profile.bio}</p>
+                            <h2 className="text-2xl font-bold font-headline">{profile.name}</h2>
+                            <p className="text-muted-foreground">{profile.branch}</p>
+                           <p className="text-sm text-muted-foreground mt-4">{profile.bio}</p>
                         </CardContent>
                     </Card>
                      <Card>
                         <CardContent className="grid gap-4 sm:grid-cols-3 lg:grid-cols-1 p-4">
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 p-2">
                                 <Users className="h-8 w-8 text-primary" />
                                 <div>
-                                    <h3 className="text-muted-foreground">{t.totalStudents}</h3>
                                     <p className="text-2xl font-bold">{profile.totalStudents}</p>
+                                    <h3 className="text-muted-foreground text-sm">{t.totalStudents}</h3>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 p-2">
                                 <Star className="h-8 w-8 text-amber-500" />
                                 <div>
-                                    <h3 className="text-muted-foreground">{t.averageRating}</h3>
                                     <p className="text-2xl font-bold">{profile.averageRating.toFixed(1)}</p>
+                                    <h3 className="text-muted-foreground text-sm">{t.averageRating}</h3>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-4 p-2">
                                 <BookCopy className="h-8 w-8 text-green-500" />
                                 <div>
-                                    <h3 className="text-muted-foreground">{t.publishedCourses}</h3>
                                     <p className="text-2xl font-bold">{profile.totalCourses}</p>
+                                    <h3 className="text-muted-foreground text-sm">{t.publishedCourses}</h3>
                                 </div>
                             </div>
                         </CardContent>
