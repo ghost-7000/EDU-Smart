@@ -40,7 +40,6 @@ export default function StudentDashboardLayout({
     { href: '/student/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
 
-
   return (
     <SidebarProvider defaultOpen={false}>
       <Sidebar>
