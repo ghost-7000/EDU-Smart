@@ -85,12 +85,12 @@ export default function MyCoursesPage() {
             </CardContent>
             <CardFooter className="grid grid-cols-2 gap-2">
               <Button variant="outline">
-                <Edit className="ml-2 h-4 w-4" /> {t.edit}
+                <Edit className="mr-2 h-4 w-4" /> {t.edit}
               </Button>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                     <Button variant="destructive">
-                        <Trash2 className="ml-2 h-4 w-4" /> {t.delete}
+                        <Trash2 className="mr-2 h-4 w-4" /> {t.delete}
                     </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>

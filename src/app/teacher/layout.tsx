@@ -41,7 +41,7 @@ export default function TeacherDashboardLayout({
   ];
 
   return (
-    <SidebarProvider defaultOpen={false}>
+    <SidebarProvider defaultOpen={true}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
           <Logo />
@@ -81,7 +81,7 @@ export default function TeacherDashboardLayout({
         <Header loggedIn={true} user={teacherData}>
             <SidebarTrigger />
         </Header>
-        <main className="p-4 md:p-6 bg-background/80 flex-1">{children}</main>
+        <main className="p-4 md:p-6 bg-muted/20 flex-1">{children}</main>
         <footer className="p-4 border-t text-center text-sm text-muted-foreground">
             {t.copyright}
         </footer>
