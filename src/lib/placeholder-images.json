@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Students studying in a modern university setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1721468184185-214871ec4411?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxzdHVkZW50cyUyMGxlYXJuaW5nfGVufDB8fHx8MTc1OTQ3MTUyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "students learning"
+    },
+    {
+      "id": "course-1",
+      "description": "Thumbnail for a web development course.",
+      "imageUrl": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb2RlJTIwY29tcHV0ZXJ8ZW58MHx8fHwxNzU5NDA4NzM2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code computer"
+    },
+    {
+      "id": "course-2",
+      "description": "Thumbnail for a data science course.",
+      "imageUrl": "https://images.unsplash.com/photo-1634117622592-114e3024ff27?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkYXRhJTIwY2hhcnR8ZW58MHx8fHwxNzU5NDcyMTgwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data chart"
+    },
+    {
+      "id": "course-3",
+      "description": "Thumbnail for a business management course.",
+      "imageUrl": "https://images.unsplash.com/photo-1686771416282-3888ddaf249b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzU5NDM2MTM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business meeting"
+    },
+    {
+      "id": "course-4",
+      "description": "Thumbnail for a graphic design course.",
+      "imageUrl": "https://images.unsplash.com/photo-1724676792636-46e290f66168?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxkZXNpZ24lMjBza2V0Y2h8ZW58MHx8fHwxNzU5NDA5Mzk1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "design sketch"
+    },
+    {
+      "id": "course-5",
+      "description": "Thumbnail for an electrical engineering course.",
+      "imageUrl": "https://images.unsplash.com/photo-1580584126903-c17d41830450?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjaXJjdWl0JTIwYm9hcmR8ZW58MHx8fHwxNzU5NDY2MzM5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "circuit board"
+    },
+    {
+      "id": "course-6",
+      "description": "Thumbnail for a literature course.",
+      "imageUrl": "https://images.unsplash.com/photo-1553538644-f3fa6f592bc5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Ym9va3MlMjBsaWJyYXJ5fGVufDB8fHx8MTc1OTQ3ODg2MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "books library"
+    }
+  ]
 }
