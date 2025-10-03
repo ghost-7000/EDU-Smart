@@ -6,9 +6,10 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { CheckCircle2 } from 'lucide-react';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
-import { placeholderImages } from '@/lib/placeholder-data';
+import { placeholderImages, courses } from '@/lib/placeholder-data';
 import Link from 'next/link';
 import { useLanguage } from '@/hooks/use-language';
+import { CourseCard } from '@/components/course-card';
 
 export default function Home() {
   const { t } = useLanguage();
@@ -82,6 +83,7 @@ export default function Home() {
       features: [t.planFeatureAllPro, t.planFeatureAIAssistant, t.planFeatureSessions]
     }
   ]
+  const latestCourses = courses.slice(0, 4);
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -119,7 +121,30 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="latest-courses" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container mx-auto px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
+                    {t.latestCourses}
+                </h2>
+                <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                    {t.featuresSubtitle}
+                </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+                {latestCourses.map((course) => (
+                    <CourseCard key={course.id} course={course} />
+                ))}
+            </div>
+             <div className="text-center mt-12">
+                <Link href="/student/browse-courses">
+                    <Button variant="outline">{t.viewAll}</Button>
+                </Link>
+            </div>
+          </div>
+        </section>
+
+        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32 bg-card">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
@@ -138,7 +163,7 @@ export default function Home() {
             </div>
         </section>
 
-        <section id="features" className="w-full bg-card py-12 md:py-24 lg:py-32">
+        <section id="features" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -166,7 +191,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="plans" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="plans" className="w-full bg-card py-12 md:py-24 lg:py-32">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
