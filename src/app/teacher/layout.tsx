@@ -8,7 +8,6 @@ import {
   LogOut,
   PlusCircle,
   Settings,
-  Search,
 } from 'lucide-react';
 import {
   SidebarProvider,
@@ -35,9 +34,8 @@ export default function TeacherDashboardLayout({
   const { t } = useLanguage();
   const navItems = [
     { href: '/teacher/dashboard', label: t.dashboard, icon: LayoutDashboard },
-    { href: '/teacher/add-course', label: t.addCourse_sidebar, icon: PlusCircle },
     { href: '/teacher/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
-    { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
+    { href: '/teacher/add-course', label: t.addCourse_sidebar, icon: PlusCircle },
     { href: '/teacher/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
 
