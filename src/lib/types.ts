@@ -1,6 +1,12 @@
 
 import type { ImagePlaceholder } from './placeholder-images';
 
+export type Review = {
+    rating: number;
+    comment: string;
+    courseTitle?: string;
+};
+
 export type Course = {
     id: number;
     teacherId: number;
@@ -17,7 +23,7 @@ export type Course = {
     popularity: string;
     newness: string;
     enrolledStudents: number;
-    reviews: { rating: number; comment: string }[];
+    reviews: Review[];
     content: {
         chapters: {
             id: number;
@@ -48,6 +54,7 @@ export type Teacher = {
   totalStudents: number;
   averageRating: number;
   courses: Course[];
+  reviews?: Review[];
 };
 
 export type Student = {
@@ -60,5 +67,7 @@ export type Student = {
   points: number;
   enrolledCourses: EnrolledCourse[];
 };
+
+    
 
     

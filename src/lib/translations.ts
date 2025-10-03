@@ -131,6 +131,12 @@ export type Translation = {
   contactTeacher: string;
   contact: string;
   contactTeacherDesc: string;
+  aboutTeacher: string;
+  qualifications: string;
+  qualificationsDesc: string;
+  experience: string;
+  experienceDesc: string;
+  studentReviews: string;
   
   // Course Pages
   discoverCourses: string;
@@ -181,7 +187,7 @@ export type Translation = {
   myCourses_teacher: string;
   addCourse_teacher: string;
   latestReviews: string;
-  noReviewsYet: string,
+  noReviewsYet: string;
   confirmDelete: string;
   confirmDeleteDesc: string;
   cancel: string;
@@ -348,6 +354,12 @@ const en: Translation = {
   contactTeacher: 'Contact Teacher',
   contact: 'Contact',
   contactTeacherDesc: 'To contact the teacher, please enroll in one of their courses and use the messaging feature on the course page.',
+  aboutTeacher: 'About Teacher',
+  qualifications: 'Qualifications',
+  qualificationsDesc: 'PhD in Computer Science from Sultan Qaboos University.',
+  experience: 'Experience',
+  experienceDesc: '10+ years of experience in teaching and software development.',
+  studentReviews: 'Student Reviews',
 
   // Course Pages
   discoverCourses: 'Discover Courses',
@@ -564,6 +576,12 @@ const ar: Translation = {
   contactTeacher: 'تواصل مع المعلم',
   contact: 'تواصل',
   contactTeacherDesc: 'للتواصل مع المعلم، يرجى التسجيل في أحد كورساته واستخدام ميزة المراسلة في صفحة الكورس.',
+  aboutTeacher: 'عن المعلم',
+  qualifications: 'المؤهلات العلمية',
+  qualificationsDesc: 'دكتوراة في علوم الحاسب من جامعة السلطان قابوس.',
+  experience: 'الخبرة العملية',
+  experienceDesc: 'خبرة أكثر من 10 سنوات في التدريس وتطوير البرمجيات.',
+  studentReviews: 'آراء الطلاب',
   
   // Course Pages
   discoverCourses: 'اكتشف الكورسات',
@@ -656,3 +674,5 @@ export const translations: Record<Language, Translation> = {
   en,
   ar,
 };
+
+    

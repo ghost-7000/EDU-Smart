@@ -2,7 +2,7 @@
 "use client";
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-import { Star } from 'lucide-react';
+import { Star, Users } from 'lucide-react';
 import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
@@ -18,6 +18,7 @@ type Course = {
   price: number | null;
   isFreeTrial: boolean;
   emoji: string;
+  enrolledStudents: number;
   image?: {
     imageUrl: string;
     description: string;
@@ -53,9 +54,15 @@ export function CourseCard({ course }: { course: Course }) {
             <Link href={`/student/teacher/${course.teacherId}`} className="text-sm text-muted-foreground hover:underline" onClick={(e) => e.stopPropagation()}>
                 {course.teacher}
             </Link>
-            <div className="flex items-center mt-2">
-              <span className="font-bold text-amber-500 mr-1">{course.rating.toFixed(1)}</span>
-              <Star className="w-4 h-4 fill-amber-400 text-amber-500" />
+            <div className="flex items-center justify-between text-sm text-muted-foreground mt-2">
+                <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 fill-amber-400 text-amber-500" />
+                    <span className="font-bold text-amber-500">{course.rating.toFixed(1)}</span>
+                </div>
+                <div className="flex items-center gap-1">
+                    <Users className="w-4 h-4" />
+                    <span>{course.enrolledStudents}</span>
+                </div>
             </div>
           </CardContent>
         </div>
@@ -75,6 +82,5 @@ export function CourseCard({ course }: { course: Course }) {
     </Card>
   );
 }
-
 
     
