@@ -44,7 +44,6 @@ export default function StudentDashboardLayout({
     <SidebarProvider defaultOpen={false}>
       <Sidebar>
         <SidebarHeader className="border-b p-4">
-          
           <Logo />
         </SidebarHeader>
         <SidebarContent className="p-4">
@@ -90,5 +89,3 @@ export default function StudentDashboardLayout({
     </SidebarProvider>
   );
 }
-
-    
