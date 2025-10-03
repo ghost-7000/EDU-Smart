@@ -39,16 +39,19 @@ export function CourseCard({ course }: { course: Course }) {
 
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col">
-      <Link href={`/student/course/${course.id}`} className="flex-1 flex flex-col" passHref>
         <div className="flex-1 flex flex-col">
-          <CardHeader className="p-0">
-            <div className="aspect-video bg-muted/30 flex items-center justify-center">
-              <span className="text-6xl">{course.emoji}</span>
-            </div>
-          </CardHeader>
+          <Link href={`/student/course/${course.id}`} passHref>
+            <CardHeader className="p-0">
+              <div className="aspect-video bg-muted/30 flex items-center justify-center">
+                <span className="text-6xl">{course.emoji}</span>
+              </div>
+            </CardHeader>
+          </Link>
           <CardContent className="p-4 flex-1">
             <div className="flex justify-between items-start mb-2">
-              <h3 className="font-semibold text-lg truncate pr-2">{course.title}</h3>
+                <Link href={`/student/course/${course.id}`} className="hover:underline">
+                    <h3 className="font-semibold text-lg truncate pr-2">{course.title}</h3>
+                </Link>
               <Badge variant="outline">{course.code}</Badge>
             </div>
             <Link href={`/student/teacher/${course.teacherId}`} className="text-sm text-muted-foreground hover:underline" onClick={(e) => e.stopPropagation()}>
@@ -66,7 +69,6 @@ export function CourseCard({ course }: { course: Course }) {
             </div>
           </CardContent>
         </div>
-      </Link>
       <CardFooter className="p-4 flex justify-between items-center bg-muted/30">
         <div>
           {course.isFreeTrial ? (
