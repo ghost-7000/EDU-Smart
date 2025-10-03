@@ -3,20 +3,29 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, UserCircle } from 'lucide-react';
 import { Logo } from './logo';
 import { ThemeToggle } from './theme-toggle';
 import { LanguageToggle } from './language-toggle';
 import { useLanguage } from '@/hooks/use-language';
 import { cn } from '@/lib/utils';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 export function Header() {
   const { t, dir } = useLanguage();
 
   const navLinks = [
     { href: '/', label: t.home },
+    { href: '#', label: 'الباقات' },
+    { href: '#', label: 'كيف تعمل' },
     { href: '/student/browse-courses', label: t.courses },
-    { href: '#', label: t.aboutUs },
   ];
 
   return (
@@ -45,6 +54,19 @@ export function Header() {
             </Link>
             <LanguageToggle />
             <ThemeToggle />
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <UserCircle className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuLabel>حسابي</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem asChild><Link href="/student/profile">ملفي الشخصي</Link></DropdownMenuItem>
+                <DropdownMenuItem>{t.logout}</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
           
           <div className="md:hidden">

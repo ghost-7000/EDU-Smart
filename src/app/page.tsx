@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -12,40 +13,65 @@ export default function Home() {
 
   const features = [
     {
-      title: 'دورات معتمدة',
-      description: 'يقدمها معلمون معتمدون من جامعة UTAS لضمان أعلى جودة تعليمية.',
-      icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
-    },
-    {
       title: 'تجربة مجانية',
       description: 'استكشف منصتنا مع تجربة مجانية لمدة 7 أيام لجميع الكورسات.',
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-      title: 'نظام تقييم ذكي',
-      description: 'احصل على تقييمات فورية وتوصيات مخصصة لتحسين مسارك التعليمي.',
+        title: 'تقييمات ذكية',
+        description: 'احصل على تقييمات فورية وتوصيات مخصصة لتحسين مسارك التعليمي.',
+        icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
+    },
+    {
+      title: 'الوضع الغامق/الفاتح',
+      description: 'اختر المظهر الذي يناسبك لتجربة قراءة مريحة.',
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
+    },
+    {
+        title: 'دعم متعدد اللغات',
+        description: 'تنقل بسهولة بين اللغتين العربية والإنجليزية.',
+        icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
       title: 'نقاط ومكافآت',
       description: 'اكتسب نقاطًا عند إكمال الدورات واستبدلها بمكافآت حصرية.',
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
+    {
+        title: 'صفحات مخصصة',
+        description: 'لوحات تحكم خاصة بالطلاب والمعلمين لتجربة فريدة.',
+        icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
+    }
+  ];
+
+  const howItWorks = [
+    {
+      title: '1. تسجيل الدخول',
+      description: 'أنشئ حسابك كطالب أو معلم في خطوات بسيطة.',
+    },
+    {
+        title: '2. اختيار الكورس',
+        description: 'تصفح مكتبة الكورسات واختر ما يناسب اهتماماتك.',
+    },
+    {
+        title: '3. ابدأ التعلم',
+        description: 'ابدأ رحلتك التعليمية أو قم بإضافة كورساتك الخاصة كمعلم.',
+    }
   ];
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <section className="relative w-full py-20 md:py-32 lg:py-40">
+        <section className="relative w-full py-20 md:py-32 lg:py-40 bg-card">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div className="flex flex-col items-start justify-center space-y-6">
                 <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">
-                  منصة تعليمية مبتكرة لطلاب جامعة UTAS
+                  EduSmart – منصتك التعليمية الذكية لطلاب UTAS
                 </h1>
                 <p className="max-w-xl text-lg text-foreground/80 md:text-xl">
-                  مرحبًا بك في EduSmart، بوابتك لتجربة تعليمية فريدة ومصممة خصيصًا لتلبية احتياجاتك الأكاديمية.
+                  تعلم من أفضل المعلمين مع تجربة مجانية 7 أيام.
                 </p>
                 <Link href="/signup">
                   <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -69,7 +95,26 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="features" className="w-full bg-background py-12 md:py-24 lg:py-32">
+        <section id="how-it-works" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+                    <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
+                        كيف تعمل المنصة
+                    </h2>
+                </div>
+                <div className="grid gap-8 md:grid-cols-3">
+                    {howItWorks.map((step) => (
+                        <div key={step.title} className="flex flex-col items-center text-center">
+                            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary text-primary-foreground font-bold text-2xl mb-4">{step.title.charAt(0)}</div>
+                            <h3 className="text-xl font-bold">{step.title}</h3>
+                            <p className="text-muted-foreground">{step.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section id="features" className="w-full bg-card py-12 md:py-24 lg:py-32">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -96,6 +141,18 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id="cta" className="w-full py-12 md:py-24 lg:py-32">
+            <div className="container mx-auto px-4 md:px-6">
+                <div className="flex flex-col items-center justify-center space-y-4 text-center bg-primary text-primary-foreground p-12 rounded-lg">
+                    <h2 className="font-headline text-3xl font-bold">ابدأ رحلتك التعليمية الآن!</h2>
+                    <Link href="/signup">
+                        <Button size="lg" variant="secondary" className="bg-accent hover:bg-accent/90 text-accent-foreground">إنشاء حساب</Button>
+                    </Link>
+                </div>
+            </div>
+        </section>
+
       </main>
       <Footer />
     </div>
