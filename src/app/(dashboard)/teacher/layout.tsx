@@ -10,6 +10,7 @@ import {
   Presentation,
   BarChart,
   Settings,
+  Search,
 } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -40,7 +41,7 @@ export default function TeacherDashboardLayout({
     { href: '/teacher/dashboard', label: t.dashboard, icon: LayoutDashboard },
     { href: '/teacher/add-course', label: t.addCourse_sidebar, icon: PlusCircle },
     { href: '/teacher/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
-    { href: '#', label: t.reports_sidebar, icon: BarChart },
+    { href: '/student/browse-courses', label: t.browseCourses_sidebar, icon: Search },
     { href: '/teacher/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
   const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
