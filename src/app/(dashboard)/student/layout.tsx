@@ -46,7 +46,7 @@ export default function StudentDashboardLayout({
 
   return (
     <SidebarProvider>
-      <Sidebar collapsible="offcanvas">
+      <Sidebar>
         <SidebarHeader className="border-b p-4">
           <Logo />
         </SidebarHeader>
