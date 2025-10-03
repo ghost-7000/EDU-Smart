@@ -7,7 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
   title: 'EDU Smart',
-  description: 'An innovative educational platform for UTAS students.',
+  description: 'An innovative educational platform for university students.',
 };
 
 export default function RootLayout({

@@ -237,7 +237,7 @@ const en: Translation = {
   copyright: `© ${new Date().getFullYear()} EDU Smart. All rights reserved.`,
 
   // Home Page
-  heroTitle: 'EDU Smart – Your Smart Learning Platform for UTAS Students',
+  heroTitle: 'EDU Smart – Your Smart Learning Platform for University Students',
   heroSubtitle: 'Learn from the best instructors with a 7-day free trial.',
   howItWorksTitle: 'How It Works',
   step1Title: '1. Sign Up',
@@ -282,7 +282,7 @@ const en: Translation = {
   loginAsTeacher: 'Login as Teacher',
   email: 'Email Address',
   password: 'Password',
-  selectBranch: 'Select UTAS Branch',
+  selectBranch: 'Select University Branch',
   noAccount: "Don't have an account?",
   signupDescription: 'Choose your role and fill in the details to join.',
   iAmA: 'I am a:',
@@ -441,7 +441,7 @@ const ar: Translation = {
   copyright: `© ${new Date().getFullYear()} EDU Smart. جميع الحقوق محفوظة.`,
 
   // Home Page
-  heroTitle: 'EDU Smart – منصتك التعليمية الذكية لطلاب UTAS',
+  heroTitle: 'EDU Smart – منصتك التعليمية الذكية لطلاب الجامعات',
   heroSubtitle: 'تعلم من أفضل المعلمين مع تجربة مجانية 7 أيام.',
   howItWorksTitle: 'كيف تعمل المنصة',
   step1Title: '1. تسجيل الدخول',
@@ -486,7 +486,7 @@ const ar: Translation = {
   loginAsTeacher: 'تسجيل كمعلم',
   email: 'البريد الإلكتروني',
   password: 'كلمة المرور',
-  selectBranch: 'اختر فرع UTAS',
+  selectBranch: 'اختر فرع الجامعة',
   noAccount: 'ليس لديك حساب؟',
   signupDescription: 'اختر دورك واملأ التفاصيل للانضمام.',
   iAmA: 'أنا:',
