@@ -176,7 +176,8 @@ const Sidebar = React.forwardRef<
     },
     ref
   ) => {
-    const { isMobile, state, openMobile, setOpenMobile } = useSidebar()
+    const { isMobile, state, open, openMobile, setOpenMobile } = useSidebar()
+    const isOffcanvas = collapsible === 'offcanvas';
 
     if (collapsible === "none") {
       return (
@@ -193,24 +194,27 @@ const Sidebar = React.forwardRef<
       )
     }
 
-    if (isMobile) {
-      return (
-        <Sheet open={openMobile} onOpenChange={setOpenMobile} {...props}>
-          <SheetContent
-            data-sidebar="sidebar"
-            data-mobile="true"
-            className="w-[--sidebar-width] bg-card p-0 text-card-foreground [&>button]:hidden"
-            style={
-              {
-                "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
-              } as React.CSSProperties
-            }
-            side={side}
-          >
-            <div className="flex h-full w-full flex-col">{children}</div>
-          </SheetContent>
-        </Sheet>
-      )
+    if (isMobile || isOffcanvas) {
+        const isOpen = isMobile ? openMobile : open;
+        const setIsOpen = isMobile ? setOpenMobile : (open: boolean) => useSidebar().setOpen(open);
+
+        return (
+            <Sheet open={isOpen} onOpenChange={setIsOpen} {...props}>
+            <SheetContent
+                data-sidebar="sidebar"
+                data-mobile={isMobile}
+                className="w-[--sidebar-width] bg-card p-0 text-card-foreground [&>button]:hidden"
+                style={
+                {
+                    "--sidebar-width": isMobile ? SIDEBAR_WIDTH_MOBILE : SIDEBAR_WIDTH,
+                } as React.CSSProperties
+                }
+                side={side}
+            >
+                <div className="flex h-full w-full flex-col">{children}</div>
+            </SheetContent>
+            </Sheet>
+        )
     }
 
     return (
@@ -339,7 +343,7 @@ const SidebarHeader = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="header"
-      className={cn("flex flex-col gap-2 p-3", className)}
+      className={cn("flex flex-col gap-2", className)}
       {...props}
     />
   )
@@ -354,7 +358,7 @@ const SidebarFooter = React.forwardRef<
     <div
       ref={ref}
       data-sidebar="footer"
-      className={cn("flex flex-col gap-2 p-3 mt-auto", className)}
+      className={cn("flex flex-col gap-2 mt-auto", className)}
       {...props}
     />
   )
@@ -740,3 +744,5 @@ export {
   SidebarTrigger,
   useSidebar,
 }
+
+    
