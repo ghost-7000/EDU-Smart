@@ -37,16 +37,16 @@ export default function SignupPage() {
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <Label>أنا:</Label>
-                            <RadioGroup defaultValue="student" onValueChange={setRole}>
-                                <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                                    <RadioGroupItem value="student" id="r1" />
-                                    <Label htmlFor="r1" className="flex items-center gap-2"><GraduationCap className="h-4 w-4" />طالب</Label>
-                                </div>
-                                <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                                    <RadioGroupItem value="teacher" id="r2" />
-                                    <Label htmlFor="r2" className="flex items-center gap-2"><Presentation className="h-4 w-4" />معلم</Label>
-                                </div>
-                            </RadioGroup>
+                             <div className="grid grid-cols-2 gap-2">
+                                <Button variant={role === 'student' ? 'default' : 'outline'} onClick={() => setRole('student')}>
+                                    <GraduationCap className="ml-2 h-4 w-4" />
+                                    طالب
+                                </Button>
+                                    <Button variant={role === 'teacher' ? 'default' : 'outline'} onClick={() => setRole('teacher')}>
+                                    <Presentation className="ml-2 h-4 w-4" />
+                                    معلم
+                                </Button>
+                            </div>
                         </div>
                         
                         <div className="space-y-2">
@@ -98,4 +98,5 @@ export default function SignupPage() {
     </div>
   );
 }
+
 
