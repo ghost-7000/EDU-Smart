@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
   BookCopy,
+  GraduationCap,
   LayoutDashboard,
   LogOut,
   Search,

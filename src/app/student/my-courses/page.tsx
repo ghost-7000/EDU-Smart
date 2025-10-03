@@ -1,11 +1,14 @@
 
 "use client";
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
+  CardDescription,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Star } from 'lucide-react';
@@ -14,7 +17,6 @@ import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/hooks/use-language';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export default function MyCoursesPage() {
     const { toast } = useToast();

@@ -8,6 +8,7 @@ import {
   LogOut,
   PlusCircle,
   Presentation,
+  BarChart,
   Settings,
   Search,
 } from 'lucide-react';
