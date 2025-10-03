@@ -37,7 +37,7 @@ export default function SignupPage() {
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <Label>أنا:</Label>
-                            <RadioGroup defaultValue="student" className="flex gap-4" onValueChange={setRole}>
+                            <RadioGroup defaultValue="student" onValueChange={setRole}>
                                 <div className="flex items-center space-x-2 rtl:space-x-reverse">
                                     <RadioGroupItem value="student" id="r1" />
                                     <Label htmlFor="r1" className="flex items-center gap-2"><GraduationCap className="h-4 w-4" />طالب</Label>
@@ -98,3 +98,4 @@ export default function SignupPage() {
     </div>
   );
 }
+
