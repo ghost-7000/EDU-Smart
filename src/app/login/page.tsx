@@ -36,15 +36,28 @@ export default function LoginPage() {
                 </CardHeader>
                 <CardContent>
                     <div className="space-y-4">
-                        <div className="grid grid-cols-2 gap-2">
-                            <Button variant={role === 'student' ? 'default' : 'outline'} onClick={() => setRole('student')}>
-                                <GraduationCap className="ml-2 h-4 w-4" />
-                                {t.loginAsStudent}
-                            </Button>
-                             <Button variant={role === 'teacher' ? 'default' : 'outline'} onClick={() => setRole('teacher')}>
-                                <Presentation className="ml-2 h-4 w-4" />
-                                {t.loginAsTeacher}
-                            </Button>
+                        <div className="space-y-2">
+                            <Label>{t.iAmA}</Label>
+                            <div className="grid grid-cols-2 gap-2">
+                                <Button variant={role === 'student' ? 'default' : 'outline'} onClick={() => setRole('student')}>
+                                    <GraduationCap className="ml-2 h-4 w-4" />
+                                    {t.student}
+                                </Button>
+                                 <Button variant={role === 'teacher' ? 'default' : 'outline'} onClick={() => setRole('teacher')}>
+                                    <Presentation className="ml-2 h-4 w-4" />
+                                    {t.teacher}
+                                </Button>
+                            </div>
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="email">{t.email}</Label>
+                            <Input id="email" type="email" placeholder="email@example.com" />
+                        </div>
+
+                        <div className="space-y-2">
+                            <Label htmlFor="password">{t.password}</Label>
+                            <Input id="password" type="password" />
                         </div>
                         
                         <div className="space-y-2">
