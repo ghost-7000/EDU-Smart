@@ -8,7 +8,6 @@ import {
   LogOut,
   PlusCircle,
   Presentation,
-  UserCircle,
   BarChart,
   Settings,
 } from 'lucide-react';
@@ -27,6 +26,7 @@ import {
 } from '@/components/ui/sidebar';
 import { teacherData, placeholderImages } from '@/lib/placeholder-data';
 import { Logo } from '@/components/logo';
+import { Header } from '@/components/header';
 
 export default function TeacherDashboardLayout({
   children,
@@ -45,21 +45,21 @@ export default function TeacherDashboardLayout({
 
   return (
     <SidebarProvider>
-      <Sidebar>
-        <SidebarHeader className="border-b">
+      <Sidebar collapsible="offcanvas">
+        <SidebarHeader className="border-b p-4">
           <Logo />
         </SidebarHeader>
-        <SidebarContent className="p-2">
+        <SidebarContent className="p-4">
           <div className="flex flex-col items-center p-4 border-b mb-4">
-              <Avatar className="h-20 w-20 mb-2">
+              <Avatar className="h-24 w-24 mb-3 border-2 border-primary">
                   {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Teacher Avatar" />}
-                  <AvatarFallback className="bg-primary text-primary-foreground">
-                    <Presentation className="h-10 w-10" />
+                  <AvatarFallback className="bg-primary/20 text-primary">
+                    <Presentation className="h-12 w-12" />
                   </AvatarFallback>
               </Avatar>
-              <h3 className="font-semibold">{teacherData.name}</h3>
+              <h3 className="font-semibold text-lg">{teacherData.name}</h3>
               <p className="text-sm text-muted-foreground">{teacherData.branch}</p>
-              <p className="text-sm text-primary font-semibold mt-1">{teacherData.totalCourses} كورسات</p>
+              <p className="text-sm text-primary font-semibold mt-2">{teacherData.totalCourses} كورسات</p>
           </div>
           <SidebarMenu>
             {navItems.map((item) => (
@@ -68,6 +68,7 @@ export default function TeacherDashboardLayout({
                   <SidebarMenuButton
                     isActive={pathname === item.href}
                     tooltip={item.label}
+                    className="h-11"
                   >
                     <item.icon />
                     <span>{item.label}</span>
@@ -77,11 +78,11 @@ export default function TeacherDashboardLayout({
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter>
+        <SidebarFooter className="p-4">
           <SidebarMenu>
             <SidebarMenuItem>
                 <Link href="/">
-                    <SidebarMenuButton tooltip="تسجيل الخروج">
+                    <SidebarMenuButton tooltip="تسجيل الخروج" variant="outline" className="h-11">
                         <LogOut />
                         <span>تسجيل الخروج</span>
                     </SidebarMenuButton>
@@ -91,11 +92,9 @@ export default function TeacherDashboardLayout({
         </SidebarFooter>
       </Sidebar>
       <SidebarInset>
-        <header className="flex items-center justify-between p-4 border-b bg-card">
+        <Header>
             <SidebarTrigger />
-            <h1 className="text-xl font-semibold font-headline">لوحة تحكم المعلم</h1>
-            <UserCircle className="h-6 w-6" />
-        </header>
+        </Header>
         <main className="p-4 md:p-6 bg-background/80 flex-1">{children}</main>
         <footer className="p-4 border-t text-center text-sm text-muted-foreground">
             © {new Date().getFullYear()} EduSmart.

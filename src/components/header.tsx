@@ -17,7 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-export function Header() {
+export function Header({ children }: { children?: React.ReactNode }) {
   const { t, dir } = useLanguage();
 
   const navLinks = [
@@ -28,10 +28,13 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center gap-6">
-          <Logo />
+          {children}
+          <div className="hidden md:flex">
+            <Logo />
+          </div>
            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
             {navLinks.map((link) => (
               <Link
@@ -63,7 +66,9 @@ export function Header() {
               <DropdownMenuContent align="end">
                 <DropdownMenuLabel>حسابي</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/student/profile">ملفي الشخصي</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/student/profile">ملفي الشخصي (طالب)</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/teacher/profile">ملفي الشخصي (معلم)</Link></DropdownMenuItem>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem asChild><Link href="/"><LogOut className="mr-2 h-4 w-4" />تسجيل خروج</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
@@ -106,6 +111,9 @@ export function Header() {
                 </div>
               </SheetContent>
             </Sheet>
+          </div>
+          <div className="md:hidden">
+            <Logo />
           </div>
         </div>
       </div>
