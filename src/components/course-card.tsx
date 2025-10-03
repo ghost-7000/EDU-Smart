@@ -6,6 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Star } from 'lucide-react';
 import { Badge } from './ui/badge';
 import Link from 'next/link';
+import { useToast } from '@/hooks/use-toast';
 
 type Course = {
   id: number;
@@ -22,9 +23,18 @@ type Course = {
 };
 
 export function CourseCard({ course }: { course: Course }) {
+  const { toast } = useToast();
+
+  const handleRegister = () => {
+    toast({
+        title: "تم التسجيل بنجاح!",
+        description: `لقد تم تسجيلك في كورس "${course.title}".`,
+    });
+  }
+
   return (
     <Card className="overflow-hidden transition-all hover:shadow-lg hover:-translate-y-1">
-      <Link href="#">
+      <Link href={`/student/course/${course.id}`}>
         <CardHeader className="p-0">
           {course.image && (
             <Image
@@ -56,7 +66,7 @@ export function CourseCard({ course }: { course: Course }) {
             <Badge variant="secondary">مجاني</Badge>
           )}
         </div>
-        <Button>سجل الآن</Button>
+        <Button onClick={handleRegister}>سجل الآن</Button>
       </CardFooter>
     </Card>
   );

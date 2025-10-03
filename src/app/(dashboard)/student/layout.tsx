@@ -24,7 +24,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { studentData } from '@/lib/placeholder-data';
+import { studentData, placeholderImages } from '@/lib/placeholder-data';
 import { Logo } from '@/components/logo';
 
 export default function StudentDashboardLayout({
@@ -39,6 +39,8 @@ export default function StudentDashboardLayout({
     { href: '/student/browse-courses', label: 'اكتشف الكورسات', icon: Search },
     { href: '/student/profile', label: 'ملفي الشخصي', icon: UserCircle },
   ];
+  const avatarImage = placeholderImages.find(p => p.id === 'student-avatar');
+
 
   return (
     <SidebarProvider>
@@ -49,6 +51,7 @@ export default function StudentDashboardLayout({
         <SidebarContent className="p-2">
           <div className="flex flex-col items-center p-4 border-b mb-4">
               <Avatar className="h-20 w-20 mb-2">
+                  {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Student Avatar" />}
                   <AvatarFallback className="bg-primary text-primary-foreground">
                     <GraduationCap className="h-10 w-10" />
                   </AvatarFallback>

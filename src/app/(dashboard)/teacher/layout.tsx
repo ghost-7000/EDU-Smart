@@ -23,7 +23,7 @@ import {
   SidebarInset,
   SidebarTrigger,
 } from '@/components/ui/sidebar';
-import { teacherData } from '@/lib/placeholder-data';
+import { teacherData, placeholderImages } from '@/lib/placeholder-data';
 import { Logo } from '@/components/logo';
 
 export default function TeacherDashboardLayout({
@@ -38,6 +38,7 @@ export default function TeacherDashboardLayout({
     { href: '/teacher/add-course', label: 'إضافة كورس', icon: PlusCircle },
     { href: '/teacher/profile', label: 'ملفي الشخصي', icon: UserCircle },
   ];
+  const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
 
   return (
     <SidebarProvider>
@@ -48,6 +49,7 @@ export default function TeacherDashboardLayout({
         <SidebarContent className="p-2">
           <div className="flex flex-col items-center p-4 border-b mb-4">
               <Avatar className="h-20 w-20 mb-2">
+                  {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt="Teacher Avatar" />}
                   <AvatarFallback className="bg-primary text-primary-foreground">
                     <Presentation className="h-10 w-10" />
                   </AvatarFallback>
