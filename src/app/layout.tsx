@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/contexts/theme-provider';
@@ -5,7 +6,7 @@ import { LanguageProvider } from '@/contexts/language-provider';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'EduSmart Learning Hub',
+  title: 'UTAS Learning Hub',
   description: 'An innovative educational platform for UTAS students.',
 };
 

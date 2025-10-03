@@ -196,7 +196,7 @@ export type Translation = {
 };
 
 const en: Translation = {
-  appName: 'EduSmart',
+  appName: 'UTAS Oman',
   startNow: 'Start Now',
   login: 'Login',
   logout: 'Logout',
@@ -221,10 +221,10 @@ const en: Translation = {
   followUs: 'Follow Us',
   newsletter: 'Newsletter',
   newsletterPrompt: 'Subscribe for latest updates and offers.',
-  copyright: `© ${new Date().getFullYear()} EduSmart. All rights reserved.`,
+  copyright: `© ${new Date().getFullYear()} UTAS Oman. All rights reserved.`,
 
   // Home Page
-  heroTitle: 'EduSmart – Your Smart Learning Platform for UTAS Students',
+  heroTitle: 'UTAS Oman – Your Smart Learning Platform for UTAS Students',
   heroSubtitle: 'Learn from the best instructors with a 7-day free trial.',
   howItWorksTitle: 'How It Works',
   step1Title: '1. Sign Up',
@@ -389,7 +389,7 @@ const en: Translation = {
 };
 
 const ar: Translation = {
-  appName: 'EduSmart',
+  appName: 'UTAS Oman',
   startNow: 'ابدأ الآن',
   login: 'تسجيل الدخول',
   logout: 'تسجيل خروج',
@@ -414,10 +414,10 @@ const ar: Translation = {
   followUs: 'تابعنا',
   newsletter: 'النشرة الإخبارية',
   newsletterPrompt: 'اشترك للحصول على آخر التحديثات والعروض.',
-  copyright: `© ${new Date().getFullYear()} EduSmart. جميع الحقوق محفوظة.`,
+  copyright: `© ${new Date().getFullYear()} UTAS Oman. جميع الحقوق محفوظة.`,
 
   // Home Page
-  heroTitle: 'EduSmart – منصتك التعليمية الذكية لطلاب UTAS',
+  heroTitle: 'UTAS Oman – منصتك التعليمية الذكية لطلاب UTAS',
   heroSubtitle: 'تعلم من أفضل المعلمين مع تجربة مجانية 7 أيام.',
   howItWorksTitle: 'كيف تعمل المنصة',
   step1Title: '1. تسجيل الدخول',
