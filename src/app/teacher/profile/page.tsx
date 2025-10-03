@@ -46,8 +46,8 @@ export default function TeacherProfilePage() {
     const teacherIdParam = searchParams.get('id');
     const ownProfileId = 1; // Assuming teacher with ID 1 is the logged-in one for demo
     
-    // Determine if the current view is for the teacher's own profile or a student viewing it.
-    const isOwnProfile = !teacherIdParam || parseInt(teacherIdParam, 10) === ownProfileId;
+    // Determine if the current view is for the teacher's own profile (edit mode) or a student viewing it (view mode).
+    const isEditMode = !teacherIdParam;
     const teacherId = teacherIdParam ? parseInt(teacherIdParam, 10) : ownProfileId;
 
     const teacherToDisplay = getTeacherById(teacherId);
@@ -84,15 +84,15 @@ export default function TeacherProfilePage() {
   return (
     <div className="container mx-auto py-6">
         <div className="flex items-center gap-4 mb-6">
-            {!isOwnProfile && (
+            {!isEditMode && (
                 <Button variant="outline" size="icon" onClick={() => router.back()} aria-label="Go back">
                     <ArrowLeft />
                 </Button>
             )}
-            <h1 className="text-3xl font-bold font-headline">{isOwnProfile ? t.editProfile : t.teacherProfile}</h1>
+            <h1 className="text-3xl font-bold font-headline">{isEditMode ? t.editProfile : t.teacherProfile}</h1>
         </div>
         
-        {isOwnProfile ? (
+        {isEditMode ? (
             // VIEW FOR THE TEACHER (EDIT MODE)
             <Card className="max-w-4xl mx-auto">
                 <CardHeader>
