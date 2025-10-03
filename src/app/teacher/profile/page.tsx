@@ -148,7 +148,7 @@ export default function TeacherProfilePage() {
                     <Card className="text-center">
                         <CardHeader className="items-center">
                             <Avatar className="w-24 h-24 mb-4">
-                                {avatarImage && <AvatarImage src={avatarImage.imageUrl} alt={aTeacher.name} />}
+                                {avatarImage && <AvatarImage src={aTeacher.imageUrl} alt={aTeacher.name} />}
                                 <AvatarFallback className="text-4xl"><Presentation /></AvatarFallback>
                             </Avatar>
                             <CardTitle className="text-2xl">{aTeacher.name}</CardTitle>
