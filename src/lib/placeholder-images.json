@@ -9,38 +9,38 @@
     {
       "id": "course-1",
       "description": "Illustration for a web development course.",
-      "imageUrl": "https://images.unsplash.com/photo-1696150875329-6a78583c2945?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYXJ0b29uJTIwY29kZXxlbnwwfHx8fDE3NTk0OTIzNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon code"
+      "imageUrl": "https://images.unsplash.com/photo-1555066931-4365d1469c08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGlsbHVzdHJhdGlvbnxlbnwwfDB8fHwxNzE3MjI2Mjg3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "web development"
     },
     {
       "id": "course-2",
       "description": "Illustration for a data science course.",
-      "imageUrl": "https://images.unsplash.com/photo-1745356428094-79ab713d702d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxjYXJ0b29uJTIwZGF0YXxlbnwwfHx8fDE3NTk0OTIzNTZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon data"
+      "imageUrl": "https://images.unsplash.com/photo-1526374965328-5f61d4dc16c6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHxkYXRhJTIwc2NpZW5jZSUyMGlsbHVzdHJhdGlvbnxlbnwwfDB8fHwxNzE3MjI2MzE5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "data science"
     },
     {
       "id": "course-3",
       "description": "Illustration for a business management course.",
-      "imageUrl": "https://images.unsplash.com/photo-1628494391268-c9935bc384d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxjYXJ0b29uJTIwYnVzaW5lc3N8ZW58MHx8fHwxNzU5NDkyMzU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon business"
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4baf72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1hbmFnZW1lbnQlMjBpbGx1c3RyYXRpb258ZW58MHwwfHx8MTcxNzIyNjM0NHww&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "business management"
     },
     {
       "id": "course-4",
       "description": "Illustration for a graphic design course.",
-      "imageUrl": "https://images.unsplash.com/photo-1617784130861-443216c55670?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXJ0b29uJTIwZGVzaWdufGVufDB8fHx8MTc1OTQ5MjM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon design"
+      "imageUrl": "https://images.unsplash.com/photo-1626785774573-4b799315345d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHxncmFwaGljJTIwZGVzaWduJTIwaWxsdXN0cmF0aW9ufGVufDB8MHx8fDE3MTcyMjYzNjl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "graphic design"
     },
     {
       "id": "course-5",
       "description": "Illustration for an electrical engineering course.",
-      "imageUrl": "https://images.unsplash.com/photo-1730578726303-c9a4c0ae02c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y2FydG9vbiUyMGNpcmN1aXR8ZW58MHx8fHwxNzU5NDkyMzU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon circuit"
+      "imageUrl": "https://images.unsplash.com/photo-1581092921532-a4f03a5d243a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHxlbmdpbmVlcmluZyUyMGlsbHVzdHJhdGlvbnxlbnwwfDB8fHwxNzE3MjI2Mzk1fDA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "engineering illustration"
     },
     {
       "id": "course-6",
       "description": "Illustration for a literature course.",
-      "imageUrl": "https://images.unsplash.com/photo-1742274317501-57e147afc0c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxjYXJ0b29uJTIwYm9va3N8ZW58MHx8fHwxNzU5NDkyMzU2fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "cartoon books"
+      "imageUrl": "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wzNzk5MDR8MHwxfHNlYXJjaHwxfHxsaXRlcmF0dXJlJTIwaWxsdXN0cmF0aW9ufGVufDB8MHx8fDE3MTcyMjY0MTN8MA&ixlib=rb-4.0.3&q=80&w=1080",
+      "imageHint": "literature illustration"
     },
     {
       "id": "student-avatar",
