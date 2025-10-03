@@ -263,3 +263,5 @@ export default function ManageCoursePage({ params }: { params: { id: string } })
     </div>
   );
 }
+
+    
