@@ -6,12 +6,14 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Star, Clock, Users } from 'lucide-react';
+import { Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function CourseDetailPage({ params }: { params: { id: string } }) {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const course = courses.find((c) => c.id.toString() === params.id);
 
   if (!course) {
@@ -20,8 +22,8 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
 
   const handleRegister = () => {
     toast({
-        title: "تم التسجيل بنجاح!",
-        description: `لقد تم تسجيلك في كورس "${course.title}".`,
+        title: t.registeredSuccess,
+        description: `${t.registeredCourse} "${course.title}".`,
     });
   }
 
@@ -40,43 +42,43 @@ export default function CourseDetailPage({ params }: { params: { id: string } })
                 />
             )}
             <h1 className="font-headline text-4xl font-bold mb-4">{course.title}</h1>
-            <p className="text-lg text-muted-foreground mb-6">هنا سيكون وصف مفصل ومطول عن الكورس، أهدافه، ومحتواه، والجمهور المستهدف. هذا النص هو مجرد مثال.</p>
+            <p className="text-lg text-muted-foreground mb-6">A detailed and lengthy description of the course, its objectives, content, and target audience will be here. This text is just an example.</p>
         </div>
         <div>
             <Card>
                 <CardHeader>
-                    <CardTitle>عن الكورس</CardTitle>
+                    <CardTitle>{t.courseDetails}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                     <div className="flex justify-between items-center">
-                        <span className="font-semibold">السعر</span>
+                        <span className="font-semibold">{t.price}</span>
                         <div>
                         {course.isFreeTrial ? (
-                            <Badge variant="outline" className="border-green-500 text-green-600">تجربة مجانية</Badge>
+                            <Badge variant="outline" className="border-green-500 text-green-600">{t.freeTrial}</Badge>
                         ) : course.price !== null ? (
                             <p className="font-bold text-lg text-primary">${course.price}</p>
                         ) : (
-                            <Badge variant="secondary">مجاني</Badge>
+                            <Badge variant="secondary">{t.free}</Badge>
                         )}
                         </div>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="font-semibold">المعلم</span>
+                        <span className="font-semibold">{t.teacher}</span>
                         <span className="text-muted-foreground">{course.teacher}</span>
                     </div>
                      <div className="flex justify-between items-center">
-                        <span className="font-semibold">التقييم</span>
+                        <span className="font-semibold">{t.rating}</span>
                         <div className="flex items-center">
                             <span className="font-bold text-amber-500 mr-1">{course.rating.toFixed(1)}</span>
                             <Star className="w-4 h-4 fill-amber-400 text-amber-500" />
                         </div>
                     </div>
                     <div className="flex justify-between items-center">
-                        <span className="font-semibold">التخصص</span>
+                        <span className="font-semibold">{t.filterBySpecialization}</span>
                         <span className="text-muted-foreground">{course.specialization}</span>
                     </div>
 
-                    <Button className="w-full" onClick={handleRegister}>سجل الآن</Button>
+                    <Button className="w-full" onClick={handleRegister}>{t.enrollNow}</Button>
                 </CardContent>
             </Card>
         </div>

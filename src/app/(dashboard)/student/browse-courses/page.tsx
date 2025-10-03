@@ -13,8 +13,10 @@ import {
 import { CourseCard } from '@/components/course-card';
 import { courses as allCourses } from '@/lib/placeholder-data';
 import { Search } from 'lucide-react';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function BrowseCoursesPage() {
+  const { t } = useLanguage();
   const [searchTerm, setSearchTerm] = useState('');
   const [filters, setFilters] = useState({
     popularity: 'all',
@@ -38,13 +40,13 @@ export default function BrowseCoursesPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold font-headline mb-6">اكتشف الكورسات</h1>
+      <h1 className="text-3xl font-bold font-headline mb-6">{t.discoverCourses}</h1>
       <div className="mb-8 p-4 rounded-lg bg-card border">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
-              placeholder="البحث بالاسم أو الكود..."
+              placeholder={t.searchByNameOrCode}
               className="pl-10"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
@@ -52,28 +54,28 @@ export default function BrowseCoursesPage() {
           </div>
           <Select onValueChange={handleFilterChange('popularity')} defaultValue="all">
             <SelectTrigger>
-              <SelectValue placeholder="حسب الشهرة" />
+              <SelectValue placeholder={t.filterByPopularity} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">الكل</SelectItem>
-              <SelectItem value="most_popular">الأكثر شيوعًا</SelectItem>
+              <SelectItem value="all">{t.all}</SelectItem>
+              <SelectItem value="most_popular">{t.mostPopular}</SelectItem>
             </SelectContent>
           </Select>
           <Select onValueChange={handleFilterChange('newness')} defaultValue="all">
             <SelectTrigger>
-              <SelectValue placeholder="حسب الحداثة" />
+              <SelectValue placeholder={t.filterByNewness} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">الكل</SelectItem>
-              <SelectItem value="new">الجديد</SelectItem>
+              <SelectItem value="all">{t.all}</SelectItem>
+              <SelectItem value="new">{t.newest}</SelectItem>
             </SelectContent>
           </Select>
           <Select onValueChange={handleFilterChange('specialization')} defaultValue="all">
             <SelectTrigger>
-              <SelectValue placeholder="حسب التخصص" />
+              <SelectValue placeholder={t.filterBySpecialization} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">كل التخصصات</SelectItem>
+              <SelectItem value="all">{t.allSpecializations}</SelectItem>
               {specializations.map(spec => (
                 <SelectItem key={spec} value={spec}>{spec}</SelectItem>
               ))}
@@ -88,7 +90,7 @@ export default function BrowseCoursesPage() {
                 <CourseCard key={course.id} course={course} />
             ))
         ) : (
-            <p className="col-span-full text-center text-muted-foreground">لا توجد نتائج تطابق بحثك.</p>
+            <p className="col-span-full text-center text-muted-foreground">{t.noResults}</p>
         )}
       </div>
     </div>

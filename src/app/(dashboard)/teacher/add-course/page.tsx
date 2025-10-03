@@ -14,67 +14,69 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Switch } from '@/components/ui/switch';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function AddCoursePage() {
     const { toast } = useToast();
+    const { t } = useLanguage();
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const courseName = formData.get('course-name');
         toast({
-            title: "تم نشر الكورس!",
-            description: `تم نشر كورس "${courseName}" بنجاح.`,
+            title: t.coursePublished,
+            description: `${t.coursePublished} "${courseName}"`,
         });
     }
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="font-headline text-2xl">إضافة كورس جديد</CardTitle>
-        <CardDescription>املأ التفاصيل التالية لنشر الكورس الخاص بك.</CardDescription>
+        <CardTitle className="font-headline text-2xl">{t.addCourse}</CardTitle>
+        <CardDescription>{t.fillDetailsToPublish}</CardDescription>
       </CardHeader>
       <CardContent>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <Label htmlFor="course-name">اسم الكورس</Label>
-              <Input id="course-name" name="course-name" placeholder="مثال: مقدمة في الذكاء الاصطناعي" required />
+              <Label htmlFor="course-name">{t.courseName}</Label>
+              <Input id="course-name" name="course-name" placeholder="e.g. Introduction to AI" required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="course-code">كود الكورس</Label>
-              <Input id="course-code" placeholder="مثال: AI101 (يُولد تلقائيًا إذا ترك فارغًا)" />
+              <Label htmlFor="course-code">{t.courseCode}</Label>
+              <Input id="course-code" placeholder="e.g. AI101 (auto-generated if blank)" />
             </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="short-description">وصف مختصر</Label>
-            <Textarea id="short-description" placeholder="وصف موجز وجذاب للكورس" />
+            <Label htmlFor="short-description">{t.shortDescription}</Label>
+            <Textarea id="short-description" placeholder="A brief and engaging description of the course" />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="full-details">تفاصيل شاملة</Label>
-            <Textarea id="full-details" rows={6} placeholder="اشرح أهداف الكورس، المحتوى، والجمهور المستهدف." />
+            <Label htmlFor="full-details">{t.fullDetails}</Label>
+            <Textarea id="full-details" rows={6} placeholder="Explain the course objectives, content, and target audience." />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-                <Label htmlFor="price">السعر ($)</Label>
-                <Input id="price" type="number" placeholder="مثال: 49.99 (اتركه فارغًا إذا كان مجانيًا)" />
+                <Label htmlFor="price">{t.priceUSD}</Label>
+                <Input id="price" type="number" placeholder="e.g. 49.99 (leave blank for free)" />
             </div>
             <div className="flex items-center space-x-2 rtl:space-x-reverse rounded-md border p-4">
                 <Switch id="free-trial" />
-                <Label htmlFor="free-trial">تفعيل التجربة المجانية (7 أيام)</Label>
+                <Label htmlFor="free-trial">{t.enableFreeTrial}</Label>
             </div>
           </div>
           
           <div className="space-y-2">
-            <Label htmlFor="cover-media">صورة أو فيديو تعريفي</Label>
+            <Label htmlFor="cover-media">{t.coverMedia}</Label>
             <Input id="cover-media" type="file" />
           </div>
 
           <div className="flex justify-end">
-            <Button type="submit">نشر الكورس</Button>
+            <Button type="submit">{t.publishCourse}</Button>
           </div>
         </form>
       </CardContent>

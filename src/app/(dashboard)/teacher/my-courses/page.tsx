@@ -25,14 +25,16 @@ import { Edit, Star, Trash2, Users } from 'lucide-react';
 import { teacherData } from '@/lib/placeholder-data';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function MyCoursesPage() {
     const { toast } = useToast();
+    const { t } = useLanguage();
 
     const handleDelete = (title: string) => {
         toast({
-            title: "تم الحذف بنجاح",
-            description: `تم حذف كورس "${title}".`,
+            title: t.courseDeleted,
+            description: `"${title}" has been deleted.`,
             variant: "destructive"
         })
     }
@@ -40,9 +42,9 @@ export default function MyCoursesPage() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold font-headline">كورساتي</h1>
+        <h1 className="text-3xl font-bold font-headline">{t.myCourses_teacher}</h1>
         <Link href="/teacher/add-course">
-            <Button>إضافة كورس جديد</Button>
+            <Button>{t.addCourse_teacher}</Button>
         </Link>
       </div>
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -57,16 +59,16 @@ export default function MyCoursesPage() {
                 <div className="text-center">
                   <Users className="mx-auto h-6 w-6 text-primary" />
                   <p className="font-bold text-lg">{course.enrolledStudents}</p>
-                  <p className="text-xs text-muted-foreground">طالب</p>
+                  <p className="text-xs text-muted-foreground">{t.student}</p>
                 </div>
                 <div className="text-center">
                   <Star className="mx-auto h-6 w-6 text-amber-500" />
                   <p className="font-bold text-lg">{course.rating.toFixed(1)}</p>
-                  <p className="text-xs text-muted-foreground">تقييم</p>
+                  <p className="text-xs text-muted-foreground">{t.rating}</p>
                 </div>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">أحدث التقييمات:</h4>
+                <h4 className="font-semibold mb-2">{t.latestReviews}</h4>
                 {course.reviews.slice(0, 2).map((review, i) => (
                     <div key={i} className="text-sm p-2 border-b">
                         <div className="flex items-center">
@@ -77,29 +79,29 @@ export default function MyCoursesPage() {
                         <p className="text-muted-foreground italic">"{review.comment}"</p>
                     </div>
                 ))}
-                 {course.reviews.length === 0 && <p className="text-sm text-muted-foreground">لا توجد تقييمات بعد.</p>}
+                 {course.reviews.length === 0 && <p className="text-sm text-muted-foreground">{t.noReviewsYet}</p>}
               </div>
             </CardContent>
             <CardFooter className="grid grid-cols-2 gap-2">
               <Button variant="outline">
-                <Edit className="ml-2 h-4 w-4" /> تعديل
+                <Edit className="ml-2 h-4 w-4" /> {t.edit}
               </Button>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                     <Button variant="destructive">
-                        <Trash2 className="ml-2 h-4 w-4" /> حذف
+                        <Trash2 className="ml-2 h-4 w-4" /> {t.delete}
                     </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                     <AlertDialogHeader>
-                    <AlertDialogTitle>هل أنت متأكد تمامًا؟</AlertDialogTitle>
+                    <AlertDialogTitle>{t.confirmDelete}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        هذا الإجراء لا يمكن التراجع عنه. سيؤدي هذا إلى حذف الكورس وجميع بياناته بشكل دائم.
+                        {t.confirmDeleteDesc}
                     </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                    <AlertDialogCancel>إلغاء</AlertDialogCancel>
-                    <AlertDialogAction onClick={() => handleDelete(course.title)}>متابعة</AlertDialogAction>
+                    <AlertDialogCancel>{t.cancel}</AlertDialogCancel>
+                    <AlertDialogAction onClick={() => handleDelete(course.title)}>{t.continue}</AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>

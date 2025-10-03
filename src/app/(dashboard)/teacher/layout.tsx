@@ -27,6 +27,7 @@ import {
 import { teacherData, placeholderImages } from '@/lib/placeholder-data';
 import { Logo } from '@/components/logo';
 import { Header } from '@/components/header';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function TeacherDashboardLayout({
   children,
@@ -34,12 +35,13 @@ export default function TeacherDashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const navItems = [
-    { href: '/teacher/dashboard', label: 'لوحة التحكم', icon: LayoutDashboard },
-    { href: '/teacher/add-course', label: 'إضافة كورس جديد', icon: PlusCircle },
-    { href: '/teacher/my-courses', label: 'كورساتي', icon: BookCopy },
-    { href: '#', label: 'تقارير الأداء', icon: BarChart },
-    { href: '/teacher/profile', label: 'تعديل الملف الشخصي', icon: Settings },
+    { href: '/teacher/dashboard', label: t.dashboard, icon: LayoutDashboard },
+    { href: '/teacher/add-course', label: t.addCourse_sidebar, icon: PlusCircle },
+    { href: '/teacher/my-courses', label: t.myCourses_sidebar, icon: BookCopy },
+    { href: '#', label: t.reports_sidebar, icon: BarChart },
+    { href: '/teacher/profile', label: t.editProfile_sidebar, icon: Settings },
   ];
   const avatarImage = placeholderImages.find(p => p.id === 'teacher-avatar');
 
@@ -59,7 +61,7 @@ export default function TeacherDashboardLayout({
               </Avatar>
               <h3 className="font-semibold text-lg">{teacherData.name}</h3>
               <p className="text-sm text-muted-foreground">{teacherData.branch}</p>
-              <p className="text-sm text-primary font-semibold mt-2">{teacherData.totalCourses} كورسات</p>
+              <p className="text-sm text-primary font-semibold mt-2">{teacherData.totalCourses} {t.courses}</p>
           </div>
           <SidebarMenu>
             {navItems.map((item) => (
@@ -82,9 +84,9 @@ export default function TeacherDashboardLayout({
           <SidebarMenu>
             <SidebarMenuItem>
                 <Link href="/">
-                    <SidebarMenuButton tooltip="تسجيل الخروج" variant="outline" className="h-11">
+                    <SidebarMenuButton tooltip={t.logout} variant="outline" className="h-11">
                         <LogOut />
-                        <span>تسجيل الخروج</span>
+                        <span>{t.logout}</span>
                     </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
@@ -97,7 +99,7 @@ export default function TeacherDashboardLayout({
         </Header>
         <main className="p-4 md:p-6 bg-background/80 flex-1">{children}</main>
         <footer className="p-4 border-t text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} EduSmart.
+            {t.copyright}
         </footer>
       </SidebarInset>
     </SidebarProvider>

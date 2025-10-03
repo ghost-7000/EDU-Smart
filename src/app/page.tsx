@@ -1,4 +1,5 @@
 
+'use client';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
@@ -7,76 +8,78 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { placeholderImages } from '@/lib/placeholder-data';
 import Link from 'next/link';
+import { useLanguage } from '@/hooks/use-language';
 
 export default function Home() {
+  const { t } = useLanguage();
   const heroImage = placeholderImages.find(p => p.id === 'hero');
 
   const features = [
     {
-      title: 'تجربة مجانية',
-      description: 'استكشف منصتنا مع تجربة مجانية لمدة 7 أيام لجميع الكورسات.',
+      title: t.featureTrial,
+      description: t.featureTrialDesc,
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-        title: 'تقييمات ذكية',
-        description: 'احصل على تقييمات فورية وتوصيات مخصصة لتحسين مسارك التعليمي.',
+        title: t.featureAssessments,
+        description: t.featureAssessmentsDesc,
         icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-      title: 'الوضع الغامق/الفاتح',
-      description: 'اختر المظهر الذي يناسبك لتجربة قراءة مريحة.',
+      title: t.featureTheme,
+      description: t.featureThemeDesc,
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-        title: 'دعم متعدد اللغات',
-        description: 'تنقل بسهولة بين اللغتين العربية والإنجليزية.',
+        title: t.featureMultiLanguage,
+        description: t.featureMultiLanguageDesc,
         icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-      title: 'نقاط ومكافآت',
-      description: 'اكتسب نقاطًا عند إكمال الدورات واستبدلها بمكافآت حصرية.',
+      title: t.featurePoints,
+      description: t.featurePointsDesc,
       icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     },
     {
-        title: 'صفحات مخصصة',
-        description: 'لوحات تحكم خاصة بالطلاب والمعلمين لتجربة فريدة.',
+        title: t.featureDashboards,
+        description: t.featureDashboardsDesc,
         icon: <CheckCircle2 className="h-8 w-8 text-accent" />,
     }
   ];
 
   const howItWorks = [
     {
-      title: '1. تسجيل الدخول',
-      description: 'أنشئ حسابك كطالب أو معلم في خطوات بسيطة.',
+      title: t.step1Title,
+      description: t.step1Desc,
       icon: '👤'
     },
     {
-        title: '2. اختيار الكورس',
-        description: 'تصفح مكتبة الكورسات واختر ما يناسب اهتماماتك.',
+        title: t.step2Title,
+        description: t.step2Desc,
         icon: '📚'
     },
     {
-        title: '3. ابدأ التعلم',
-        description: 'ابدأ رحلتك التعليمية أو قم بإضافة كورساتك الخاصة كمعلم.',
+        title: t.step3Title,
+        description: t.step3Desc,
         icon: '🚀'
     }
   ];
 
   const plans = [
     {
-      name: 'الأساسية',
+      name: t.planBasic,
       price: '3',
-      features: ['وصول لـ 5 كورسات شهريًا', 'دعم عبر البريد الإلكتروني']
+      features: [t.planFeature5Courses, t.planFeatureEmailSupport]
     },
     {
-      name: 'الاحترافية',
+      name: t.planPro,
       price: '7',
-      features: ['وصول غير محدود للكورسات', 'دعم ذو أولوية', 'شهادات إتمام']
+      features: [t.planFeatureUnlimitedCourses, t.planFeaturePrioritySupport, t.planFeatureCertificates]
     },
     {
-      name: 'المميزة',
+      name: t.planPremium,
       price: '12',
-      features: ['كل مزايا الاحترافية', 'مساعد AI شخصي', 'جلسات شهرية مع المعلمين']
+      features: [t.planFeatureAllPro, t.planFeatureAIAssistant, t.planFeatureSessions]
     }
   ]
 
@@ -89,14 +92,14 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
               <div className="flex flex-col items-start justify-center space-y-6">
                 <h1 className="font-headline text-4xl font-bold tracking-tight text-primary sm:text-5xl md:text-6xl">
-                  EduSmart – منصتك التعليمية الذكية لطلاب UTAS
+                  {t.heroTitle}
                 </h1>
                 <p className="max-w-xl text-lg text-foreground/80 md:text-xl">
-                  تعلم من أفضل المعلمين مع تجربة مجانية 7 أيام.
+                  {t.heroSubtitle}
                 </p>
                 <Link href="/signup">
                   <Button size="lg" className="bg-accent hover:bg-accent/90 text-accent-foreground">
-                    ابدأ الآن
+                    {t.startNow}
                   </Button>
                 </Link>
               </div>
@@ -120,7 +123,7 @@ export default function Home() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-                        كيف تعمل المنصة
+                        {t.howItWorksTitle}
                     </h2>
                 </div>
                 <div className="grid gap-8 md:grid-cols-3">
@@ -140,10 +143,10 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
                 <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-                  مميزات تغير تجربتك التعليمية
+                  {t.featuresTitle}
                 </h2>
                 <p className="max-w-[900px] text-foreground/80 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  اكتشف كيف تجعل منصتنا رحلتك الأكاديمية أكثر سهولة وفعالية.
+                  {t.featuresSubtitle}
                 </p>
               </div>
             </div>
@@ -167,7 +170,7 @@ export default function Home() {
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
                     <h2 className="font-headline text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-primary">
-                        اختر الباقة التي تناسبك
+                        {t.plansTitle}
                     </h2>
                 </div>
                 <div className="grid gap-8 md:grid-cols-3">
@@ -177,13 +180,13 @@ export default function Home() {
                                 <CardTitle className="font-headline text-2xl">{plan.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="flex-1 flex flex-col items-center text-center">
-                                <p className="text-4xl font-bold mb-2">{plan.price} <span className="text-lg font-normal text-muted-foreground">ريال/شهر</span></p>
+                                <p className="text-4xl font-bold mb-2">{plan.price} <span className="text-lg font-normal text-muted-foreground">{t.planPriceSuffix}</span></p>
                                 <ul className="space-y-2 text-muted-foreground">
                                     {plan.features.map(feat => <li key={feat} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-green-500" /> {feat}</li>)}
                                 </ul>
                             </CardContent>
                             <CardFooter>
-                                <Button className="w-full">اشترك الآن</Button>
+                                <Button className="w-full">{t.subscribeNow}</Button>
                             </CardFooter>
                         </Card>
                     ))}
@@ -194,9 +197,9 @@ export default function Home() {
         <section id="cta" className="w-full py-12 md:py-24 lg:py-32">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col items-center justify-center space-y-4 text-center bg-primary text-primary-foreground p-12 rounded-lg">
-                    <h2 className="font-headline text-3xl font-bold">ابدأ رحلتك التعليمية الآن!</h2>
+                    <h2 className="font-headline text-3xl font-bold">{t.ctaTitle}</h2>
                     <Link href="/signup">
-                        <Button size="lg" variant="secondary" className="bg-accent hover:bg-accent/90 text-accent-foreground">إنشاء حساب</Button>
+                        <Button size="lg" variant="secondary" className="bg-accent hover:bg-accent/90 text-accent-foreground">{t.createNewAccount}</Button>
                     </Link>
                 </div>
             </div>

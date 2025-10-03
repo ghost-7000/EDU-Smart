@@ -48,18 +48,18 @@ export default function LoginPage() {
                         </div>
                         
                         <div className="space-y-2">
-                            <Label htmlFor="email">البريد الإلكتروني</Label>
+                            <Label htmlFor="email">{t.email}</Label>
                             <Input id="email" type="email" placeholder="email@example.com" />
                         </div>
                         <div className="space-y-2">
-                            <Label htmlFor="password">كلمة المرور</Label>
+                            <Label htmlFor="password">{t.password}</Label>
                             <Input id="password" type="password" />
                         </div>
                          <div className="space-y-2">
-                            <Label htmlFor="branch">فرع UTAS</Label>
+                            <Label htmlFor="branch">{t.selectBranch}</Label>
                             <Select>
                                 <SelectTrigger id="branch">
-                                    <SelectValue placeholder="اختر الفرع" />
+                                    <SelectValue placeholder={t.selectBranch} />
                                 </SelectTrigger>
                                 <SelectContent>
                                     {branches.map(branch => (

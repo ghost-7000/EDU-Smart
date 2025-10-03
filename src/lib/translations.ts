@@ -2,81 +2,522 @@
 export type Language = 'en' | 'ar';
 
 export type Translation = {
-  // Header
-  home: string;
-  courses: string;
-  aboutUs: string;
+  // General
+  appName: string;
+  startNow: string;
   login: string;
   logout: string;
-  
-  // Auth
+  signup: string;
+  createNewAccount: string;
+
+  // Header
+  home: string;
+  plans: string;
+  howItWorks: string;
+  courses: string;
+  loginSignup: string;
+  myAccount: string;
+  studentProfile: string;
+  teacherProfile: string;
+
+  // Footer
+  importantLinks: string;
+  privacyPolicy: string;
+  contactUs: string;
+  followUs: string;
+  newsletter: string;
+  newsletterPrompt: string;
+  copyright: string;
+
+  // Home Page
+  heroTitle: string;
+  heroSubtitle: string;
+  howItWorksTitle: string;
+  step1Title: string;
+  step1Desc: string;
+  step2Title: string;
+  step2Desc: string;
+  step3Title: string;
+  step3Desc: string;
+  featuresTitle: string;
+  featuresSubtitle: string;
+  featureTrial: string;
+  featureTrialDesc: string;
+  featureAssessments: string;
+  featureAssessmentsDesc: string;
+  featureTheme: string;
+  featureThemeDesc: string;
+  featureMultiLanguage: string;
+  featureMultiLanguageDesc: string;
+  featurePoints: string;
+  featurePointsDesc: string;
+  featureDashboards: string;
+  featureDashboardsDesc: string;
+  plansTitle: string;
+  planBasic: string;
+  planPro: string;
+  planPremium: string;
+  planPriceSuffix: string;
+  planFeature5Courses: string;
+  planFeatureEmailSupport: string;
+  planFeatureUnlimitedCourses: string;
+  planFeaturePrioritySupport: string;
+  planFeatureCertificates: string;
+  planFeatureAllPro: string;
+  planFeatureAIAssistant: string;
+  planFeatureSessions: string;
+  subscribeNow: string;
+  ctaTitle: string;
+
+  // Auth Pages
   loginDescription: string;
   loginAsStudent: string;
   loginAsTeacher: string;
-  loginStudentPrompt: string;
-  loginTeacherPrompt: string;
-  goToDashboard: string;
   email: string;
   password: string;
   selectBranch: string;
-  createNewAccount: string;
-  signup: string;
-  name: string;
-  confirmPassword: string;
   noAccount: string;
+  signupDescription: string;
+  iAmA: string;
+  student: string;
+  teacher: string;
+  fullName: string;
+  confirmPassword: string;
+  alreadyHaveAccount: string;
+
+  // Student Dashboard
+  welcomeBack: string;
+  academicSummary: string;
+  pointsEarned: string;
+  activeCourses: string;
+  completedCourses: string;
+  activeAndTrialCourses: string;
+  noCoursesInCategory: string;
+  discoverMoreCourses: string;
+  myCourses: string;
+  status: string;
+  statusActive: string;
+  statusTrial: string;
+  statusCompleted: string;
+  continueCourse: string;
+  rateCourse: string;
+  myProfile: string;
+  enrolledCourses: string;
+  editAccount: string;
+  browseCourses: string;
   
-  // General
-  startNow: string;
-  appName: string;
+  // Teacher Dashboard
+  welcome: string;
+  yourActivityOverview: string;
+  totalStudents: string;
+  averageRating: string;
+  publishedCourses: string;
+  latestCourses: string;
+  viewAll: string;
+  student: string;
+  rating: string;
+  edit: string;
+  delete: string;
+  
+  // Course Pages
+  discoverCourses: string;
+  searchByNameOrCode: string;
+  filterByPopularity: string;
+  all: string;
+  mostPopular: string;
+  filterByNewness: string;
+  newest: string;
+  filterBySpecialization: string;
+  allSpecializations: string;
+  noResults: string;
+  freeTrial: string;
+  free: string;
+  registerNow: string;
+  courseDetails: string;
+  price: string;
+  enrollNow: string;
+  
+  // Teacher Course Management
+  addCourse: string;
+  fillDetailsToPublish: string;
+  courseName: string;
+  courseCode: string;
+  shortDescription: string;
+  fullDetails: string;
+  priceUSD: string;
+  enableFreeTrial: string;
+  coverMedia: string;
+  publishCourse: string;
+  myCourses_teacher: string;
+  addCourse_teacher: string;
+  latestReviews: string;
+  noReviewsYet: string,
+  confirmDelete: string;
+  confirmDeleteDesc: string;
+  cancel: string;
+  continue: string;
+  
+  // Toasts
+  registeredSuccess: string;
+  registeredCourse: string;
+  ratingSuccess: string;
+  ratingThanks: string;
+  coursePublished: string;
+  courseDeleted: string;
+  
+  // Sidebar
+  dashboard: string;
+  myCourses_sidebar: string;
+  browseCourses_sidebar: string;
+  editProfile_sidebar: string;
+  addCourse_sidebar: string;
+  reports_sidebar: string;
 };
 
 const en: Translation = {
-  home: 'Home',
-  courses: 'Courses',
-  aboutUs: 'About Us',
+  appName: 'EduSmart',
+  startNow: 'Start Now',
   login: 'Login',
   logout: 'Logout',
+  signup: 'Sign Up',
+  createNewAccount: 'Create new account',
+
+  // Header
+  home: 'Home',
+  plans: 'Plans',
+  howItWorks: 'How It Works',
+  courses: 'Courses',
+  loginSignup: 'Login / Sign Up',
+  myAccount: 'My Account',
+  studentProfile: 'Student Profile',
+  teacherProfile: 'Teacher Profile',
+
+  // Footer
+  importantLinks: 'Important Links',
+  privacyPolicy: 'Privacy Policy',
+  contactUs: 'Contact Us',
+  followUs: 'Follow Us',
+  newsletter: 'Newsletter',
+  newsletterPrompt: 'Subscribe for latest updates and offers.',
+  copyright: `© ${new Date().getFullYear()} EduSmart. All rights reserved.`,
+
+  // Home Page
+  heroTitle: 'EduSmart – Your Smart Learning Platform for UTAS Students',
+  heroSubtitle: 'Learn from the best instructors with a 7-day free trial.',
+  howItWorksTitle: 'How It Works',
+  step1Title: '1. Sign Up',
+  step1Desc: 'Create your account as a student or teacher in simple steps.',
+  step2Title: '2. Choose a Course',
+  step2Desc: 'Browse the course library and choose what interests you.',
+  step3Title: '3. Start Learning',
+  step3Desc: 'Begin your educational journey or add your own courses as a teacher.',
+  featuresTitle: 'Features that Change Your Learning Experience',
+  featuresSubtitle: 'Discover how our platform makes your academic journey easier and more effective.',
+  featureTrial: 'Free Trial',
+  featureTrialDesc: 'Explore our platform with a 7-day free trial for all courses.',
+  featureAssessments: 'Smart Assessments',
+  featureAssessmentsDesc: 'Get instant feedback and personalized recommendations to improve your learning path.',
+  featureTheme: 'Dark/Light Mode',
+  featureThemeDesc: 'Choose the theme that suits you for a comfortable reading experience.',
+  featureMultiLanguage: 'Multi-language Support',
+  featureMultiLanguageDesc: 'Easily switch between Arabic and English.',
+  featurePoints: 'Points and Rewards',
+  featurePointsDesc: 'Earn points upon completing courses and redeem them for exclusive rewards.',
+  featureDashboards: 'Custom Pages',
+  featureDashboardsDesc: 'Specialized dashboards for students and teachers for a unique experience.',
+  plansTitle: 'Choose the Plan That Suits You',
+  planBasic: 'Basic',
+  planPro: 'Professional',
+  planPremium: 'Premium',
+  planPriceSuffix: 'OMR/month',
+  planFeature5Courses: 'Access to 5 courses per month',
+  planFeatureEmailSupport: 'Email support',
+  planFeatureUnlimitedCourses: 'Unlimited access to courses',
+  planFeaturePrioritySupport: 'Priority support',
+  planFeatureCertificates: 'Completion certificates',
+  planFeatureAllPro: 'All features of Professional',
+  planFeatureAIAssistant: 'Personal AI assistant',
+  planFeatureSessions: 'Monthly sessions with teachers',
+  subscribeNow: 'Subscribe Now',
+  ctaTitle: 'Start Your Learning Journey Now!',
+
+  // Auth Pages
   loginDescription: 'Choose your role to access your dashboard.',
   loginAsStudent: 'Login as Student',
   loginAsTeacher: 'Login as Teacher',
-  loginStudentPrompt: 'Proceed to your student dashboard.',
-  loginTeacherPrompt: 'Proceed to your teacher dashboard.',
-  goToDashboard: 'Go to Dashboard',
   email: 'Email Address',
   password: 'Password',
   selectBranch: 'Select UTAS Branch',
-  createNewAccount: 'Create new account',
-  signup: 'Sign Up',
-  name: 'Full Name',
+  noAccount: "Don't have an account?",
+  signupDescription: 'Choose your role and fill in the details to join.',
+  iAmA: 'I am a:',
+  student: 'Student',
+  teacher: 'Teacher',
+  fullName: 'Full Name',
   confirmPassword: 'Confirm Password',
-  noAccount: 'Don\'t have an account?',
-  startNow: 'Start Now',
-  appName: 'EduSmart',
+  alreadyHaveAccount: 'Already have an account?',
+
+  // Student Dashboard
+  welcomeBack: 'Welcome back,',
+  academicSummary: 'This is a summary of your academic activity.',
+  pointsEarned: 'Points Earned',
+  activeCourses: 'Active Courses',
+  completedCourses: 'Completed Courses',
+  activeAndTrialCourses: 'Active and Trial Courses',
+  noCoursesInCategory: 'No courses in this category currently.',
+  discoverMoreCourses: 'Discover More Courses',
+  myCourses: 'My Courses',
+  status: 'Status',
+  statusActive: 'Active',
+  statusTrial: 'Trial',
+  statusCompleted: 'Completed',
+  continueCourse: 'Continue Course',
+  rateCourse: 'Rate Course',
+  myProfile: 'My Profile',
+  enrolledCourses: 'Enrolled Courses',
+  editAccount: 'Edit Account',
+  browseCourses: 'Browse Courses',
+
+  // Teacher Dashboard
+  welcome: 'Welcome,',
+  yourActivityOverview: 'Here is an overview of your teaching activity.',
+  totalStudents: 'Total Students',
+  averageRating: 'Average Rating',
+  publishedCourses: 'Published Courses',
+  latestCourses: 'Latest Courses',
+  viewAll: 'View All',
+  student: 'Student',
+  rating: 'Rating',
+  edit: 'Edit',
+  delete: 'Delete',
+  
+  // Course Pages
+  discoverCourses: 'Discover Courses',
+  searchByNameOrCode: 'Search by name or code...',
+  filterByPopularity: 'By Popularity',
+  all: 'All',
+  mostPopular: 'Most Popular',
+  filterByNewness: 'By Newness',
+  newest: 'Newest',
+  filterBySpecialization: 'By Specialization',
+  allSpecializations: 'All Specializations',
+  noResults: 'No results match your search.',
+  freeTrial: 'Free Trial',
+  free: 'Free',
+  registerNow: 'Register Now',
+  courseDetails: 'About the Course',
+  price: 'Price',
+  enrollNow: 'Enroll Now',
+  
+  // Teacher Course Management
+  addCourse: 'Add New Course',
+  fillDetailsToPublish: 'Fill in the following details to publish your course.',
+  courseName: 'Course Name',
+  courseCode: 'Course Code',
+  shortDescription: 'Short Description',
+  fullDetails: 'Full Details',
+  priceUSD: 'Price (OMR)',
+  enableFreeTrial: 'Enable Free Trial (7 days)',
+  coverMedia: 'Cover Image or Video',
+  publishCourse: 'Publish Course',
+  myCourses_teacher: 'My Courses',
+  addCourse_teacher: 'Add New Course',
+  latestReviews: 'Latest Reviews:',
+  noReviewsYet: 'No reviews yet.',
+  confirmDelete: 'Are you absolutely sure?',
+  confirmDeleteDesc: 'This action cannot be undone. This will permanently delete the course and all its data.',
+  cancel: 'Cancel',
+  continue: 'Continue',
+
+  // Toasts
+  registeredSuccess: "Registered Successfully!",
+  registeredCourse: "You have been enrolled in",
+  ratingSuccess: "Rated Successfully!",
+  ratingThanks: "Thank you for rating the course",
+  coursePublished: "Course Published!",
+  courseDeleted: "Deleted Successfully",
+
+  // Sidebar
+  dashboard: 'Dashboard',
+  myCourses_sidebar: 'My Courses',
+  browseCourses_sidebar: 'Browse Courses',
+  editProfile_sidebar: 'Edit Profile',
+  addCourse_sidebar: 'Add Course',
+  reports_sidebar: 'Performance Reports',
 };
 
 const ar: Translation = {
-  home: 'الرئيسية',
-  courses: 'الكورسات',
-  aboutUs: 'من نحن',
+  appName: 'EduSmart',
+  startNow: 'ابدأ الآن',
   login: 'تسجيل الدخول',
   logout: 'تسجيل خروج',
+  signup: 'إنشاء حساب',
+  createNewAccount: 'إنشاء حساب جديد',
+
+  // Header
+  home: 'الرئيسية',
+  plans: 'الباقات',
+  howItWorks: 'كيف تعمل',
+  courses: 'الكورسات',
+  loginSignup: 'تسجيل / دخول',
+  myAccount: 'حسابي',
+  studentProfile: 'ملفي الشخصي (طالب)',
+  teacherProfile: 'ملفي الشخصي (معلم)',
+  
+  // Footer
+  importantLinks: 'روابط مهمة',
+  privacyPolicy: 'سياسة الخصوصية',
+  contactUs: 'تواصل معنا',
+  followUs: 'تابعنا',
+  newsletter: 'النشرة الإخبارية',
+  newsletterPrompt: 'اشترك للحصول على آخر التحديثات والعروض.',
+  copyright: `© ${new Date().getFullYear()} EduSmart. جميع الحقوق محفوظة.`,
+
+  // Home Page
+  heroTitle: 'EduSmart – منصتك التعليمية الذكية لطلاب UTAS',
+  heroSubtitle: 'تعلم من أفضل المعلمين مع تجربة مجانية 7 أيام.',
+  howItWorksTitle: 'كيف تعمل المنصة',
+  step1Title: '1. تسجيل الدخول',
+  step1Desc: 'أنشئ حسابك كطالب أو معلم في خطوات بسيطة.',
+  step2Title: '2. اختيار الكورس',
+  step2Desc: 'تصفح مكتبة الكورسات واختر ما يناسب اهتماماتك.',
+  step3Title: '3. ابدأ التعلم',
+  step3Desc: 'ابدأ رحلتك التعليمية أو قم بإضافة كورساتك الخاصة كمعلم.',
+  featuresTitle: 'مميزات تغير تجربتك التعليمية',
+  featuresSubtitle: 'اكتشف كيف تجعل منصتنا رحلتك الأكاديمية أكثر سهولة وفعالية.',
+  featureTrial: 'تجربة مجانية',
+  featureTrialDesc: 'استكشف منصتنا مع تجربة مجانية لمدة 7 أيام لجميع الكورسات.',
+  featureAssessments: 'تقييمات ذكية',
+  featureAssessmentsDesc: 'احصل على تقييمات فورية وتوصيات مخصصة لتحسين مسارك التعليمي.',
+  featureTheme: 'الوضع الغامق/الفاتح',
+  featureThemeDesc: 'اختر المظهر الذي يناسبك لتجربة قراءة مريحة.',
+  featureMultiLanguage: 'دعم متعدد اللغات',
+  featureMultiLanguageDesc: 'تنقل بسهولة بين اللغتين العربية والإنجليزية.',
+  featurePoints: 'نقاط ومكافآت',
+  featurePointsDesc: 'اكتسب نقاطًا عند إكمال الدورات واستبدلها بمكافآت حصرية.',
+  featureDashboards: 'صفحات مخصصة',
+  featureDashboardsDesc: 'لوحات تحكم خاصة بالطلاب والمعلمين لتجربة فريدة.',
+  plansTitle: 'اختر الباقة التي تناسبك',
+  planBasic: 'الأساسية',
+  planPro: 'الاحترافية',
+  planPremium: 'المميزة',
+  planPriceSuffix: 'ريال/شهر',
+  planFeature5Courses: 'وصول لـ 5 كورسات شهريًا',
+  planFeatureEmailSupport: 'دعم عبر البريد الإلكتروني',
+  planFeatureUnlimitedCourses: 'وصول غير محدود للكورسات',
+  planFeaturePrioritySupport: 'دعم ذو أولوية',
+  planFeatureCertificates: 'شهادات إتمام',
+  planFeatureAllPro: 'كل مزايا الاحترافية',
+  planFeatureAIAssistant: 'مساعد AI شخصي',
+  planFeatureSessions: 'جلسات شهرية مع المعلمين',
+  subscribeNow: 'اشترك الآن',
+  ctaTitle: 'ابدأ رحلتك التعليمية الآن!',
+
+  // Auth Pages
   loginDescription: 'اختر دورك للوصول إلى لوحة التحكم الخاصة بك.',
   loginAsStudent: 'تسجيل كطالب',
   loginAsTeacher: 'تسجيل كمعلم',
-  loginStudentPrompt: 'انتقل إلى لوحة تحكم الطالب.',
-  loginTeacherPrompt: 'انتقل إلى لوحة تحكم المعلم.',
-  goToDashboard: 'الانتقال إلى لوحة التحكم',
   email: 'البريد الإلكتروني',
   password: 'كلمة المرور',
-  selectBranch: 'اختر فرع جامعة UTAS',
-  createNewAccount: 'إنشاء حساب جديد',
-  signup: 'إنشاء حساب',
-  name: 'الاسم الكامل',
-  confirmPassword: 'تأكيد كلمة المرور',
+  selectBranch: 'اختر فرع UTAS',
   noAccount: 'ليس لديك حساب؟',
-  startNow: 'ابدأ الآن',
-  appName: 'EduSmart',
+  signupDescription: 'اختر دورك واملأ التفاصيل للانضمام.',
+  iAmA: 'أنا:',
+  student: 'طالب',
+  teacher: 'معلم',
+  fullName: 'الاسم الكامل',
+  confirmPassword: 'تأكيد كلمة المرور',
+  alreadyHaveAccount: 'لديك حساب بالفعل؟',
+
+  // Student Dashboard
+  welcomeBack: 'مرحبًا بعودتك،',
+  academicSummary: 'هذا هو ملخص نشاطك الأكاديمي.',
+  pointsEarned: 'النقاط المكتسبة',
+  activeCourses: 'الكورسات النشطة',
+  completedCourses: 'الكورسات المكتملة',
+  activeAndTrialCourses: 'كورسات نشطة وتحت التجربة',
+  noCoursesInCategory: 'لا توجد كورسات في هذه الفئة حاليًا.',
+  discoverMoreCourses: 'اكتشف المزيد من الكورسات',
+  myCourses: 'كورساتي',
+  status: 'الحالة',
+  statusActive: 'نشط',
+  statusTrial: 'تحت التجربة',
+  statusCompleted: 'مكتمل',
+  continueCourse: 'متابعة الكورس',
+  rateCourse: 'تقييم الكورس',
+  myProfile: 'ملفي الشخصي',
+  enrolledCourses: 'الكورسات المسجلة',
+  editAccount: 'تعديل الحساب',
+  browseCourses: 'تصفح الكورسات',
+  
+  // Teacher Dashboard
+  welcome: 'مرحبًا بك،',
+  yourActivityOverview: 'إليك نظرة عامة على نشاطك التعليمي.',
+  totalStudents: 'إجمالي الطلاب',
+  averageRating: 'متوسط التقييم',
+  publishedCourses: 'الكورسات المنشورة',
+  latestCourses: 'أحدث الكورسات',
+  viewAll: 'عرض الكل',
+  student: 'طالب',
+  rating: 'تقييم',
+  edit: 'تعديل',
+  delete: 'حذف',
+  
+  // Course Pages
+  discoverCourses: 'اكتشف الكورسات',
+  searchByNameOrCode: 'البحث بالاسم أو الكود...',
+  filterByPopularity: 'حسب الشهرة',
+  all: 'الكل',
+  mostPopular: 'الأكثر شيوعًا',
+  filterByNewness: 'حسب الحداثة',
+  newest: 'الجديد',
+  filterBySpecialization: 'حسب التخصص',
+  allSpecializations: 'كل التخصصات',
+  noResults: 'لا توجد نتائج تطابق بحثك.',
+  freeTrial: 'تجربة مجانية',
+  free: 'مجاني',
+  registerNow: 'سجل الآن',
+  courseDetails: 'عن الكورس',
+  price: 'السعر',
+  enrollNow: 'سجل الآن',
+  
+  // Teacher Course Management
+  addCourse: 'إضافة كورس جديد',
+  fillDetailsToPublish: 'املأ التفاصيل التالية لنشر الكورس الخاص بك.',
+  courseName: 'اسم الكورس',
+  courseCode: 'كود الكورس',
+  shortDescription: 'وصف مختصر',
+  fullDetails: 'تفاصيل شاملة',
+  priceUSD: 'السعر (ريال)',
+  enableFreeTrial: 'تفعيل التجربة المجانية (7 أيام)',
+  coverMedia: 'صورة أو فيديو تعريفي',
+  publishCourse: 'نشر الكورس',
+  myCourses_teacher: 'كورساتي',
+  addCourse_teacher: 'إضافة كورس جديد',
+  latestReviews: 'أحدث التقييمات:',
+  noReviewsYet: 'لا توجد تقييمات بعد.',
+  confirmDelete: 'هل أنت متأكد تمامًا؟',
+  confirmDeleteDesc: 'هذا الإجراء لا يمكن التراجع عنه. سيؤدي هذا إلى حذف الكورس وجميع بياناته بشكل دائم.',
+  cancel: 'إلغاء',
+  continue: 'متابعة',
+
+  // Toasts
+  registeredSuccess: "تم التسجيل بنجاح!",
+  registeredCourse: "لقد تم تسجيلك في كورس",
+  ratingSuccess: "تم التقييم بنجاح!",
+  ratingThanks: "شكرًا لتقييمك كورس",
+  coursePublished: "تم نشر الكورس!",
+  courseDeleted: "تم الحذف بنجاح",
+
+  // Sidebar
+  dashboard: 'لوحة التحكم',
+  myCourses_sidebar: 'كورساتي',
+  browseCourses_sidebar: 'تصفح الكورسات',
+  editProfile_sidebar: 'تعديل الملف الشخصي',
+  addCourse_sidebar: 'إضافة كورس جديد',
+  reports_sidebar: 'تقارير الأداء',
 };
+
 
 export const translations: Record<Language, Translation> = {
   en,

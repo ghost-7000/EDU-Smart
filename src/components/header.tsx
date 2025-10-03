@@ -21,10 +21,10 @@ export function Header({ children }: { children?: React.ReactNode }) {
   const { t, dir } = useLanguage();
 
   const navLinks = [
-    { href: '/', label: 'الرئيسية' },
-    { href: '/#plans', label: 'الباقات' },
-    { href: '/#how-it-works', label: 'كيف تعمل' },
-    { href: '/student/browse-courses', label: 'كورسات' },
+    { href: '/', label: t.home },
+    { href: '/#plans', label: t.plans },
+    { href: '/#how-it-works', label: t.howItWorks },
+    { href: '/student/browse-courses', label: t.courses },
   ];
 
   return (
@@ -52,7 +52,7 @@ export function Header({ children }: { children?: React.ReactNode }) {
         <div className="flex items-center gap-2">
           <div className="hidden md:flex items-center gap-2">
             <Link href="/login">
-                <Button variant="ghost">تسجيل / دخول</Button>
+                <Button variant="ghost">{t.loginSignup}</Button>
             </Link>
             <LanguageToggle />
             <ThemeToggle />
@@ -64,12 +64,12 @@ export function Header({ children }: { children?: React.ReactNode }) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
-                <DropdownMenuLabel>حسابي</DropdownMenuLabel>
+                <DropdownMenuLabel>{t.myAccount}</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/student/profile">ملفي الشخصي (طالب)</Link></DropdownMenuItem>
-                <DropdownMenuItem asChild><Link href="/teacher/profile">ملفي الشخصي (معلم)</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/student/profile">{t.studentProfile}</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/teacher/profile">{t.teacherProfile}</Link></DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem asChild><Link href="/"><LogOut className="mr-2 h-4 w-4" />تسجيل خروج</Link></DropdownMenuItem>
+                <DropdownMenuItem asChild><Link href="/"><LogOut className="mr-2 h-4 w-4" />{t.logout}</Link></DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -101,7 +101,7 @@ export function Header({ children }: { children?: React.ReactNode }) {
                       className="transition-colors hover:text-accent"
                       prefetch={false}
                     >
-                      تسجيل / دخول
+                      {t.loginSignup}
                     </Link>
                   </nav>
                   <div className="flex items-center justify-center gap-4">

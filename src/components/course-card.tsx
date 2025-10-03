@@ -7,6 +7,7 @@ import { Star } from 'lucide-react';
 import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { useToast } from '@/hooks/use-toast';
+import { useLanguage } from '@/hooks/use-language';
 
 type Course = {
   id: number;
@@ -24,11 +25,12 @@ type Course = {
 
 export function CourseCard({ course }: { course: Course }) {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const handleRegister = () => {
     toast({
-        title: "تم التسجيل بنجاح!",
-        description: `لقد تم تسجيلك في كورس "${course.title}".`,
+        title: t.registeredSuccess,
+        description: `${t.registeredCourse} "${course.title}".`,
     });
   }
 
@@ -59,14 +61,14 @@ export function CourseCard({ course }: { course: Course }) {
       <CardFooter className="p-4 flex justify-between items-center">
         <div>
           {course.isFreeTrial ? (
-            <Badge variant="outline" className="border-green-500 text-green-600">تجربة مجانية</Badge>
+            <Badge variant="outline" className="border-green-500 text-green-600">{t.freeTrial}</Badge>
           ) : course.price !== null ? (
             <p className="font-bold text-lg text-primary">${course.price}</p>
           ) : (
-            <Badge variant="secondary">مجاني</Badge>
+            <Badge variant="secondary">{t.free}</Badge>
           )}
         </div>
-        <Button onClick={handleRegister}>سجل الآن</Button>
+        <Button onClick={handleRegister}>{t.registerNow}</Button>
       </CardFooter>
     </Card>
   );
