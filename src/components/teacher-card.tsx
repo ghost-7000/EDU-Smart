@@ -53,5 +53,3 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
     </Card>
   );
 }
-
-    
